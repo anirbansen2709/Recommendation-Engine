@@ -1,6 +1,6 @@
 class Solution{
     public static void main(String[] args) {
-        int i=100;
+        int i=123;
         System.out.println(i);
     }
 }
