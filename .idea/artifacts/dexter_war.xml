@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="dexter:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="dexter-0.1.war">
-      <element id="artifact" artifact-name="dexter:war exploded" />
-    </root>
-  </artifact>
-</component>
