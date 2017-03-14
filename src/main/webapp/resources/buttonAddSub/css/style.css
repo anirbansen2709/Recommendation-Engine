@@ -1,0 +1,54 @@
+
+#timeset{
+  background: transparent;
+}
+
+h4 {
+  font: 26px Serif;
+  margin: 0 0 40px 0;
+  color: ghostwhite;
+}
+
+/*
+label {
+  font: bold 20px Helvetica, sans-serif;
+  display: block;
+  float: left;
+  text-align: right;
+  padding: 5px 10px 0 0;
+  width: 140px;
+}
+*/
+label {
+  font:16px Helvetica, sans-serif;
+}
+input[type=text] {
+  float: left;
+  width: 100px;
+  font: bold 20px Helvetica, sans-serif;
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+/*
+form div {
+  overflow: hidden;
+  margin: 0 0 5px 0;
+}
+*/
+.button {
+  margin: 0 0 0 5px;
+  text-indent: -9999px;
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+  float: left;
+  text-align: center;
+  background: url(../images/buttons3.png) no-repeat;
+}
+.dec {
+  background-position: 0 -29px;
+}
+
+.buttons {
+  padding: 46px 0 50px 90px;
+}

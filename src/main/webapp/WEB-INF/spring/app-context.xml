@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="passthruAuthcFilter" class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter">
+		<property name="loginUrl" value="/login"/>
+	</bean>
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	    <property name="securityManager" ref="securityManager"/>
+
+		<property name="filters">
+			<util:map>
+				<entry key="authc" value-ref="passthruAuthcFilter"/>
+			</util:map>
+		</property>
+
+	    <property name="successUrl" value="/dashboard"/>
+
+		<property name="filterChainDefinitions">
+            <value>
+				/resources/** = anon
+				/login = anon
+				/documentation = anon
+				<!--/aboutCaseTracker = anon-->
+                <!--/forgotPassword = anon-->
+                <!--/emailPassword = anon-->
+                <!--/resetPassword = anon-->
+				<!--/verify = anon-->
+                <!--/home/** = authc-->
+                <!--/registration/** = anon-->
+                <!--/integration/** = anon-->
+                <!--/logout = logout-->
+				<!--/** = authc-->
+				/** = anon
+            </value>
+        </property>
+	</bean>	
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	    <property name="realm" ref="customRealm"/>
+	</bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+	<bean id="customRealm" class="com.gamma.dexter.auth.musicRecommendationRealm">
+	
+	</bean>		
+</beans>

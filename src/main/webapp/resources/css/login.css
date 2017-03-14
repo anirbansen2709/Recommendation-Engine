@@ -1,0 +1,24 @@
+#id1
+{
+    font: normal 175% Georgia, serif;
+    position:absolute;
+    top: 67px;
+    left: 22px;
+    height: 500px;
+    width: 1200px;
+    background-color: powderblue;
+    border: 5px solid blueviolet;
+    border-radius: 10px;
+}
+#id2
+{
+    font: normal 175% Georgia, serif;
+    top: 67px;
+    left: 540px;
+    position: absolute;
+    height: 430px;
+    width: 550px;
+    background-color: powderblue;
+    border: 5px solid blueviolet;
+    border-radius: 10px;
+}

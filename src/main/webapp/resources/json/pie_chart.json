@@ -1,0 +1,157 @@
+{
+  "returncode": "200",
+  "message": "",
+  "chart1": {
+    "caption": "Monthly revenue for last year",
+    "subCaption": "Harry's SuperMart",
+    "xAxisName": "Month",
+    "yAxisName": "Revenues (In USD)",
+    "numberPrefix": "$",
+    "theme": "fint"
+  },
+  "data1": [
+    {
+      "label": "Jan",
+      "value": "130000"
+    },
+    {
+      "label": "Feb",
+      "value": "810000"
+    },
+    {
+      "label": "Mar",
+      "value": "720000"
+    },
+    {
+      "label": "Apr",
+      "value": "550000"
+    },
+    {
+      "label": "May",
+      "value": "910000"
+    },
+    {
+      "label": "Jun",
+      "value": "510000"
+    },
+    {
+      "label": "Jul",
+      "value": "680000"
+    },
+    {
+      "label": "Aug",
+      "value": "620000"
+    },
+    {
+      "label": "Sep",
+      "value": "610000"
+    },
+    {
+      "label": "Oct",
+      "value": "490000"
+    },
+    {
+      "label": "Nov",
+      "value": "900000"
+    },
+    {
+      "label": "Dec",
+      "value": "730000"
+    }
+  ],
+  "chart2": {
+    "caption": "Split of Revenue by Product Categories",
+    "subCaption": "Last year",
+    "numberPrefix": "$",
+    "showBorder": "0",
+    "use3DLighting": "0",
+    "enableSmartLabels": "0",
+    "startingAngle": "310",
+    "showLabels": "0",
+    "showPercentValues": "1",
+    "showLegend": "1",
+    "defaultCenterLabel": "Total revenue: $64.08K",
+    "centerLabel": "Revenue from $label: $value",
+    "centerLabelBold": "1",
+    "showTooltip": "0",
+    "decimals": "0",
+    "useDataPlotColorForLabels": "1",
+    "theme": "fint"
+  },
+  "data2": [
+    {
+      "label": "Food",
+      "value": "28504"
+    },
+    {
+      "label": "Apparels",
+      "value": "14633"
+    },
+    {
+      "label": "Electronics",
+      "value": "10507"
+    },
+    {
+      "label": "Household",
+      "value": "4910"
+    }
+  ],
+  "chart3": {
+    "caption": "Monthly revenue for last year",
+    "subCaption": "Harry's SuperMart",
+    "xAxisName": "Month",
+    "yAxisName": "Revenues (In USD)",
+    "numberPrefix": "$",
+    "theme": "fint"
+  },
+  "data3": [
+    {
+      "label": "Jan",
+      "value": "230000"
+    },
+    {
+      "label": "Feb",
+      "value": "410000"
+    },
+    {
+      "label": "Mar",
+      "value": "1220000"
+    },
+    {
+      "label": "Apr",
+      "value": "50000"
+    },
+    {
+      "label": "May",
+      "value": "1910000"
+    },
+    {
+      "label": "Jun",
+      "value": "1510000"
+    },
+    {
+      "label": "Jul",
+      "value": "2680000"
+    },
+    {
+      "label": "Aug",
+      "value": "920000"
+    },
+    {
+      "label": "Sep",
+      "value": "1610000"
+    },
+    {
+      "label": "Oct",
+      "value": "990000"
+    },
+    {
+      "label": "Nov",
+      "value": "300000"
+    },
+    {
+      "label": "Dec",
+      "value": "430000"
+    }
+  ]
+}
