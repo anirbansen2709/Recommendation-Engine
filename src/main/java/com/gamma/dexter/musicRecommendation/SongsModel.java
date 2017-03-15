@@ -7,6 +7,15 @@ public class SongsModel {
 
     String name;
     float avgRating;
+    Integer movieId;
+
+    public Integer getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(Integer movieId) {
+        this.movieId = movieId;
+    }
 
     public float getAvgRating() {
         return avgRating;
