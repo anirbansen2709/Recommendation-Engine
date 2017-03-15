@@ -82,8 +82,9 @@
                 <table class="table table-bordered table-striped table-hover" id="songs_table">
                     <thead>
                     <tr>
-                        <th>Song</th>
-                        <th>Average Rating</th>
+                        <th style="width: 10%">Movie Id</th>
+                        <th>Movie Name</th>
+                        <th>Avg Rate</th>
                         <th>Rate</th>
                     </tr>
                     </thead>

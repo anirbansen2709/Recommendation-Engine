@@ -1,6 +1,7 @@
 package com.gamma.dexter.musicRecommendation;
 
 import com.gamma.dexter.console.draft.ResponseWrapper;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,15 +42,17 @@ import java.util.Map;
     @RequestMapping(value = "saveRatings", method = RequestMethod.POST)
     public
     @ResponseBody
-    String saveRatings(@RequestBody Map<String,String> mapOfSongs) {
+    String saveRatings(@RequestBody Map<Integer,Integer> mapOfSongs) {
+        JSONObject json = new JSONObject();
         ResponseWrapper wrapper = new ResponseWrapper();
-//        try {
-//            if (!testHandler.insertUser(testUserModel)) {
-//                wrapper.setSuccess(false);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            ratingHandler.saveRatings(mapOfSongs);
+            json.put("successMessage", "created");
+            }
+         catch (Exception e) {
+            e.printStackTrace();
+             json.put("errorMessage", "Error");
+        }
         return wrapper.getResponse();
     }
 }

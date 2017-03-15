@@ -1,6 +1,7 @@
 package com.gamma.dexter.musicRecommendation;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Anirban on 08-Mar-17.
@@ -22,5 +23,9 @@ public class RatingServices {
     }
     public List<SongsModel> getSongsWithAverageRatings() {
         return ratingDb.getSongsWithAverageRatings();
+    }
+
+    public  void saveRatings(Map<Integer,Integer> mapOfSongs){
+        ratingDb.saveRatings(mapOfSongs);
     }
 }

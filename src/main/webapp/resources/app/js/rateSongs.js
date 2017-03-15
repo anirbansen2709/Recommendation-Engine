@@ -43,7 +43,12 @@ function loadTable(data){
             "bLengthChange": false,
             "pageLength":15,
             "columnDefs": [
-                { className: "dt-body-right", "targets": [] }
+                { className: "dt-body-right", "targets": [] },
+                {
+                    "targets": [ 0 ],
+                    "visible": false,
+                    "searchable": false
+                }
             ],
             "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>"+
             "t"+
@@ -69,9 +74,10 @@ function loadTable(data){
         jQuery.each(data['Payload'], function (index, value) {
             var r = [];
 
-            r[0] = value['name'];
-            r[1] = averageStar(value['avgRating']);
-            r[2] = userStar(value['name']);
+            r[0] = value['movieId'];
+            r[1] = value['name'];
+            r[2] = averageStar(value['avgRating']);
+            r[3] = userStar(value['movieId']);
 
 
             songTable.row.add(r);
@@ -103,25 +109,25 @@ function check(val,value)
        return 'checked';
     }
 }
-function userStar(songName){
+function userStar(movieId){
     var stmt ="";
     stmt ="<span><div class='panel-body'>"+
           "<form id='user-rating-form'>"+
           "<span class='user-rating'>"+
-          "<input type='radio' name='user-ratings' value='"+ songName +"~5'><span class='star'></span>"+
-          "<input type='radio' name='user-ratings' value='"+ songName +"~4'><span class='star'></span>"+
-          "<input type='radio' name='user-ratings' value='"+ songName +"~3'><span class='star'></span>"+
-          "<input type='radio' name='user-ratings' value='"+ songName +"~2'><span class='star'></span>"+
-          "<input type='radio' name='user-ratings' value='"+ songName +"~1'><span class='star'></span>"+
+          "<input type='radio' name='user-ratings' value='"+ movieId +"~5'><span class='star'></span>"+
+          "<input type='radio' name='user-ratings' value='"+ movieId +"~4'><span class='star'></span>"+
+          "<input type='radio' name='user-ratings' value='"+ movieId +"~3'><span class='star'></span>"+
+          "<input type='radio' name='user-ratings' value='"+ movieId +"~2'><span class='star'></span>"+
+          "<input type='radio' name='user-ratings' value='"+ movieId +"~1'><span class='star'></span>"+
           "</span>"+
           "</form> </div> </span> ";
     return stmt;
 }
 $("#songs_table").on('click', 'input[name=user-ratings]', function(e){
     var value = $(this).val();
-    var songname = value.split('~')[0];
+    var movieId = value.split('~')[0];
     var rating = value.split('~')[1];
-    mapOfSongs[songname]=rating;
+    mapOfSongs[movieId]=rating;
 
 })
 
