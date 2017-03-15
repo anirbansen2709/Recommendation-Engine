@@ -1,9 +1,6 @@
 package com.gamma.dexter.musicRecommendation;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +15,7 @@ public class RatingDb {
     static final String USER = "root";
     static final String PASS = "root";
     private static RatingDb instance = null;
+
     public static RatingDb intance() {
 
         if (instance == null) {
@@ -25,36 +23,39 @@ public class RatingDb {
         }
         return instance;
     }
+
     public static void main(String[] args) {
 
-        int i=0;
+        int i = 0;
     }
-    public void saveRatings(Map<Integer,Integer> mapOfSongs) {
+
+    public void saveRatings(Map<Integer, Integer> mapOfSongs) {
         try {
-//            Class.forName(JDBC_DRIVER);
-//            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-//
-//            for (Map.Entry<String, String> entry : mapOfSongs.entrySet())
-//            {     String movieId =  entry.getKey();
-//                String query = "insert into ratings vales (?,?,?,?)";
-//                PreparedStatement preparedStatement = con.prepareStatement(query);
-//                preparedStatement.setInt(1, 0);
-//                preparedStatement.setInt(2, entry.getKey());
-//                preparedStatement.setInt(3, entry.getValue());
-//                preparedStatement.setString(4, "xyz");
-//                preparedStatement.execute();
-//                preparedStatement.close();
-//            }
-//
-//            con.close();
-            int i=0;
-        }
-        catch (Exception e) {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            String query = "insert into ratings values (?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(query);
+            for (Map.Entry<Integer, Integer> entry : mapOfSongs.entrySet()) {
+                int movieId = entry.getKey();
+                stmt.setInt(1, 0);
+                stmt.setInt(2, entry.getKey());
+                stmt.setFloat(3, entry.getValue());
+                stmt.setString(4, "xyz");
+                stmt.addBatch();
+            }
+            stmt.executeBatch();
+            stmt.close();
+
+            con.close();
+
+        } catch (Exception e) {
             System.out.println("" + e);
         }
     }
-    public List<SongsModel> getSongsWithAverageRatings(){
-        List<SongsModel> listOfSongs= new ArrayList<SongsModel>();
+
+    public List<SongsModel> getSongsWithAverageRatings() {
+        List<SongsModel> listOfSongs = new ArrayList<SongsModel>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -65,7 +66,7 @@ public class RatingDb {
             while (rs.next()) {
                 SongsModel songsModel = new SongsModel();
                 songsModel.setName(rs.getString("title"));
-                songsModel.setAvgRating((int)rs.getFloat("avgRatings"));
+                songsModel.setAvgRating((int) rs.getFloat("avgRatings"));
                 songsModel.setMovieId(rs.getInt("movieId"));
                 listOfSongs.add(songsModel);
             }
