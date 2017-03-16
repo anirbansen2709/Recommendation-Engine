@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
 </head>
 
 
@@ -91,8 +92,8 @@
         <!--Top Rated Songs -->
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">Top Rated Songs</div>
-                <div class="panel-body">
+                <div class="panel-heading" STYLE=" background-color: #A3B86C;">Top Rated Songs</div>
+                <div class="panel-body" style="height: 180px; background-color: #B5C689">
                     <div class="container">
                         <div class="row" id="topXRatedSongs">
                         </div>
@@ -101,133 +102,130 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="panel panel-default">
-                    <div class="panel-heading">Top Rated Songs</div>
-                    <div class="panel-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-3"
-                                     style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                    <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                        padding-left: -1px; margin-left: -30px">
-                                        <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                             width="304" height="236" style="max-width: 115%">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        smit
-                                    </div>
-                                </div>
+        <%--<div class="row">--%>
+            <%--<div class="panel panel-default">--%>
+                    <%--<div class="panel-heading">Top Rated Songs</div>--%>
+                    <%--<div class="panel-body">--%>
+                        <%--<div class="container">--%>
+                            <%--<div class="row">--%>
+                                <%--<div class="col-md-3 col-sm-3"--%>
+                                     <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                    <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                        <%--padding-left: -1px; margin-left: -30px">--%>
+                                        <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                             <%--width="304" height="236" style="max-width: 115%">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="col-md-6 col-sm-6">--%>
+                                        <%--smit--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
 
-                                <div class="col-md-3 col-sm-3"
-                                     style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                    <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                       padding-left: -1px; margin-left: -30px">
-                                        <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                             width="304" height="236" style="max-width: 115%">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        smit
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3"
-                                     style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                    <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                    padding-left: -1px; margin-left: -30px">
-                                        <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                             width="304" height="236" style="max-width: 115%">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        smit
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3"
-                                     style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                    <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                    padding-left: -1px; margin-left: -30px">
-                                        <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"
-                                             alt="" width="304" height="236" style="max-width: 115%">
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        smit
-                                    </div>
-                                </div>
-                            </div>
+                                <%--<div class="col-md-3 col-sm-3"--%>
+                                     <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                    <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                       <%--padding-left: -1px; margin-left: -30px">--%>
+                                        <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                             <%--width="304" height="236" style="max-width: 115%">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="col-md-6 col-sm-6">--%>
+                                        <%--smit--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-3 col-sm-3"--%>
+                                     <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                    <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                    <%--padding-left: -1px; margin-left: -30px">--%>
+                                        <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                             <%--width="304" height="236" style="max-width: 115%">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="col-md-6 col-sm-6">--%>
+                                        <%--smit--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-3 col-sm-3"--%>
+                                     <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                    <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                    <%--padding-left: -1px; margin-left: -30px">--%>
+                                        <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"--%>
+                                             <%--alt="" width="304" height="236" style="max-width: 115%">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="col-md-6 col-sm-6">--%>
+                                        <%--smit--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
 
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">Top Rated Songs</div>
-                <div class="panel-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                    padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                         width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
-                                </div>
-                            </div>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="row">--%>
+            <%--<div class="panel panel-default">--%>
+                <%--<div class="panel-heading">Top Rated Songs</div>--%>
+                <%--<div class="panel-body">--%>
+                    <%--<div class="container">--%>
+                        <%--<div class="row">--%>
+                            <%--<div class="col-md-3 col-sm-3"--%>
+                                 <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                    <%--padding-left: -1px; margin-left: -30px">--%>
+                                    <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                         <%--width="304" height="236" style="max-width: 115%">--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-6 col-sm-6">--%>
+                                    <%--smit--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
 
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                   padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                         width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                         width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"
-                                         alt="" width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
-                                </div>
-                            </div>
-                        </div>
+                            <%--<div class="col-md-3 col-sm-3"--%>
+                                 <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                   <%--padding-left: -1px; margin-left: -30px">--%>
+                                    <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                         <%--width="304" height="236" style="max-width: 115%">--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-6 col-sm-6">--%>
+                                    <%--smit--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="col-md-3 col-sm-3"--%>
+                                 <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                <%--padding-left: -1px; margin-left: -30px">--%>
+                                    <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""--%>
+                                         <%--width="304" height="236" style="max-width: 115%">--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-6 col-sm-6">--%>
+                                    <%--smit--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="col-md-3 col-sm-3"--%>
+                                 <%--style=" background-color: #eee; margin-left:5px; width: 23%;">--%>
+                                <%--<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;--%>
+                                <%--padding-left: -1px; margin-left: -30px">--%>
+                                    <%--<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"--%>
+                                         <%--alt="" width="304" height="236" style="max-width: 115%">--%>
+                                <%--</div>--%>
+                                <%--<div class="col-md-6 col-sm-6">--%>
+                                    <%--smit--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
    </div>
 </section>
 <%@ include file="./uiFrameFooter.jsp" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+
 <%--for glypicon--%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%--JS file for inserting user--%>
+<script type="text/javascript" src="resources/slick/slick.js"></script>
 <script src="/resources/app/js/test.js"></script>
 <script src="/resources/app/js/dashboard.js"></script>
 </body>

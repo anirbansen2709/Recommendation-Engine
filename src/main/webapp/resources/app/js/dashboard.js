@@ -19,7 +19,7 @@ function topRatedSongs() {
 function loadData(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #eee; margin-left:5px; width: 30%; height: -18%">' +
+        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #eee; margin-left:5px; width: 30%;">' +
             '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px">' +
             '<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
@@ -30,6 +30,58 @@ function loadData(data) {
             '</div>';
     });
     $('#topXRatedSongs').append(stmt);
+
+    $('#topXRatedSongs').slick({
+        dots: false,
+        arrows: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 320,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            }
+
+        ]
+    });
 }
 
 
