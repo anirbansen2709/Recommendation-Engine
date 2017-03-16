@@ -142,6 +142,9 @@ $("#saveRatings").click(function (e) {
                     //$('#test').text("HELLO");
                     $('#modalHeaderContent').text("Congratulation");
                     $('#modalBodyContent').text("You Have Successfully Rated..!!!");
+                    $('#redirect-btn').show();
+                    $('#success-close').show();
+                    $('#error-close').hide();
                     $('#myModal').modal('show');
                 }
                 else {
@@ -152,6 +155,17 @@ $("#saveRatings").click(function (e) {
     }else{
         $('#modalHeaderContent').text("Sorry");
         $('#modalBodyContent').text("You Have Not Rated");
+        $('#redirect-btn').hide();
+        $('#success-close').hide();
         $('#myModal').modal('show');
     }
 });
+$('#redirect-btn').click(function(){
+    window.location.replace("dashboard");
+});
+
+$('#success-close').click(function(){
+    window.location.replace("rateSongs");
+});
+
+

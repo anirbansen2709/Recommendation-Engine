@@ -99,7 +99,7 @@
                                 <tbody style="cursor: pointer"></tbody>
                             </table>
                             <button type="button" class="btn btn-info btn-lg pull-right"
-                                     id="saveRatings">Save
+                                    id="saveRatings">Save
                             </button>
                         </div>
                     </form>
@@ -111,28 +111,36 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="./resources/app/js/rateSongs.js"></script>
 <%@ include file="./uiFrameFooter.jsp" %>
 
-<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
+                <%--<button type="button">&times;</button>--%>
                 <h4 id="modalHeaderContent"></h4>
             </div>
             <div class="modal-body">
                 <p>
+                    <%--<div id = "modalText" >--%>
+                    <span id="modalBodyContent"></span>
+                    <%--</div>--%>
                 <span id="modalBodyContent"></span>
 
                 </p>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="modelDismiss">OK</button>
+                <button type="button" class="btn btn-primary" id="error-close" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="success-close">Close</button>
+                <button type="button" class="btn btn-primary" id="redirect-btn">Ok</button>
             </div>
         </div>
 
     </div>
 </div>
+<script src="./resources/app/js/rateSongs.js"></script>

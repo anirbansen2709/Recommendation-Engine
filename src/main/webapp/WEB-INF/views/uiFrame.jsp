@@ -171,15 +171,15 @@
                     <!-- END user info-->
                     <!-- Iterates over all sidebar items-->
                     <li class=" ">
-                        <a href="dashboard" title="dashboard">
+                        <a href="dashboard" title="Dashboard">
                             <em class="icon-speedometer"></em>
-                            <span data-localize="">dashboard</span>
+                            <span data-localize="">Dashboard</span>
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="rateSongs" title="rateSongs">
+                        <a href="rateSongs" title="Rate Songs">
                             <em class="icon-chemistry"></em>
-                            <span data-localize="">rateSongs</span>
+                            <span data-localize="">Rate Songs</span>
                         </a>
                     </li>
                     <li class=" ">
