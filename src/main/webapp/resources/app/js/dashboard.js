@@ -33,6 +33,7 @@ function loadData(data) {
 
     $('#topXRatedSongs').slick({
         dots: false,
+
         arrows: true,
         infinite: false,
         speed: 300,
