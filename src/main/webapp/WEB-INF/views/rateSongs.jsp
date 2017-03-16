@@ -10,13 +10,15 @@
 <%@ include file="./uiFrame.jsp" %>
 
 <style>
-  .content-wrapper > h3,/* .content-wrapper > .content-heading*/ {
-    margin-bottom: 4px;
-    padding: 4px;
-  }
-  .wrapper > section{
-    top: -20px;
-  }
+    .content-wrapper > h3, /* .content-wrapper > .content-heading*/
+    {
+        margin-bottom: 4px;
+        padding: 4px;
+    }
+
+    .wrapper > section {
+        top: -20px;
+    }
 
     .user-rating {
         direction: rtl;
@@ -25,6 +27,7 @@
         padding: 10px 30px;
         display: inline-block;
     }
+
     .user-rating input {
         opacity: 0;
         position: relative;
@@ -32,11 +35,13 @@
         z-index: 2;
         cursor: pointer;
     }
+
     .user-rating span.star:before {
         color: #777777;
-        content:"ï€†";
+        content: "ï€†";
         /*padding-right: 5px;*/
     }
+
     .user-rating span.star {
         display: inline-block;
         font-family: FontAwesome;
@@ -45,20 +50,23 @@
         position: relative;
         z-index: 1;
     }
+
     .user-rating span {
         margin-left: -15px;
     }
+
     .user-rating span.star:before {
         color: #777777;
-        content:"\f006";
+        content: "\f006";
         /*padding-right: 5px;*/
     }
+
     .user-rating input:hover + span.star:before, .user-rating input:hover + span.star ~ span.star:before, .user-rating input:checked + span.star:before, .user-rating input:checked + span.star ~ span.star:before {
         color: #ffd100;
-        content:"\f005";
+        content: "\f005";
     }
 
-    .selected-rating{
+    .selected-rating {
         color: #ffd100;
         font-weight: bold;
         font-size: 3em;
@@ -66,62 +74,67 @@
 </style>
 <section>
 
-  <div class="content-wrapper">
-    <h3>Device management
-      <small>Add new SNMP devices</small>
-    </h3>
-    <!-- START panel-->
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">Device Management</div>
-        <div class="panel-body">
-          <form role="form" class="form-inline" id="formid">
+    <div class="content-wrapper">
+        <h3>Device management
+            <small>Add new SNMP devices</small>
+        </h3>
+        <!-- START panel-->
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">Device Management</div>
+                <div class="panel-body">
+                    <form role="form" class="form-inline" id="formid">
 
-            <div class="fixedscroll">
+                        <div class="fixedscroll">
 
-                <table class="table table-bordered table-striped table-hover" id="songs_table">
-                    <thead>
-                    <tr>
-                        <th style="width: 10%">Movie Id</th>
-                        <th>Movie Name</th>
-                        <th>Avg Rate</th>
-                        <th>Rate</th>
-                    </tr>
-                    </thead>
-                    <tbody style="cursor: pointer"></tbody>
-                </table>
-                <button type="button" class="btn btn-primary btn-lg pull-right" id="saveRatings">Save</button>
-
+                            <table class="table table-bordered table-striped table-hover" id="songs_table">
+                                <thead>
+                                <tr>
+                                    <th style="width: 10%">Movie Id</th>
+                                    <th>Movie Name</th>
+                                    <th>Avg Rate</th>
+                                    <th>Rate</th>
+                                </tr>
+                                </thead>
+                                <tbody style="cursor: pointer"></tbody>
+                            </table>
+                            <button type="button" class="btn btn-info btn-lg pull-right"
+                                     id="saveRatings">Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-
-
-          </form>
         </div>
-      </div>
-    </div>
-
-    <!-- END panel-->
-    <div class="row">
-      <div class="panel panel-default">
-
-
-      </div>
     </div>
 </section>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-  <div id="rateYo"></div>
-
-
-
-</body>
-</html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="./resources/app/js/rateSongs.js"></script>
 <%@ include file="./uiFrameFooter.jsp" %>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <%--<button type="button">&times;</button>--%>
+                <h4 id="modalHeaderContent"></h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                <%--<div id = "modalText" >--%>
+                <span id="modalBodyContent"></span>
+            <%--</div>--%>
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+
+    </div>
+</div>
