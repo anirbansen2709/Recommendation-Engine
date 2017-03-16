@@ -15,6 +15,71 @@
 
 
 <%@ include file="./uiFrame.jsp" %>
+
+<style>
+    .content-wrapper > h3, /* .content-wrapper > .content-heading*/
+    {
+        margin-bottom: 4px;
+        padding: 4px;
+    }
+
+    .wrapper > section {
+        top: -20px;
+    }
+
+    .user-rating {
+        direction: rtl;
+        font-size: 20px;
+        unicode-bidi: bidi-override;
+        padding: 18px 10px;
+        display: inline-block;
+    }
+
+    .user-rating input {
+        opacity: 0;
+        position: relative;
+        left: -15px;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .user-rating span.star:before {
+        color: #777777;
+        content: "ï€†";
+        /*padding-right: 5px;*/
+    }
+
+    .user-rating span.star {
+        display: inline-block;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        position: relative;
+        z-index: 1;
+    }
+
+    .user-rating span {
+        margin-left: -15px;
+    }
+
+    .user-rating span.star:before {
+        color: #777777;
+        content: "\f006";
+        /*padding-right: 5px;*/
+    }
+
+    .user-rating input:hover + span.star:before, .user-rating input:hover + span.star ~ span.star:before, .user-rating input:checked + span.star:before, .user-rating input:checked + span.star ~ span.star:before {
+        color: #ffd100;
+        content: "\f005";
+    }
+
+    .selected-rating {
+        color: #ffd100;
+        font-weight: bold;
+        font-size: 3em;
+    }
+</style>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <body>
 <section>
@@ -29,52 +94,7 @@
                 <div class="panel-heading">Top Rated Songs</div>
                 <div class="panel-body">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                        padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                         width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6" id = "b1" >
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                       padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                             width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6" id = "b2" >
-                                <%--smit2--%>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                    padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
-                                         width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6" id = "b3" >
-                                    <%--3smit--%>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3"
-                                 style=" background-color: #eee; margin-left:5px; width: 23%;">
-                                <div class="col-md-6 col-sm-6" style="border-right: thick double #ddd;
-                                    padding-left: -1px; margin-left: -30px">
-                                    <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"
-                                     alt="" width="304" height="236" style="max-width: 115%">
-                                </div>
-                                <div class="col-md-6 col-sm-6" id = "b4" >
-                                        <%--smit4--%>
-                                </div>
-                            </div>
+                        <div class="row" id="topXRatedSongs">
                         </div>
 
                     </div>
