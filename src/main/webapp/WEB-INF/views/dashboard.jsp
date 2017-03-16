@@ -37,8 +37,8 @@
                                     <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
                                          width="304" height="236" style="max-width: 115%">
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
+                                <div class="col-md-6 col-sm-6" id = "b1" >
+
                                 </div>
                             </div>
 
@@ -49,8 +49,8 @@
                                     <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
                                              width="304" height="236" style="max-width: 115%">
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
+                                <div class="col-md-6 col-sm-6" id = "b2" >
+                                <%--smit2--%>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3"
@@ -60,8 +60,8 @@
                                     <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt=""
                                          width="304" height="236" style="max-width: 115%">
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    smit
+                                <div class="col-md-6 col-sm-6" id = "b3" >
+                                    <%--3smit--%>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-3"
@@ -71,8 +71,8 @@
                                     <img src="resources/AlbumArt/badrinath.jpg" class="img-responsive"
                                      alt="" width="304" height="236" style="max-width: 115%">
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                        smit
+                                <div class="col-md-6 col-sm-6" id = "b4" >
+                                        <%--smit4--%>
                                 </div>
                             </div>
                         </div>
@@ -209,5 +209,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%--JS file for inserting user--%>
 <script src="/resources/app/js/test.js"></script>
+<script src="/resources/app/js/dashboard.js"></script>
 </body>
 </html>

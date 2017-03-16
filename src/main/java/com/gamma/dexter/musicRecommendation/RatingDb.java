@@ -56,7 +56,7 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT title,avgRatings,movieId FROM movies where movieId < 50";
+            String sql = "SELECT title,avgRatings,movieId FROM movies where movieId < 5";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 SongsModel songsModel = new SongsModel();
@@ -74,4 +74,5 @@ public class RatingDb {
         return listOfSongs;
 
     }
+
 }

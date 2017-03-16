@@ -114,25 +114,23 @@
 <script src="./resources/app/js/rateSongs.js"></script>
 <%@ include file="./uiFrameFooter.jsp" %>
 
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <%--<button type="button">&times;</button>--%>
                 <h4 id="modalHeaderContent"></h4>
             </div>
             <div class="modal-body">
                 <p>
-                <%--<div id = "modalText" >--%>
                 <span id="modalBodyContent"></span>
-            <%--</div>--%>
+
                 </p>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-primary" id="modelDismiss">OK</button>
             </div>
         </div>
 
