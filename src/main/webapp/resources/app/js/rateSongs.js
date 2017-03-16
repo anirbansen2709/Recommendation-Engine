@@ -158,6 +158,7 @@ $("#saveRatings").click(function (e) {
         $('#redirect-btn').hide();
         $('#success-close').hide();
         $('#myModal').modal('show');
+
     }
 });
 $('#redirect-btn').click(function(){
