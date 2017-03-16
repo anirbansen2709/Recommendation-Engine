@@ -39,6 +39,7 @@ public class RatingDb {
                     stmt.setFloat(3, entry.getValue());
                     stmt.setString(4, String.valueOf(timestamp.getTime()));
                     stmt.addBatch();
+
                 }
             stmt.executeBatch();
             stmt.close();
