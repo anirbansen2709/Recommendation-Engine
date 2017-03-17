@@ -19,9 +19,9 @@ function topRatedSongs() {
 function loadData(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #eee; margin-left:5px; width: 30%;">' +
+            stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #eee; margin-left:5px; width: 30%;">' +
             '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px">' +
-            '<img src="resources/AlbumArt/badrinath.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
+            '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
             'Name: <span>' + value["name"] + '</span>' +
