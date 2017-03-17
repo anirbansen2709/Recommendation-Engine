@@ -100,5 +100,9 @@ public class IndexController {
         return "test";
     }
 
+    @RequestMapping(value = "topRatedMovies", method = RequestMethod.GET)
+    private String topRatedMovies(){
+        return "topRatedMovies";
+    }
 }
 

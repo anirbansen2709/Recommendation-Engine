@@ -188,6 +188,13 @@
                             <span>test</span>
                         </a>
                     </li>
+                    <li class=" ">
+                        <a href="topRatedMovies" title="topRatedMovies">
+                            <em class="icon-note"></em>
+                            <span>topRatedMovies</span>
+                        </a>
+                    </li>
+
 
                 </ul>
                 <!-- END sidebar nav-->
