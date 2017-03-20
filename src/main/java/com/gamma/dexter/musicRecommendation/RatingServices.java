@@ -22,7 +22,7 @@ public class RatingServices {
         int i=0;
     }
     public List<SongsModel> getSongsWithAverageRatings() {
-        return ratingDb.getSongsWithAverageRatings();
+        return ratingDb.getSongsWithAverageRatingsFromMemory();
     }
 
     public  void saveRatings(Map<Integer,Integer> mapOfSongs){

@@ -15,6 +15,7 @@ public class RatingDb {
     static final String USER = "root";
     static final String PASS = "root";
     private static RatingDb instance = null;
+    private static List<SongsModel> songsDetails;
     public static RatingDb intance() {
 
         if (instance == null) {
@@ -50,6 +51,13 @@ public class RatingDb {
         catch (Exception e) {
             System.out.println("" + e);
         }
+    }
+
+    public List<SongsModel> getSongsWithAverageRatingsFromMemory(){
+        if(songsDetails == null){
+           songsDetails = getSongsWithAverageRatings();
+        }
+            return songsDetails;
     }
 
     public List<SongsModel> getSongsWithAverageRatings(){
