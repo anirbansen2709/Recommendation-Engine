@@ -92,8 +92,8 @@
         <!--Top Rated Songs -->
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading" STYLE=" background-color: #A3B86C;">Top Rated Songs</div>
-                <div class="panel-body" style="height: 180px; background-color: #B5C689">
+                <div class="panel-heading" STYLE=" background-color: #3dbfe8;">Top Rated Songs</div>
+                <div class="panel-body" style="height: 180px; background-color: #3DBFA9">
                     <div class="container">
                         <div class="row" id="topXRatedSongs">
                         </div>
@@ -218,6 +218,21 @@
         <%--</div>--%>
    </div>
 </section>
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                Loading. Please Wait...
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <%@ include file="./uiFrameFooter.jsp" %>
 
 <%--for glypicon--%>

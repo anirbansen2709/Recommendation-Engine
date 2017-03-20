@@ -6,12 +6,14 @@ $(document).ready(function () {
 });
 var i = 1;
 function topRatedSongs() {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "getSongsWithAverageRatings",
         success: function (data) {
             loadData(data);
+            $('#loadingModal').modal('hide');
         }, error: function (data, status) {
         }
     });

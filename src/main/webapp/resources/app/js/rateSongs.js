@@ -10,8 +10,9 @@ var breakpointDefinition = {
 
 $(document).ready(function () {
     listAllSongs();
-    saveRatings();
+    //saveRatings();
 });
+
 function saveRatings() {
     $('#user-rating-form').on('change', '[name="rating"]', function () {
         alert("hello");
@@ -20,13 +21,14 @@ function saveRatings() {
 }
 
 function listAllSongs() {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "getSongsWithAverageRatings",
         success: function (data) {
             loadTable(data);
-
+            $('#loadingModal').modal('hide');
 
         }, error: function (data, status) {
         }
@@ -128,6 +130,7 @@ $("#songs_table").on('click', 'input[name=user-ratings]', function (e) {
 
 $("#saveRatings").click(function (e) {
     if(ifUserSelectedFlag){
+        $('#loadingModal').modal('show');
         $.ajax({
             type: "POST",
             headers: {
@@ -146,6 +149,7 @@ $("#saveRatings").click(function (e) {
                     $('#success-close').show();
                     $('#error-close').hide();
                     $('#myModal').modal('show');
+                    $('#loadingModal').modal('hide');
                 }
                 else {
                 }
