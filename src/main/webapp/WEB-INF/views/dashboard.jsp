@@ -218,6 +218,9 @@
         <%--</div>--%>
    </div>
 </section>
+
+
+<%@ include file="./uiFrameFooter.jsp" %>
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -233,8 +236,6 @@
         </div>
     </div>
 </div>
-
-<%@ include file="./uiFrameFooter.jsp" %>
 
 <%--for glypicon--%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
