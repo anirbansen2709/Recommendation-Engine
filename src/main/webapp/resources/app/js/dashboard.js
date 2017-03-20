@@ -18,6 +18,7 @@ function topRatedSongs() {
         }
     });
 }
+
 function loadData(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {

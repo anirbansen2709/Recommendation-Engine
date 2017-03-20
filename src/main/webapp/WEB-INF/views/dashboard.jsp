@@ -233,6 +233,7 @@
         </div>
     </div>
 </div>
+
 <%@ include file="./uiFrameFooter.jsp" %>
 
 <%--for glypicon--%>

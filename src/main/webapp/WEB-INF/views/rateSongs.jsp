@@ -159,4 +159,5 @@
         </div>
     </div>
 </div>
+
 <script src="./resources/app/js/rateSongs.js"></script>

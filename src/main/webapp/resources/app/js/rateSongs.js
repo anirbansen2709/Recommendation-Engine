@@ -100,11 +100,13 @@ function averageStar(value) {
         '</form> </span>';
     return stmt;
 }
+
 function check(val, value) {
     if (val == value) {
         return 'checked';
     }
 }
+
 function userStar(movieId) {
     var stmt = "";
     stmt = "<span><div class='panel-body'>" +
