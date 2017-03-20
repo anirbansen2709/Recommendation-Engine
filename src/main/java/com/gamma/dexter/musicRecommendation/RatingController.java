@@ -36,6 +36,7 @@ import java.util.Map;
     public static void main(String[] args) {
         RatingController ratingController = new RatingController();
         String s= ratingController.listAllUser();
+        System.out.println(s);
         int i = 0;
     }
 
@@ -55,4 +56,6 @@ import java.util.Map;
         }
         return wrapper.getResponse();
     }
+
+
 }

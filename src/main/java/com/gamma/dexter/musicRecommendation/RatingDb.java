@@ -23,8 +23,11 @@ public class RatingDb {
         return instance;
     }
     public static void main(String[] args) {
+        RatingDb ratingDb = new RatingDb();
+        List<SongsModel> list= ratingDb.getSongsWithAverageRatings();
 
         int i=0;
+
     }
     public void saveRatings(Map<Integer,Integer> mapOfSongs) {
         try {
@@ -56,13 +59,22 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT title,avgRatings,movieId FROM movies where movieId < 5";
+            String sql = " select count(r.userId) as noOfUsers,\n" +
+                    "     avg(r.rating) as averageRatings,\n" +
+                    "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
+                    "    where m.movieId = r.movieId \n" +
+                    "     group by r.movieId\n" +
+                    "     having count(r.userId)>50\n" +
+                    "     order by averageRatings desc;";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
+
                 SongsModel songsModel = new SongsModel();
+                songsModel.setNoOfUsers(rs.getInt("noOfUsers"));
                 songsModel.setName(rs.getString("title"));
-                songsModel.setAvgRating((int)rs.getFloat("avgRatings"));
+                songsModel.setAvgRating((int)rs.getFloat("averageRatings"));
                 songsModel.setMovieId(rs.getInt("movieId"));
+                songsModel.setGenres(rs.getString("genres"));
                 listOfSongs.add(songsModel);
             }
             rs.close();
