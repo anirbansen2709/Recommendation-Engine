@@ -6,7 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
+</head>
 <%@ include file="./uiFrame.jsp" %>
 
 <style>
@@ -79,18 +85,7 @@
 
     </h3>
     <!-- START panel-->
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">UnderConstruction</div>
-        <div class="panel-body">
-          <form role="form" class="form-inline" id="formid">
-
-            <div class="fixedscroll">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <div id="songsWithGenre"></div>
   </div>
 </section>
 
@@ -129,3 +124,5 @@
   </div>
 </div>
 <script src="resources/app/js/topRatedMovies.js"></script>
+<script type="text/javascript" src="resources/slick/slick.js"></script>
+<script src="/resources/app/js/test.js"></script>
