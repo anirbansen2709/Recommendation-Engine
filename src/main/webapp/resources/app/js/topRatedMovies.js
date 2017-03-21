@@ -27,7 +27,7 @@ function loadSongsWithGenre(data){
         stmt += '<div class="row"> <div class="panel panel-default">'+
            ' <div class="panel-heading" style="background-color: #003153 !important; color: white !important;"><b>'+value['key']+'</b></div>'+
             ' <div class="panel-body" style="height: 180px; background-color: #007BA7">'+
-            '<div class="container"><div class="row" class="eachGenre">';
+            '<div class="container"><div class="row" id ="'+value['key']+'">';
              jQuery.each(value['value'], function (index, value) {
 
                stmt+=  '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
@@ -43,9 +43,13 @@ function loadSongsWithGenre(data){
         stmt+='</div></div></div></div></div>'
     });
     $('#songsWithGenre').append(stmt);
+    createSlick(value['key'])
 
+}
+function createSlick(str)
+{
 
-    $('.eachGenre').slick({
+    $('#'+str).slick({
         dots: false,
 
         //autoplay: true,
