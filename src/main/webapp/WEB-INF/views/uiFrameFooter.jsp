@@ -6,12 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!-- Page footer-->
-<footer>
-  <span>@MAHAAN:2016</span>
-  <iframe src="//www.facebook.com/plugins/follow?href=https%3A%2F%2Fwww.facebook.com%2Frushil.kumar007&amp;
-  layout=standard&amp;show_faces=true&amp;colorscheme=light&amp;width=450&amp;
-  height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:30px;
-  " allowTransparency="true" align="right"></iframe>
+<footer style="background-color: #003153 !important; color: white;">
+  <%--<span>@MAHAAN:2016</span>--%>
+  <div class="page-footer"  style="margin-top: 14px;">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <center>
+            <span>&copy; Music Recommendation, 2017. All Rights Reserved.
+        </center>
+              <%--<a target="_blank" href="http://www.gammanalytics.com "> http://www.gammanalytics.com </a></span>--%>
+      </div>
+    </div>
+  </div>
 </footer>
 </div>
 <!-- =============== VENDOR SCRIPTS ===============-->

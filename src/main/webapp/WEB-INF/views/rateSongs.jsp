@@ -72,7 +72,7 @@
         font-size: 3em;
     }
 </style>
-<section>
+<section style="margin-bottom: 10px !important;">
 
     <div class="content-wrapper">
         <%--<h3>Device management--%>

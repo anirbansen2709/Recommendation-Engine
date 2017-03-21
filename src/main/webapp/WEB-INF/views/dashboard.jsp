@@ -83,7 +83,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <body>
-<section>
+<section style="margin-bottom: 10px !important;">
 
     <div class="content-wrapper">
         <%--<h3>Device management--%>
