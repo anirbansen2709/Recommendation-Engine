@@ -75,25 +75,23 @@
 <section>
 
     <div class="content-wrapper">
-        <h3>Device management
-            <small>Add new SNMP devices</small>
-        </h3>
+        <%--<h3>Device management--%>
+            <%--<small>Add new SNMP devices</small>--%>
+        <%--</h3>--%>
         <!-- START panel-->
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading">Device Management</div>
+                <div class="panel-heading" style="background-color: #003153 !important; color: white !important;"><b>Rate Songs</b></div>
                 <div class="panel-body">
                     <form role="form" class="form-inline" id="formid">
-
                         <div class="fixedscroll">
-
                             <table class="table table-bordered table-striped table-hover" id="songs_table">
                                 <thead>
                                 <tr>
-                                    <th style="width: 10%">Movie Id</th>
-                                    <th>Movie Name</th>
-                                    <th>Avg Rate</th>
-                                    <th>Rate</th>
+                                    <th style="width: 5%; text-align: center; background-color: #007BA7;">Movie Id</th>
+                                    <th style="text-align: center;background-color: #007BA7; color: white">Movie Name</th>
+                                    <th style="text-align: center;background-color: #007BA7; color: white">Avg Rate</th>
+                                    <th style="text-align: center;background-color: #007BA7; color: white">Rate</th>
                                 </tr>
                                 </thead>
                                 <tbody style="cursor: pointer"></tbody>
@@ -103,6 +101,7 @@
                             </button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
@@ -136,8 +135,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="error-close" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="success-close">Close</button>
-                <button type="button" class="btn btn-primary" id="redirect-btn">Ok</button>
+                <button type="button" class="btn btn-primary" id="success-close">Close. Rate Again</button>
+                <button type="button" class="btn btn-primary" id="redirect-btn">Ok. Go to Dashboard</button>
             </div>
         </div>
 

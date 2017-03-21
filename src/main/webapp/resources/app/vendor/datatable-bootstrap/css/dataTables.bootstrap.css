@@ -10,7 +10,7 @@ div.dataTables_length select {
 
 div.dataTables_filter label {
 	font-weight: normal;
-	float: right;
+	float: left;
 }
 
 div.dataTables_filter input {

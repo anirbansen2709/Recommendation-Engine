@@ -92,8 +92,8 @@
         <!--Top Rated Songs -->
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading" STYLE=" background-color: #3dbfe8;">Top Rated Songs</div>
-                <div class="panel-body" style="height: 180px; background-color: #3DBFA9">
+                <div class="panel-heading" style="background-color: #003153 !important; color: white !important;"><b>Top Rated Songs</b></div>
+                <div class="panel-body" style="height: 180px; background-color: #007BA7">
                     <div class="container">
                         <div class="row" id="topXRatedSongs">
                         </div>

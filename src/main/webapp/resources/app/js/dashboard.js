@@ -22,8 +22,8 @@ function topRatedSongs() {
 function loadData(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
-            stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #eee; margin-left:5px; width: 30%;">' +
-            '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px">' +
+            stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
+            '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
             '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
@@ -37,6 +37,8 @@ function loadData(data) {
     $('#topXRatedSongs').slick({
         dots: false,
 
+        //autoplay: true,
+        //autoplaySpeed:2000,
         arrows: true,
         infinite: false,
         speed: 300,
@@ -46,8 +48,8 @@ function loadData(data) {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                     infinite: true,
                     arrows: true,
                     dots: false

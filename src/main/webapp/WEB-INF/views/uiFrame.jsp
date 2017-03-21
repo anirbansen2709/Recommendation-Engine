@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-    <title>musicRecommendation </title>
+    <title>Listen Me</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
     <link rel="stylesheet" href="./resources/vendor/fontawesome/css/font-awesome.min.css">
@@ -45,12 +45,12 @@
     <!-- top navbar-->
     <header class="topnavbar-wrapper">
         <!-- START Top Navbar-->
-        <nav role="navigation" class="navbar topnavbar">
+        <nav role="navigation" class="navbar topnavbar" style="background-color: #003153 !important; background-image: none !important;">
             <!-- START navbar header-->
             <div class="navbar-header">
                 <a href="#/" class="navbar-brand">
                     <div class="brand-logo">
-                        <b><h3>musicRecommendation</h3></b>
+                        <b><h3>Listen Me</h3></b>
                     </div>
                     <div class="brand-logo-collapsed">
                         <img src="./resources/images/snmp.jpg" alt="SNMP" class="img-responsive">
