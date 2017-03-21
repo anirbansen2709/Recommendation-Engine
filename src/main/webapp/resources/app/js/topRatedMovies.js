@@ -14,7 +14,7 @@ function topRatedMovies() {
             dataType: "json",
             url: "getSongsWithGenres",
             success: function (data) {
-
+                console.log(data['Payload']);
                 $('#loadingModal').modal('hide');
 
             }, error: function (data, status) {

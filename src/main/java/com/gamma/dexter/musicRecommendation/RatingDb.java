@@ -82,7 +82,7 @@ public class RatingDb {
                 songsModel.setName(rs.getString("title"));
                 songsModel.setAvgRating((int)rs.getFloat("averageRatings"));
                 songsModel.setMovieId(rs.getInt("movieId"));
-                songsModel.setGenres(rs.getString("genres"));
+                songsModel.setGenres(rs.getString("genres").replace("\r",""));
                 listOfSongs.add(songsModel);
             }
             rs.close();

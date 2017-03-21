@@ -128,4 +128,4 @@
 
   </div>
 </div>
-<script src="./resources/app/js/rateSongs.js"></script>
+<script src="resources/app/js/topRatedMovies.js"></script>

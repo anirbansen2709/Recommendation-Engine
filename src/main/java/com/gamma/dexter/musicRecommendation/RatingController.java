@@ -68,7 +68,7 @@ import java.util.Map;
         List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
         for( SongsModel song :listOfSongs){
            genre = song.getGenres();
-           genres= genre.split("|");
+           genres= genre.split("\\|");
             for(String singleGenre:genres)
             {
                 if(!SongsWithGenres.containsKey(singleGenre)) {
@@ -84,8 +84,9 @@ import java.util.Map;
         }
 
         ResponseWrapper wrapper = new ResponseWrapper();
-        for (SongsModel songsModel : listOfSongs) {
-            wrapper.addPayload(songsModel);
+        for (Map.Entry<String, List<SongsModel>> entry : SongsWithGenres.entrySet())
+        {
+            wrapper.addPayload(entry);
         }
         return wrapper.getResponse();
     }
