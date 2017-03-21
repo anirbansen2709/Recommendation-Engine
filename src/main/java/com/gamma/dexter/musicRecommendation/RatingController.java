@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ import java.util.Map;
 
     @Controller
     public class RatingController {
+    Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
     private static RatingHandler ratingHandler = RatingHandler.instanceRatingHandler();
     Map<String,String> mapOfSongs = new HashedMap();
     @RequestMapping(value = "getSongsWithAverageRatings", method = RequestMethod.GET)
@@ -35,7 +37,7 @@ import java.util.Map;
 
     public static void main(String[] args) {
         RatingController ratingController = new RatingController();
-        String s= ratingController.listAllUser();
+        String s= ratingController.getSongsWithGenres();
         System.out.println(s);
         int i = 0;
     }
@@ -56,6 +58,38 @@ import java.util.Map;
         }
         return wrapper.getResponse();
     }
+
+    @RequestMapping(value = "getSongsWithGenres", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getSongsWithGenres() {
+        String genre;
+        String[] genres;
+        List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
+        for( SongsModel song :listOfSongs){
+           genre = song.getGenres();
+           genres= genre.split("|");
+            for(String singleGenre:genres)
+            {
+                if(!SongsWithGenres.containsKey(singleGenre)) {
+                    List<SongsModel> listOfSongsWithGenre = new ArrayList<>();
+                    listOfSongsWithGenre.add(song);
+                        SongsWithGenres.put(singleGenre,listOfSongsWithGenre);
+                }
+                else{
+                    List<SongsModel> listOfSongsWithGenre = SongsWithGenres.get(singleGenre);
+                    listOfSongsWithGenre.add(song);
+                }
+            }
+        }
+
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (SongsModel songsModel : listOfSongs) {
+            wrapper.addPayload(songsModel);
+        }
+        return wrapper.getResponse();
+    }
+
 
 
 }
