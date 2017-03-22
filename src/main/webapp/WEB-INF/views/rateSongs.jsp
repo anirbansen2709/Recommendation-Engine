@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap Admin App + jQuery">
@@ -111,7 +109,7 @@
             <%--<h3>Device management--%>
             <%--<small>Add new SNMP devices</small>--%>
             <%--</h3>--%>
-            <!-- START panel-->
+                <!-- START panel-->
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
@@ -126,6 +124,8 @@
                                         </th>
                                         <th style="text-align: center;background-color: #007BA7; color: white">Movie
                                             Name
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white">Genres
                                         </th>
                                         <th style="text-align: center;background-color: #007BA7; color: white">Avg
                                             Rate
@@ -150,7 +150,7 @@
 
 </div>
 
-<div class="modal fade" id="myModal" role="dialog" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="myModal" role="dialog"  aria-labelledby="myModalLabel"
      aria-hidden="true"
      data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
@@ -180,7 +180,6 @@
 
     </div>
 </div>
-
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -198,6 +197,7 @@
 </div>
 
 <!-- MODERNIZR-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="./resources/vendor/modernizr/modernizr.js"></script>
 <!-- JQUERY-->
 <script src="./resources/vendor/jquery/dist/jquery.js"></script>
@@ -228,10 +228,6 @@
 <script src="./resources/vendor/Flot/jquery.flot.time.js"></script>
 <script src="./resources/vendor/Flot/jquery.flot.categories.js"></script>
 <script src="./resources/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
-
-<script src="resources/plugins/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
 <!-- CLASSY LOADER-->
 <script src="./resources/vendor/jquery-classyloader/js/jquery.classyloader.min.js"></script>
 <!-- MOMENT JS-->
@@ -244,6 +240,9 @@
 <script src="./resources/app/js/demo/demo-panels.js"></script>
 <!-- =============== APP SCRIPTS ===============-->
 <script src="./resources/app/js/app.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="resources/datatables/datatables/jquery.dataTables.js"></script>
 <script src="resources/datatables/datatables/dataTables.colVis.min.js"></script>
@@ -251,11 +250,9 @@
 <script src="resources/datatables/datatables/dataTables.bootstrap.min.js"></script>
 <script src="resources/datatable-responsive/datatable-responsive/datatables.responsive.min.js"></script>
 <%--for glypicon--%>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <%--JS file for inserting user--%>
-<script type="text/javascript" src="resources/slick/slick.js"></script>
+<%--<script type="text/javascript" src="resources/slick/slick.js"></script>--%>
 <script src="./resources/app/js/rateSongs.js"></script>
 
 </html>
