@@ -21,11 +21,11 @@ function topRatedMovies() {
             }
         });
  }
-'Name: <span>' + value["key"] + '</span>'
+
 function loadSongsWithGenre(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div id ="'+value["key"]+' " class="col-md-2 col-sm-2" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;" onclick="displayMovies(this,\"'+value["key"]+'\");">' +
+        stmt += '<div  id ="'+value["key"]+' "  class="col-md-2 col-sm-2 criteriaBasedClick" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
             '<div class="col-md-12 col-sm-12" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
             '<img src="resources//GenresImages//'+value["key"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
@@ -106,9 +106,8 @@ function check(val, value) {
         return 'checked';
     }
 }
-function displayMovies(item,key) {
-   var genre = $(item).attr("id")
-    alert(key);
 
-}
 
+$('#topXRatedSongs').on('click','.criteriaBasedClick', function(){
+    alert(this.id);
+});
