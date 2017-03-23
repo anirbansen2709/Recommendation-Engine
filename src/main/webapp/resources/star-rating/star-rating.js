@@ -196,7 +196,7 @@
                 self.$caption = $cap;
                 return;
             }
-            self._addContent('caption', '<div class="caption">' + html + '</div>');
+            //self._addContent('caption', '<div class="caption">' + html + '</div>');
             self.$caption = self.$container.find(".caption");
         },
         _renderClear: function () {
