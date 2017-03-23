@@ -27,7 +27,7 @@ function loadData(data) {
             '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
-            'Name: <span>' + value["name"] + '</span>' +
+            'Name: <span>' + value["name"] + '</span><br><br>' +
             '<span>' + averageStar(value["avgRating"]) + '</span>' +
             '</div>' +
             '</div>';
@@ -92,16 +92,21 @@ function loadData(data) {
 
 
 function averageStar(value) {
-    var stmt = "";
-    stmt = '<span><form id="average-rating-form">' +
-        '<span class="user-rating">' +
-        '<input type="radio" name="average-ratings" id="5" ' + check(5, value) + ' value="5"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="4" ' + check(4, value) + ' value="4"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="3" ' + check(3, value) + ' value="3"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="2" ' + check(2, value) + ' value="2"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="1" ' + check(1, value) + ' value="1"><span class="star"></span>' +
-        '</span>' +
-        '</form> </span>';
+    var stmt = "<td>";
+    for(var i=0; i< value ;i++){
+     stmt+='<i style="color: yellow" class="fa fa-star fa-lg fa-fw"></i>';
+    }
+    stmt+='</td>';
+    //stmt = '<span><form id="average-rating-form">' +
+    //    '<span class="user-rating">' +
+    //    '<input type="radio" name="average-ratings" id="5" ' + check(5, value) + ' value="5"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="4" ' + check(4, value) + ' value="4"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="3" ' + check(3, value) + ' value="3"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="2" ' + check(2, value) + ' value="2"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="1" ' + check(1, value) + ' value="1"><span class="star"></span>' +
+    //    '</span>' +
+    //    '</form> </span>';
+
     return stmt;
 }
 function check(val, value) {
@@ -109,3 +114,9 @@ function check(val, value) {
         return 'checked';
     }
 }
+
+
+$('#test').rating('refresh', {
+    showClear: true,
+    disabled: !$('#test').attr('disabled')
+});
