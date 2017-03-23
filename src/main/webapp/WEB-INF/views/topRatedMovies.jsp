@@ -78,14 +78,25 @@
     font-size: 3em;
   }
 </style>
-<section>
+<section  style="margin-bottom: 10px !important;">
 
   <div class="content-wrapper">
-    <h3>TopRatedMovies
+    <%--<h3>Device management--%>
+    <%--<small>Add new SNMP devices</small>--%>
+    <%--</h3>--%>
+    <!--Top Rated Songs -->
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="background-color: #003153 !important; color: white !important;"><b>Top Rated Songs</b></div>
+        <div class="panel-body" style="height: 180px; background-color: #007BA7">
+          <div class="container">
+            <div class="row" id="topXRatedSongs">
+            </div>
 
-    </h3>
-    <!-- START panel-->
-    <div id="songsWithGenre"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
