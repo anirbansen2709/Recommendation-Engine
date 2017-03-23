@@ -4160,7 +4160,7 @@
 		var language = settings.oLanguage;
 		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
-		var input = '<b>Search : </b> <input type="search" class="'+classes.sFilterInput+'"/>';
+		var input = 'Search:  <input type="search" class="'+classes.sFilterInput+'"  />';
 	
 		var str = language.sSearch;
 		str = str.match(/_INPUT_/) ?

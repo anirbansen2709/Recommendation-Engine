@@ -89,16 +89,20 @@ function loadTable(data) {
 }
 
 function averageStar(value) {
-    var stmt = "";
-    stmt = '<span><form id="average-rating-form">' +
-        '<span class="user-rating">' +
-        '<input type="radio" name="average-ratings" id="5" ' + check(5, value) + ' value="5"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="4" ' + check(4, value) + ' value="4"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="3" ' + check(3, value) + ' value="3"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="2" ' + check(2, value) + ' value="2"><span class="star"></span>' +
-        '<input type="radio" name="average-ratings" id="1" ' + check(1, value) + ' value="1"><span class="star"></span>' +
-        '</span>' +
-        '</form> </span>';
+    var stmt = "<td>";
+    for(var i=0; i< value ;i++){
+        stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
+    }
+    stmt+='</td>';
+    //stmt = '<span><form id="average-rating-form">' +
+    //    '<span class="user-rating">' +
+    //    '<input type="radio" name="average-ratings" id="5" ' + check(5, value) + ' value="5"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="4" ' + check(4, value) + ' value="4"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="3" ' + check(3, value) + ' value="3"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="2" ' + check(2, value) + ' value="2"><span class="star"></span>' +
+    //    '<input type="radio" name="average-ratings" id="1" ' + check(1, value) + ' value="1"><span class="star"></span>' +
+    //    '</span>' +
+    //    '</form> </span>';
     return stmt;
 }
 
