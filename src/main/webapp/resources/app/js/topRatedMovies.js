@@ -21,35 +21,19 @@ function topRatedMovies() {
             }
         });
  }
-function loadSongsWithGenre(data){
+'Name: <span>' + value["key"] + '</span>'
+function loadSongsWithGenre(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div class="row"> <div class="panel panel-default">'+
-           ' <div class="panel-heading" style="background-color: #003153 !important; color: white !important;"><b>'+value['key']+'</b></div>'+
-            ' <div class="panel-body" style="height: 180px; background-color: #007BA7">'+
-            '<div class="container"><div class="row" id ="'+value['key']+'">';
-             jQuery.each(value['value'], function (index, value) {
-
-               stmt+=  '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
-                     '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
-                     '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
-                     '</div>' +
-                     '<div class="col-md-6 col-sm-6">' +
-                     'Name: <span>' + value["name"] + '</span>' +
-                     '<span>' + averageStar(value["avgRating"]) + '</span>' +
-                     '</div>' +
-                     '</div>';
-             });
-        stmt+='</div></div></div></div></div>'
+        stmt += '<div class="col-md-2 col-sm-2" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
+            '<div class="col-md-12 col-sm-12" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
+            '<img src="resources//GenresImages//'+value["key"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
+            '</div>' +
+            '</div>';
     });
-    $('#songsWithGenre').append(stmt);
-    createSlick(value['key'])
+    $('#topXRatedSongs').append(stmt);
 
-}
-function createSlick(str)
-{
-
-    $('#'+str).slick({
+    $('#topXRatedSongs').slick({
         dots: false,
 
         //autoplay: true,
@@ -57,7 +41,7 @@ function createSlick(str)
         arrows: true,
         infinite: false,
         speed: 300,
-        slidesToShow: 3,
+        slidesToShow:6,
         slidesToScroll: 3,
         responsive: [
             {
@@ -104,8 +88,6 @@ function createSlick(str)
         ]
     });
 }
-
-
 function averageStar(value) {
     var stmt = "";
     stmt = '<span><form id="average-rating-form">' +
