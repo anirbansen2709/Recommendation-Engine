@@ -48,9 +48,9 @@
 
         .user-rating {
             direction: rtl;
-            font-size: 20px;
+            font-size: 24px;
             unicode-bidi: bidi-override;
-            padding: 18px 10px;
+            padding: 0px 10px;
             display: inline-block;
         }
 
@@ -88,12 +88,12 @@
         }
 
         .user-rating input:hover + span.star:before, .user-rating input:hover + span.star ~ span.star:before, .user-rating input:checked + span.star:before, .user-rating input:checked + span.star ~ span.star:before {
-            color: #ffd100;
+            color: red;
             content: "\f005";
         }
 
         .selected-rating {
-            color: #ffd100;
+            color: red;
             font-weight: bold;
             font-size: 3em;
         }
@@ -120,20 +120,20 @@
                                 <table class="table table-bordered table-striped table-hover" id="songs_table">
                                     <thead>
                                     <tr>
-                                        <th style="width: 5%; text-align: center; background-color: #007BA7; color: white">Movie Id
+                                        <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">Movie Id
                                         </th>
-                                        <th style="text-align: center;background-color: #007BA7; color: white">Movie
+                                        <th style="text-align: center;background-color: #007BA7; color: white; width: 25%;">Movie
                                             Name
                                         </th>
-                                        <th style="text-align: center;background-color: #007BA7; color: white">Genres
+                                        <th style="text-align: center;background-color: #007BA7; color: white; width: 30%;">Genres
                                         </th>
-                                        <th style="text-align: center;background-color: #007BA7; color: white">Avg
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">Avg
                                             Rate
                                         </th>
-                                        <th style="text-align: center;background-color: #007BA7; color: white">Rate</th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">Rate</th>
                                     </tr>
                                     </thead>
-                                    <tbody style="cursor: pointer"></tbody>
+                                    <tbody style="cursor: pointer; padding: 0 !important;"></tbody>
                                 </table>
                                 <button type="button" class="btn btn-info btn-lg pull-right"
                                         id="saveRatings">Save

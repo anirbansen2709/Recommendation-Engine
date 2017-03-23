@@ -39,7 +39,7 @@ function loadTable(data) {
     if (data['returnCode'] == '200') {
         var songTable = $('#songs_table').DataTable({
             "bLengthChange": false,
-            "pageLength": 5,
+            "pageLength": 7,
             "columnDefs": [
                 {className: "dt-body-right", "targets": []},
                 {
@@ -94,15 +94,6 @@ function averageStar(value) {
         stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
     }
     stmt+='</td>';
-    //stmt = '<span><form id="average-rating-form">' +
-    //    '<span class="user-rating">' +
-    //    '<input type="radio" name="average-ratings" id="5" ' + check(5, value) + ' value="5"><span class="star"></span>' +
-    //    '<input type="radio" name="average-ratings" id="4" ' + check(4, value) + ' value="4"><span class="star"></span>' +
-    //    '<input type="radio" name="average-ratings" id="3" ' + check(3, value) + ' value="3"><span class="star"></span>' +
-    //    '<input type="radio" name="average-ratings" id="2" ' + check(2, value) + ' value="2"><span class="star"></span>' +
-    //    '<input type="radio" name="average-ratings" id="1" ' + check(1, value) + ' value="1"><span class="star"></span>' +
-    //    '</span>' +
-    //    '</form> </span>';
     return stmt;
 }
 
@@ -114,14 +105,14 @@ function check(val, value) {
 
 function userStar(movieId) {
     var stmt = "";
-    stmt = "<span><div class='panel-body'>" +
+    stmt = "<span><div>" +
         "<form id='user-rating-form'>" +
         "<span class='user-rating'>" +
-        "<input type='radio' name='user-ratings' value='" + movieId + "~5'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' value='" + movieId + "~4'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' value='" + movieId + "~3'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' value='" + movieId + "~2'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' value='" + movieId + "~1'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~5'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~4'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~3'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~2'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~1'><span class='star'></span>" +
         "</span>" +
         "</form> </div> </span> ";
     return stmt;
