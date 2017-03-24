@@ -72,7 +72,7 @@ public class RatingDb {
                     "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
                     "    where m.movieId = r.movieId \n" +
                     "     group by r.movieId\n" +
-                    "     having count(r.userId)>50\n" +
+                    "     having count(r.userId)>200\n" +
                     "     order by averageRatings desc;";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
