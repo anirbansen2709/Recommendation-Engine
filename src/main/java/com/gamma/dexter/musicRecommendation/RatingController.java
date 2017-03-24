@@ -64,6 +64,7 @@ import java.util.Map;
     @ResponseBody
     String getSongsWithGenres() {
         Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
+
         String genre;
         String[] genres;
         List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
