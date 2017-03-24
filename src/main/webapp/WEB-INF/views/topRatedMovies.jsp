@@ -97,6 +97,8 @@
         </div>
       </div>
     </div>
+    <div class ="row" id="listOfMovies">
+      </div>
   </div>
 </section>
 

@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     topRatedMovies();
+    $('#listOfMovies').empty();
 });
 
 function topRatedMovies() {
@@ -21,19 +22,20 @@ function topRatedMovies() {
             }
         });
  }
-'Name: <span>' + value["key"] + '</span>'
 function loadSongsWithGenre(data) {
     var stmt = '';
+    var genre = '';
     var mapOfGenres = {}
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div id ="'+value["key"]+' " class="col-md-2 col-sm-2 criteriaBasedClick" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
+        stmt += '<div id ="'+value["key"]+'" class="col-md-2 col-sm-2 criteriaBasedClick" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
             '<div class="col-md-12 col-sm-12" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
             '<img src="resources//GenresImages//'+value["key"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>' +
             '</div>';
         mapOfGenres[value["key"]]=value["value"]
     });
-    displayMovies(mapOfGenres);
+
+
     $('#topXRatedSongs').append(stmt);
 
     $('#topXRatedSongs').slick({
@@ -90,6 +92,7 @@ function loadSongsWithGenre(data) {
 
         ]
     });
+    displayMovies(mapOfGenres);
 }
 function averageStar(value) {
     var stmt = "";
@@ -110,14 +113,25 @@ function check(val, value) {
     }
 }
 function displayMovies(mapOfGenres) {
+    console.log(mapOfGenres)
     var genre;
-    var movies
-    $('#topXRatedSongs').on('click','.criteriaBasedClick', function(){
-        genre=$(this).attr('id');
-        movies = mapOfGenres[genre]
-        jQuery.each(movies, function (index, value) {
-            console.log(value["name"])
+    var stmt;
+    var count=0;
+    $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
+        genre = $(this).attr('id');
+        $('#listOfMovies').empty();
+        stmt = '';
+        jQuery.each(mapOfGenres[genre], function (index, value) {
+            stmt+='<div id= '+value["name"]+'style="border:double" class="col-sm-2">'+
+                  '<div style="border:dashed">' +
+                '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
+                '</div>'+
+                  '<div style="border:dashed">' +
+                'Name: <span>' + value["name"] + '</span><br><br>' +
+                '</div>'+
+                  '</div>'
         });
+        $('#listOfMovies').append(stmt);
     });
 }
 
