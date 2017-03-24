@@ -20,7 +20,7 @@ import java.util.Map;
 
     @Controller
     public class RatingController {
-    Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
+
     private static RatingHandler ratingHandler = RatingHandler.instanceRatingHandler();
     Map<String,String> mapOfSongs = new HashedMap();
     @RequestMapping(value = "getSongsWithAverageRatings", method = RequestMethod.GET)
@@ -63,10 +63,11 @@ import java.util.Map;
     public
     @ResponseBody
     String getSongsWithGenres() {
+        Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
         String genre;
         String[] genres;
         List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
-        for( SongsModel song :listOfSongs){
+        for(SongsModel song :listOfSongs){
            genre = song.getGenres();
            genres= genre.split("\\|");
             for(String singleGenre:genres)
