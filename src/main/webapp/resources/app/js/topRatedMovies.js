@@ -133,7 +133,6 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     lastGenre = genre+'clickedGenre';
     $('#listOfMovies').empty();
     stmt = '';
-
     jQuery.each(mapOfGenres[genre], function (index, value) {
         stmt+='<div id= '+value["name"]+'style="border:double;  margin-bottom: 15px" class="col-sm-2">'+
             '<div style="border:double">' +
