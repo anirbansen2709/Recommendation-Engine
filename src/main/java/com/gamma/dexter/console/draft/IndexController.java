@@ -104,5 +104,11 @@ public class IndexController {
     private String topRatedMovies(){
         return "topRatedMovies";
     }
+
+    @RequestMapping(value = "history", method = RequestMethod.GET)
+    private String history(){
+        return "history";
+    }
+
 }
 

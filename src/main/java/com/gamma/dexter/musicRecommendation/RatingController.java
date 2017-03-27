@@ -34,10 +34,21 @@ import java.util.Map;
         }
         return wrapper.getResponse();
     }
+    @RequestMapping(value = "listRatedSongs", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String listRatedSong(){
+        List<RatingModel> listOfRatings = ratingHandler.getHistory();
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (RatingModel ratingModel : listOfRatings) {
+            wrapper.addPayload(ratingModel);
+        }
+        return wrapper.getResponse();
+    }
 
     public static void main(String[] args) {
         RatingController ratingController = new RatingController();
-        String s= ratingController.getSongsWithGenres();
+        String s= ratingController.listRatedSong();
         System.out.println(s);
         int i = 0;
     }
@@ -64,7 +75,6 @@ import java.util.Map;
     @ResponseBody
     String getSongsWithGenres() {
         Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
-
         String genre;
         String[] genres;
         List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();

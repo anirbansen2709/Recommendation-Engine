@@ -200,7 +200,12 @@
                             <span>topRatedMovies</span>
                         </a>
                     </li>
-
+                    <li class=" ">
+                        <a href="history" title="History">
+                            <em class="fa fa-history" aria-hidden="true"></em>
+                            <span>History</span>
+                        </a>
+                    </li>
 
                 </ul>
                 <!-- END sidebar nav-->

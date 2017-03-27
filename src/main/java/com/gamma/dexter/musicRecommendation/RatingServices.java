@@ -28,4 +28,7 @@ public class RatingServices {
     public  void saveRatings(Map<Integer,Integer> mapOfSongs){
         ratingDb.saveRatings(mapOfSongs);
     }
+    public List<RatingModel> getHistory(){
+        return ratingDb.getHistory();
+    }
 }

@@ -25,8 +25,8 @@ public class RatingDb {
     }
     public static void main(String[] args) {
         RatingDb ratingDb = new RatingDb();
-        List<SongsModel> list= ratingDb.getSongsWithAverageRatings();
-
+        List<RatingModel> list= ratingDb.getHistory();
+        System.out.println(list);
         int i=0;
 
     }
@@ -94,5 +94,33 @@ public class RatingDb {
         return listOfSongs;
 
     }
+    public List<RatingModel> getHistory(){
+        List<RatingModel> listOfRatings= new ArrayList<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
 
+            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 1;";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while( resultSet.next()) {
+
+               RatingModel ratingModel = new RatingModel();
+               ratingModel.setUserId(resultSet.getInt("userId"));
+               ratingModel.setMovieId(resultSet.getInt("movieId"));
+               ratingModel.setName(resultSet.getString("title"));
+                ratingModel.setGenres(resultSet.getString("genres"));
+               ratingModel.setRating((int)resultSet.getFloat("rating"));
+               ratingModel.setTimestamp(resultSet.getString("timestamp"));
+                listOfRatings.add(ratingModel);
+            }
+            resultSet.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println("createStatementError in getUsers()" + e);
+        }
+        return listOfRatings;
+
+    }
 }
