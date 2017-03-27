@@ -102,7 +102,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </head>
 
 <div class="wrapper">
@@ -115,7 +115,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
                         <b>Top Rated Songs</b></div>
-                    <div class="panel-body" style="height: 180px; background-color: #007BA7">
+                    <div class="panel-body" style="height: 180px; background-color: white">
                         <div class="container">
                             <div class="row" id="topXRatedSongs">
                             </div>

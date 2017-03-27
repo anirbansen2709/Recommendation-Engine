@@ -1,9 +1,10 @@
 /**
  * Created by Debashish Sen on 20-Mar-17.
  */
+var lastGenre;
 var mapOfGenres={};
 $(document).ready(function () {
-    mapOfGenres={};
+
     $('#listOfMovies').empty();
     topRatedMovies();
 
@@ -28,10 +29,14 @@ function loadSongsWithGenre(data) {
     var genre = '';
 
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div id ="'+value["key"]+'" class="col-md-2 col-sm-2 criteriaBasedClick" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
-            '<div class="col-md-12 col-sm-12" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
-            '<img src="resources//GenresImages//'+value["key"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
-            '</div>' +
+        stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
+            '<div class="widget bg-red">'+
+            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="background-color: brown;color: white ;border-radius: 25px">'+
+            '<div class="col-xs-8 pv-lg">'+
+            '<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
             '</div>';
                mapOfGenres[value["key"]] = value["value"]
 
@@ -117,24 +122,32 @@ function check(val, value) {
 //    console.log(mapOfGenres)
 //    }
 $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
+    //$('.clickedGenre').css('backgroundColor','brown');
+    $('#'+lastGenre).css('backgroundColor','brown');
     var genre;
     var stmt;
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
+    $('#'+genre+'clickedGenre').css('backgroundColor','blue')
+    lastGenre = genre+'clickedGenre';
     $('#listOfMovies').empty();
     stmt = '';
 
     jQuery.each(mapOfGenres[genre], function (index, value) {
-        stmt+='<div id= '+value["name"]+'style="border:double" class="col-sm-2">'+
-            '<div style="border:dashed">' +
-            '<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
+        stmt+='<div id= '+value["name"]+'style="border:double;  margin-bottom: 15px" class="col-sm-2">'+
+            '<div style="border:double">' +
+            '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304" height="236" style="max-width: 100%;height: 170px;" type="image/jpg">'+
+            '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%"  >' +
+            '</object>'+
+            //'<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>'+
-            '<div style="border:dashed">' +
-            'Name: <span>' + value["name"] + '</span><br><br>' +
+            '<div style="border:double; height: 55px;">' +
+            '<span>' + value["name"] + '</span><br><br>' +
             '</div>'+
             '</div>'
     });
     $('#listOfMovies').append(stmt);
+
 });
 

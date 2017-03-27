@@ -53,8 +53,7 @@
         </li>
         <li class=" ">
           <a href="history" title="History">
-            <em class="fa fa-history"
-                    ></em>
+            <em class="fa fa-history"></em>
             <span>History</span>
           </a>
         </li>
