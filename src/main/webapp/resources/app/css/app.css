@@ -417,8 +417,8 @@ body {
 .content-wrapper {
   padding: 15px;
   width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
-  margin-top: -1px;
+  /*border-top: 1px solid rgba(0, 0, 0, 0.15);*/
+  margin-top: -35px;
 }
 .content-wrapper > .unwrap {
   margin: -15px;

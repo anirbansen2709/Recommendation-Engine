@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
     topRatedSongs();
+    recommendedSongs();
 });
 var i = 1;
 function topRatedSongs() {
@@ -13,6 +14,19 @@ function topRatedSongs() {
         url: "getSongsWithAverageRatings",
         success: function (data) {
             loadData(data);
+            $('#loadingModal').modal('hide');
+        }, error: function (data, status) {
+        }
+    });
+}
+function recommendedSongs() {
+    $('#loadingModal').modal('show');
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "getRecommendation",
+        success: function (data) {
+            loadRecommendedSongs(data);
             $('#loadingModal').modal('hide');
         }, error: function (data, status) {
         }
@@ -34,6 +48,8 @@ function loadData(data) {
             '</div>' +
             '</div>';
     });
+
+
     $('#topXRatedSongs').append(stmt);
 
     $('#topXRatedSongs').slick({
@@ -92,8 +108,80 @@ function loadData(data) {
     });
 }
 
+function loadRecommendedSongs(data) {
+    var stmt = '';
+    jQuery.each(data['Payload'], function (index, value) {
+        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
+            '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
+            '<object data="resources/AlbumArt/' + value["movieId"] + '.jpg" width="304" height="236" style="max-width: 115%" type="image/jpg">' +
+            '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%"  >' +
+            '</object>' +
+            '</div>' +
+            '<div class="col-md-6 col-sm-6">' +
+            'Name: <span>' + value["name"] + '</span><br><br>' +
+            '<span>' + averageStar(value["avgRating"]) + '</span>' +
+            '</div>' +
+            '</div>';
+    });
 
-function averageStar(value) {
+    $('#recommendedSongs').append(stmt);
+    $('#recommendedSongs').slick({
+        dots: false,
+
+        //autoplay: true,
+        //autoplaySpeed:2000,
+        arrows: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 320,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            }
+
+        ]
+    });
+
+}
+    function averageStar(value) {
     var stmt = "<td>";
     for(var i=0; i< value ;i++){
      stmt+='<i style="color: yellow" class="fa fa-star fa-lg fa-fw"></i>';

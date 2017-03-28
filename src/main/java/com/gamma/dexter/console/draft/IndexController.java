@@ -110,6 +110,10 @@ public class
     private String history(){
         return "history";
     }
+    @RequestMapping(value = "analytics", method = RequestMethod.GET)
+    private String analytics(){
+        return "analytics";
+    }
 
 }
 
