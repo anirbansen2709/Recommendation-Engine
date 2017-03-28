@@ -136,9 +136,7 @@
                   </thead>
                   <tbody style="cursor: pointer; padding: 0 !important;"></tbody>
                 </table>
-                <button type="button" class="btn btn-info btn-lg pull-right"
-                        id="saveRatings">Save
-                </button>
+
               </div>
             </form>
           </div>
