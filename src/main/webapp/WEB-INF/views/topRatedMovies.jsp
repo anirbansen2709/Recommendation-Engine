@@ -40,15 +40,15 @@
     <%--<%@ include file="./uiFrame.jsp" %>--%>
 
     <style>
-        .content-wrapper > h3, /* .content-wrapper > .content-heading*/
-        {
-            margin-bottom: 4px;
-            padding: 4px;
-        }
+        /*.content-wrapper > h3, /!* .content-wrapper > .content-heading*!/*/
+        /*{*/
+            /*margin-bottom: 4px;*/
+            /*padding: 4px;*/
+        /*}*/
 
-        .wrapper > section {
-            top: -20px;
-        }
+        /*.wrapper > section {*/
+            /*top: -20px;*/
+        /*}*/
 
         .user-rating {
             direction: rtl;
@@ -109,8 +109,7 @@
     <jsp:include page="layout/header.jsp"/>
     <jsp:include page="layout/menu.jsp"/>
 
-    <section style="margin-bottom: 10px !important;">
-
+    <section>
         <div class="content-wrapper">
             <div class="row">
                 <div class="panel panel-default">
@@ -124,11 +123,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div id="listOfMovies"></div>
-            </div>
+
         </div>
     </section>
+    <section>
+        <div class="row">
+            <div id="listOfMovies"></div>
+        </div>
+    </section>
+
     <jsp:include page="layout/footer.jsp"/>
 </div>
 

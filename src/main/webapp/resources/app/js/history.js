@@ -69,7 +69,7 @@ function loadTable(data) {
             r[0] = value['movieId'];
             r[1] = value['name'];
             r[2] = value['genres'];
-            r[3] = averageStar(value['avgRating']);
+            r[3] = averageStar(value['rating']);
             r[4] = value['timestamp'];
 
 

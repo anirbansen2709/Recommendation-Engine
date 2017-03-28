@@ -129,20 +129,20 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
-    $('#'+genre+'clickedGenre').css('backgroundColor','blue')
+    $('#'+genre+'clickedGenre').css('backgroundColor','#003153')
     lastGenre = genre+'clickedGenre';
     $('#listOfMovies').empty();
     stmt = '';
 
     jQuery.each(mapOfGenres[genre], function (index, value) {
-        stmt+='<div id= '+value["name"]+'style="border:double;  margin-bottom: 15px" class="col-sm-2">'+
+        stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
             '<div style="border:double">' +
-            '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304" height="236" style="max-width: 100%;height: 170px;" type="image/jpg">'+
-            '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%"  >' +
+            '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+
+            '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             '</object>'+
             //'<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>'+
-            '<div style="border:double; height: 55px;">' +
+            '<div style="border:double; height: 55px; min-height: 55px">' +
             '<span>' + value["name"] + '</span><br><br>' +
             '</div>'+
             '</div>'
