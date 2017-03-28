@@ -1,5 +1,6 @@
 package com.gamma.dexter.test;
 
+import com.gamma.dexter.console.draft.JSONWrapper;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -188,8 +189,16 @@ public class HttpUtil {
         return res;
     }
 
-    public static void main(String[] args) throws IOException {
-        String res = HttpUtil.get("http://localhost:8124/test");
+    public static void main(String[] args) throws Exception {
+       HttpUtil httpUtil =new HttpUtil();
+       String res= httpUtil.getRecommendation();
         System.out.println(res);
+    }
+    public String getRecommendation() throws Exception{
+        String res = HttpUtil.get("http://localhost:8124/test");
+
+
+        String json = String.valueOf(JSONWrapper.getJSON("payLoad", res));
+        return res;
     }
 }

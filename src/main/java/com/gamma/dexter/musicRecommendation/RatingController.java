@@ -1,6 +1,7 @@
 package com.gamma.dexter.musicRecommendation;
 
 import com.gamma.dexter.console.draft.ResponseWrapper;
+import com.gamma.dexter.test.HttpUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
@@ -46,9 +47,9 @@ import java.util.Map;
         return wrapper.getResponse();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         RatingController ratingController = new RatingController();
-        String s= ratingController.listRatedSong();
+        String s= ratingController.getRecommendation();
         System.out.println(s);
         int i = 0;
     }
@@ -103,6 +104,17 @@ import java.util.Map;
         return wrapper.getResponse();
     }
 
+    @RequestMapping(value = "getRecommendation", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getRecommendation() throws Exception{
+        HttpUtil httpUtil=new HttpUtil();
+        String str=httpUtil.getRecommendation();
+        ResponseWrapper wrapper = new ResponseWrapper();
 
+            wrapper.addPayload(str);
+
+        return wrapper.getResponse();
+    }
 
 }

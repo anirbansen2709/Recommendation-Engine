@@ -89,6 +89,7 @@ public class ResponseWrapper {
      *
      * @param success the new success
      */
+
     public void setSuccess(boolean success) {
         if (success) {
             returnCode = CODE_SUCCESS;
