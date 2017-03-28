@@ -11,6 +11,13 @@ public class RatingModel {
     Integer userId;
     String timestamp;
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
     public String getName() {
         return name;
     }
@@ -51,11 +58,4 @@ public class RatingModel {
         this.userId = userId;
     }
 
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
 }

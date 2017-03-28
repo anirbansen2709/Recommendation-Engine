@@ -1,6 +1,7 @@
 package com.gamma.dexter.musicRecommendation;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  */
 
 public class RatingDb {
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/music";
     static final String USER = "root";
@@ -95,6 +97,8 @@ public class RatingDb {
 
     }
     public List<RatingModel> getHistory(){
+      String time;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         List<RatingModel> listOfRatings= new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
@@ -103,6 +107,7 @@ public class RatingDb {
 
             String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 1;";
             ResultSet resultSet = stmt.executeQuery(sql);
+            long time1;
             while( resultSet.next()) {
 
                RatingModel ratingModel = new RatingModel();
@@ -111,7 +116,11 @@ public class RatingDb {
                ratingModel.setName(resultSet.getString("title"));
                 ratingModel.setGenres(resultSet.getString("genres"));
                ratingModel.setRating((int)resultSet.getFloat("rating"));
-               ratingModel.setTimestamp(resultSet.getString("timestamp"));
+                time = resultSet.getString("timestamp").replace("\r","");
+                 time1=Long.parseLong(time);
+                timestamp.setTime(time1);
+                System.out.println(timestamp);
+                ratingModel.setTimestamp(sdf.format(timestamp));
                 listOfRatings.add(ratingModel);
             }
             resultSet.close();
