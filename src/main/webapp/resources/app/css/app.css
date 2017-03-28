@@ -390,14 +390,14 @@ body {
 .wrapper .dropdown-backdrop {
   z-index: 109;
 }
-.wrapper > section {
-  position: relative;
-  height: 100%;
-  margin-left: 0;
-  z-index: 111;
-  background-color: #f5f7fa;
-  /*margin-bottom: 60px !important;*/
-}
+/*.wrapper > section {*/
+  /*position: relative;*/
+  /*height: 100%;*/
+  /*margin-left: 0;*/
+  /*z-index: 111;*/
+  /*background-color: #f5f7fa;*/
+  /*/!*margin-bottom: 60px !important;*!/*/
+/*}*/
 .wrapper > footer {
   position: absolute;
   left: 0;

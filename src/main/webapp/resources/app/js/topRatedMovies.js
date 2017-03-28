@@ -140,7 +140,6 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             '</object>'+
-            //'<img src="resources/AlbumArt/'+value["movieId"]+'.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%">' +
             '</div>'+
             '<div style="border:double; height: 55px; min-height: 55px">' +
             '<span>' + value["name"] + '</span><br><br>' +
