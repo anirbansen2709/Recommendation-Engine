@@ -1,6 +1,7 @@
-package com.gamma.dexter.test;
+package com.gamma.dexter.musicRecommendation;
 
 import com.gamma.dexter.console.draft.JSONWrapper;
+import net.sf.json.JSONObject;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -191,14 +192,14 @@ public class HttpUtil {
 
     public static void main(String[] args) throws Exception {
        HttpUtil httpUtil =new HttpUtil();
-       String res= httpUtil.getRecommendation();
+       JSONObject res= httpUtil.getRecommendation();
         System.out.println(res);
     }
-    public String getRecommendation() throws Exception{
+    public JSONObject getRecommendation() throws Exception{
         String res = HttpUtil.get("http://localhost:8124/test");
 
+        JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", res);
 
-        String json = String.valueOf(JSONWrapper.getJSON("payLoad", res));
-        return res;
+        return jsonObject;
     }
 }

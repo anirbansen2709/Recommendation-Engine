@@ -1,47 +1,19 @@
 package com.gamma.dexter.test;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
-/**
- * Created by Anirban on 23/01/2017.
- */
-public class TestClass {
+class TimeStampExample {
 
-
-    TestServiceHandler testServiceHandler = TestServiceHandler.instanceTestServiceHandler();
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 
     public static void main(String[] args) {
 
-        TestClass testClass= new TestClass();
-        testClass.test();
+        //method 1
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        timestamp.setTime(1479249799770L);
+        System.out.println(sdf.format(timestamp));
+
     }
 
-    List<TestUserModel> list = testServiceHandler.getData();
-
-    //check the id. If it is not existing already then return true else false
-
-
-    //check the id. If it is not existing already then return true else false
-    String userName="anirba";
-
-    public void test() {
-
-
-        if(userName==null)
-
-        {
-
-            System.out.println(("Enter a Username").toString());
-        }
-
-        else
-
-        {
-            if (list.stream().filter(o -> o.getUsername().equals(userName)).findFirst().isPresent() == true) {
-                System.out.println(("The Username is already used").toString());
-            } else {
-                System.out.println(("You have a valid Username").toString());
-            }
-        }
-    }
 }
