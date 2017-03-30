@@ -111,7 +111,7 @@ import java.util.Map;
 
         HttpUtil httpUtil=new HttpUtil();
         ResponseWrapper responseWrapper = new ResponseWrapper();
-        JSONObject str=httpUtil.getRecommendation();
+    JSONObject str=httpUtil.getRecommendation();
         responseWrapper.addPayload(str.get("Payload"));
 //        str.put("returnCode", CODE_SUCCESS);
 //        str.put("message", "");

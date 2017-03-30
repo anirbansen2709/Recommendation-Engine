@@ -118,8 +118,9 @@ function loadRecommendedSongs(data) {
             '</object>' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
-            'Name: <span>' + value["movieId"] + '</span><br><br>' +
+            'Name: <span>' + value["title"] + '</span><br><br>' +
             '<span>' +value["average"] + '</span>' +
+            '<span>' +value["genres"] + '</span>' +
             '<span>' + + '</span>' +
             '</div>' +
             '</div>';

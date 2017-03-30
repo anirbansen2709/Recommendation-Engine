@@ -197,9 +197,9 @@ public class HttpUtil {
     }
     public JSONObject getRecommendation() throws Exception{
         String res = HttpUtil.get("http://localhost:8124/test");
-
+        res=res.replaceAll("u'","'");
+        res=res.replaceAll("u\"","\"");
         JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", res);
-
         return jsonObject;
     }
 }
