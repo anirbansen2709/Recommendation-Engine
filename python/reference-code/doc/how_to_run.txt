@@ -1,0 +1,24 @@
+==================
+
+Install and run movie lens recommendation
+
+==================
+
+- install anaconda 2 and save in c:\users\<username>\Anaconda2
+- add anaconda2 to path vars with highest priority
+  - C:\Users\tapo\Anaconda2
+  - C:\Users\tapo\Anaconda2\Scripts
+  - C:\Users\tapo\Anaconda2\Library\bin
+- download spark and modify as in pc
+- spark-movie-lens and dataset copy'
+- set system env vars
+  - SPARK_HOME=C:\spark-2.0.0-bin-hadoop2.7
+  - PYTHONPATH=%SPARK_HOME%\python\;%SPARK_HOME%/python/build;%SPARK_HOME%/python/lib/py4j-0.10.1-src.zip
+- in project dir create
+  - conda create --name py2 python=2
+- install project dependencies
+  - pip install flask
+  - pip install paste
+  - pip install cherrypy
+  - pip install numpy
+  - pip install psutil (not mandatory)
