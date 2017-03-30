@@ -25,7 +25,7 @@ public class RatingHandler {
         return ratingServices.getSongsWithAverageRatings();
     }
 
-    public  void saveRatings(Map<Integer,Integer> mapOfSongs){
+    public  void saveRatings(Map<Integer,Integer> mapOfSongs)throws Exception{
         ratingServices.saveRatings(mapOfSongs);
     }
     public List<RatingModel> getHistory(){

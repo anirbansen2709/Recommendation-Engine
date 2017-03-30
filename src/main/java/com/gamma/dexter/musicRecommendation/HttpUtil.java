@@ -22,7 +22,9 @@ import java.nio.charset.Charset;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -192,8 +194,6 @@ public class HttpUtil {
 
     public static void main(String[] args) throws Exception {
        HttpUtil httpUtil =new HttpUtil();
-       JSONObject res= httpUtil.getRecommendation();
-        System.out.println(res);
     }
     public JSONObject getRecommendation() throws Exception{
         String res = HttpUtil.get("http://localhost:8124/test");
@@ -201,5 +201,17 @@ public class HttpUtil {
         res=res.replaceAll("u\"","\"");
         JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", res);
         return jsonObject;
+    }
+    public void sendRatings(Map<Integer,Integer> mapOfRatings) throws Exception{
+        List list = new ArrayList<>();
+        for(Map.Entry<Integer,Integer> entry: mapOfRatings.entrySet()){
+            List innerList=new ArrayList<>();
+            innerList.add(0);
+            innerList.add(entry.getKey());
+            innerList.add(entry.getValue());
+            list.add(innerList);
+        }
+        String str= list.toString();
+        HttpUtil.post("http://localhost:8124/ratings",str);
     }
 }

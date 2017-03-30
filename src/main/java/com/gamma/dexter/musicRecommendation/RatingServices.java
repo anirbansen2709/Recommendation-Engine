@@ -25,8 +25,10 @@ public class RatingServices {
         return ratingDb.getSongsWithAverageRatingsFromMemory();
     }
 
-    public  void saveRatings(Map<Integer,Integer> mapOfSongs){
+    public  void saveRatings(Map<Integer,Integer> mapOfSongs) throws Exception{
         ratingDb.saveRatings(mapOfSongs);
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.sendRatings(mapOfSongs);
     }
     public List<RatingModel> getHistory(){
         return ratingDb.getHistory();
