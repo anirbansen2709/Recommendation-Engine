@@ -110,11 +110,13 @@ import java.util.Map;
     String getRecommendation() throws Exception{
 
         HttpUtil httpUtil=new HttpUtil();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
         JSONObject str=httpUtil.getRecommendation();
-        str.put("returnCode", CODE_SUCCESS);
-        str.put("message", "");
+        responseWrapper.addPayload(str.get("Payload"));
+//        str.put("returnCode", CODE_SUCCESS);
+//        str.put("message", "");
 
-        return str.toString();
+        return responseWrapper.getResponse();
 
     }
 

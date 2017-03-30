@@ -110,7 +110,7 @@ function loadData(data) {
 
 function loadRecommendedSongs(data) {
     var stmt = '';
-    jQuery.each(data['Payload'], function (index, value) {
+    jQuery.each(data['Payload'][0]['elements'], function (index, value) {
         stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
             '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
             '<object data="resources/AlbumArt/' + value["movieId"] + '.jpg" width="304" height="236" style="max-width: 115%" type="image/jpg">' +
@@ -118,8 +118,9 @@ function loadRecommendedSongs(data) {
             '</object>' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
-            'Name: <span>' + value["name"] + '</span><br><br>' +
-            '<span>' + averageStar(value["avgRating"]) + '</span>' +
+            'Name: <span>' + value["movieId"] + '</span><br><br>' +
+            '<span>' +value["average"] + '</span>' +
+            '<span>' + + '</span>' +
             '</div>' +
             '</div>';
     });
