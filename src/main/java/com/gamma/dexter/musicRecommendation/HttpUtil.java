@@ -22,9 +22,7 @@ import java.nio.charset.Charset;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -193,25 +191,27 @@ public class HttpUtil {
     }
 
     public static void main(String[] args) throws Exception {
-       HttpUtil httpUtil =new HttpUtil();
+//        Map<Integer,Integer> map =new HashMap<>();
+//        map.put(1,2);
+//        map.put(3,4);
+//       HttpUtil httpUtil =new HttpUtil();
+//        httpUtil.sendRatings(map);
+//        httpUtil.getRecommendation();
     }
     public JSONObject getRecommendation() throws Exception{
-        String res = HttpUtil.get("http://localhost:8124/test");
-        res=res.replaceAll("u'","'");
-        res=res.replaceAll("u\"","\"");
-        JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", res);
+        String recommendation= HttpUtil.get("http://127.0.0.1:5432/0/ratings/top/5");
+        recommendation= recommendation.replaceAll("\\\\","").replaceAll("\"\"","\"");
+        System.out.println(recommendation);
+        JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", recommendation);
         return jsonObject;
     }
     public void sendRatings(Map<Integer,Integer> mapOfRatings) throws Exception{
-        List list = new ArrayList<>();
+        String str="";
         for(Map.Entry<Integer,Integer> entry: mapOfRatings.entrySet()){
-            List innerList=new ArrayList<>();
-            innerList.add(0);
-            innerList.add(entry.getKey());
-            innerList.add(entry.getValue());
-            list.add(innerList);
+            str+=entry.getKey()+","+entry.getValue()+"\n";
         }
-        String str= list.toString();
-        HttpUtil.post("http://localhost:8124/ratings",str);
+        System.out.println(str);
+        String t= HttpURLConnectionExample.post("http://127.0.0.1:5432/0/ratings", str);
+        System.out.println(t);
     }
 }

@@ -1,7 +1,9 @@
 import os
 from pyspark.mllib.recommendation import ALS
-
+import os
+from pyspark.sql import *
 import logging
+from pyspark.sql.types import *
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -85,8 +87,19 @@ class RecommendationEngine:
         ratings = self.__predict_ratings(user_unrated_movies_RDD)\
             .filter(lambda r: r[2] >= 25)\
             .takeOrdered(movies_count, key=lambda x: -x[1])
-
-        return ratings
+        spark = SparkSession.builder \
+            .master("local") \
+            .appName("Word Count") \
+            .config("spark.some.config.option", "some-value") \
+            .getOrCreate()
+        schema = StructType([
+            StructField("name", StringType(), True),
+            StructField("prediction", FloatType(), True),
+            StructField("noOfRatings", IntegerType(), True)])
+        df = spark.createDataFrame(ratings, schema)
+        df.show(1)
+        list_of_predictions = map(lambda row: row.asDict(), df.collect())
+        return list_of_predictions
 
     def __init__(self, sc, dataset_path):
         """Init the recommendation engine given a Spark context and a dataset path
@@ -98,7 +111,7 @@ class RecommendationEngine:
 
         # Load ratings data for later use
         logger.info("Loading Ratings data...")
-            ratings_file_path = os.path.join(dataset_path, 'ratings.csv')
+        ratings_file_path = os.path.join(dataset_path, 'ratings.csv')
         ratings_raw_RDD = self.sc.textFile(ratings_file_path)
         ratings_raw_data_header = ratings_raw_RDD.take(1)[0]
         self.ratings_RDD = ratings_raw_RDD\

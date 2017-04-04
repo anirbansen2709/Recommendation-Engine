@@ -26,6 +26,7 @@ def movie_ratings(user_id, movie_id):
 @main.route("/<int:user_id>/ratings", methods = ["POST"])
 def add_ratings(user_id):
     # get the ratings from the Flask POST request object
+    print request;
     ratings_list = request.form.keys()[0].strip().split("\n")
     ratings_list = map(lambda x: x.split(","), ratings_list)
     # create a list with the format required by the negine (user_id, movie_id, rating)

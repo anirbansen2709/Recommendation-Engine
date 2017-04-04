@@ -49,7 +49,7 @@ import java.util.Map;
 
     public static void main(String[] args) throws Exception{
         RatingController ratingController = new RatingController();
-        String s= ratingController.getRecommendation();
+        String s= ratingController.listAllUser();
         System.out.println(s);
         int i = 0;
     }
@@ -111,10 +111,10 @@ import java.util.Map;
 
         HttpUtil httpUtil=new HttpUtil();
         ResponseWrapper responseWrapper = new ResponseWrapper();
-    JSONObject str=httpUtil.getRecommendation();
+        JSONObject str=httpUtil.getRecommendation();
         responseWrapper.addPayload(str.get("Payload"));
-//        str.put("returnCode", CODE_SUCCESS);
-//        str.put("message", "");
+        str.put("returnCode", CODE_SUCCESS);
+        str.put("message", "");
 
         return responseWrapper.getResponse();
 
