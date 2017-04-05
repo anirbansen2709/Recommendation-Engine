@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+//import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -28,13 +29,17 @@ import java.util.Map;
     @ResponseBody
     String listAllUser() {
         List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
+
+        List<SongsModel> topTenSongs = new ArrayList<SongsModel>(listOfSongs.subList(0,10));
         ResponseWrapper wrapper = new ResponseWrapper();
-        for (SongsModel songsModel : listOfSongs) {
+        for (SongsModel songsModel : topTenSongs) {
             wrapper.addPayload(songsModel);
         }
         return wrapper.getResponse();
 
     }
+
+
     @RequestMapping(value = "listRatedSongs", method = RequestMethod.GET)
     public
     @ResponseBody

@@ -199,7 +199,7 @@ public class HttpUtil {
 //        httpUtil.getRecommendation();
     }
     public JSONObject getRecommendation() throws Exception{
-        String recommendation= HttpUtil.get("http://127.0.0.1:5432/0/ratings/top/5");
+        String recommendation= HttpUtil.get("http://192.168.1.4:5432/0/ratings/top/5");
         recommendation= recommendation.replaceAll("\\\\","").replaceAll("\"\"","\"");
         System.out.println(recommendation);
         JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", recommendation);
@@ -211,7 +211,7 @@ public class HttpUtil {
             str+=entry.getKey()+","+entry.getValue()+"\n";
         }
         System.out.println(str);
-        String t= HttpURLConnectionExample.post("http://127.0.0.1:5432/0/ratings", str);
+        String t= HttpURLConnectionExample.post("http://192.168.1.4:5432/0/ratings", str);
         System.out.println(t);
     }
 }

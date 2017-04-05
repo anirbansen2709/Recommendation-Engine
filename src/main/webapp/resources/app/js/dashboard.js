@@ -4,38 +4,33 @@
 $(document).ready(function () {
     topRatedSongs();
     recommendedSongs();
+    $('#loadingModal').modal('show');
+    $.when(topRatedSongs(),recommendedSongs())
+        .done(function (a1, a2) {
+            loadData(a1[0]);
+            loadRecommendedSongs(a2[0]);
+            $('#loadingModal').modal('hide');
+        })
 });
 var i = 1;
 function topRatedSongs() {
-    $('#loadingModal').modal('show');
-    $.ajax({
+    return $.ajax({
         type: "GET",
-        dataType: "json",
         url: "getSongsWithAverageRatings",
-        success: function (data) {
-            loadData(data);
-            $('#loadingModal').modal('hide');
-        }, error: function (data, status) {
-        }
+        dataType: "json"
     });
 }
 function recommendedSongs() {
-    $('#loadingModal').modal('show');
-    $.ajax({
+    return $.ajax({
         type: "GET",
-        dataType: "json",
         url: "getRecommendation",
-        success: function (data) {
-            loadRecommendedSongs(data);
-            $('#loadingModal').modal('hide');
-        }, error: function (data, status) {
-        }
-    });
+        dataType: "json"
+    });d
 }
 
 function loadData(data) {
     var stmt = '';
-    jQuery.each(data['Payload'], function (index, value) {
+   jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 25px;">' +
             '<div class="col-md-6 col-sm-6" style="border-right: thick double #ddd; padding-left: -1px; margin-left: -30px;border-radius: 25px;">' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304" height="236" style="max-width: 115%" type="image/jpg">'+
@@ -118,10 +113,7 @@ function loadRecommendedSongs(data) {
             '</object>' +
             '</div>' +
             '<div class="col-md-6 col-sm-6">' +
-            'Name: <span>' + value["title"] + '</span><br><br>' +
-            '<span>' +value["average"] + '</span>' +
-            '<span>' +value["genres"] + '</span>' +
-            '<span>' + + '</span>' +
+            'Name: <span>' + value["name"] + '</span><br><br>' +
             '</div>' +
             '</div>';
     });
@@ -208,7 +200,7 @@ function check(val, value) {
 }
 
 
-$('#test').rating('refresh', {
-    showClear: true,
-    disabled: !$('#test').attr('disabled')
-});
+//$('#test').rating('refresh', {
+//    showClear: true,
+//    disabled: !$('#test').attr('disabled')
+//});
