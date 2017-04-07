@@ -7,7 +7,7 @@ FusionCharts.ready(function () {
         dataFormat: 'json',
         dataSource: {
             "chart": {
-                "caption": "Split of memory usage",
+                "caption": "Top 5 Movies Based On Ratings",
                 "subCaption": "Last year",
                 "numberPrefix": "$",
                 "paletteColors": "#0075c2,#1aaf5d,#f2c500,#f45b00,#8e0000",

@@ -80,6 +80,7 @@ function loadTable(data) {
 
 
             songTable.row.add(r);
+
         });
 
         songTable.draw();

@@ -100,6 +100,9 @@
             font-weight: bold;
             font-size: 3em;
         }
+        button.viewmorebtn1:hover, button.viewmorebtn1:active {font-size: 120%;}
+        button.viewmorebtn2:hover, button.viewmorebtn2:active {font-size: 120%;}
+
     </style>
 
 
@@ -114,7 +117,14 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Top Rated Songs</b></div>
+                        <b>Top Rated Songs</b>
+                        <button class="btn btn-primary viewmorebtn1"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
+
+                            <b> <a href="./topRatedMovies" style="color: whitesmoke">View More >>></a></b>
+
+                        </button>
+
+                    </div>
                     <div class="panel-body" style="height: 180px; background-color: cadetblue">
                         <div class="container">
                             <div class="row" id="topXRatedSongs">
@@ -131,7 +141,13 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Recommended Songs</b></div>
+                        <b>Recommended Songs</b>
+                    <button class="btn btn-primary viewmorebtn2"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
+
+                        <b> <a href="./rateSongs" style="color: whitesmoke">View More >>></a></b>
+
+                        </button>
+                    </div>
                     <div class="panel-body" style="height: 180px; background-color: cadetblue">
                         <div class="container">
                             <div class="row" id="recommendedSongs">
@@ -146,7 +162,6 @@
     </section>
     <jsp:include page="layout/footer.jsp"/>
 </div>
-
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -1,6 +1,7 @@
 package com.gamma.dexter.musicRecommendation;
 
 import com.gamma.dexter.console.draft.ResponseWrapper;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
@@ -121,6 +122,31 @@ import java.util.Map;
 //        str.put("message", "");
 
         return responseWrapper.getResponse();
+
+    }
+
+    @RequestMapping(value = "topRatedSongsChart", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getTopMoviesChart() {
+        JSONArray array = new JSONArray();
+        Map<String, Float> topRatedSongs = RatingDb.getTopMoviesChart();
+        for (Map.Entry<String, Float> entry : topRatedSongs.entrySet())
+        {
+            entry.getKey();
+            entry.getValue();
+            JSONObject json = new JSONObject();
+            json.put("label", entry.getKey());
+            json.put("value", entry.getValue());
+            array.add(json);
+
+        }
+        JSONObject mainObj = new JSONObject();
+        mainObj.put("data", array);
+
+        return mainObj.toString();
+
+
 
     }
 

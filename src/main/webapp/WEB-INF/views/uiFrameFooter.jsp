@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!-- Page footer-->
-<footer style="background-color: #003153 !important; color: white;">
+<footer style="background-color: #003153 !important; color: white; margin-top: -24px;">
     <%--<span>@MAHAAN:2016</span>--%>
     <div class="page-footer"  style="margin-top: 14px;">
         <div class="row">

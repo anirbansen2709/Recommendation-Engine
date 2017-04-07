@@ -96,23 +96,23 @@ public class
         return "dashboard";
     }
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
-    private String test(){
-        return "test";
-    }
-
     @RequestMapping(value = "topRatedMovies", method = RequestMethod.GET)
     private String topRatedMovies(){
         return "topRatedMovies";
     }
 
     @RequestMapping(value = "history", method = RequestMethod.GET)
-    private String history(){
-        return "history";
+    private String history(){return "history";
     }
+
     @RequestMapping(value = "analytics", method = RequestMethod.GET)
     private String analytics(){
         return "analytics";
+    }
+
+    @RequestMapping(value = "recommendedSongs", method = RequestMethod.GET)
+    private String recommendedSongs(){
+        return "recommendedSongs";
     }
 
 }

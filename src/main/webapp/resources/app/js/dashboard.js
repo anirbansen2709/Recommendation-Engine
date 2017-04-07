@@ -25,7 +25,7 @@ function recommendedSongs() {
         type: "GET",
         url: "getRecommendation",
         dataType: "json"
-    });d
+    });
 }
 
 function loadData(data) {
@@ -200,7 +200,3 @@ function check(val, value) {
 }
 
 
-//$('#test').rating('refresh', {
-//    showClear: true,
-//    disabled: !$('#test').attr('disabled')
-//});

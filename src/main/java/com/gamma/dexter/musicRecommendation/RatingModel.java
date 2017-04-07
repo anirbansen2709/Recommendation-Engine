@@ -58,4 +58,6 @@ public class RatingModel {
         this.userId = userId;
     }
 
+
+
 }

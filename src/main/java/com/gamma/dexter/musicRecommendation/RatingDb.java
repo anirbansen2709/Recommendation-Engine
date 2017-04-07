@@ -1,12 +1,8 @@
 package com.gamma.dexter.musicRecommendation;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Anirban on 08-Mar-17.
@@ -20,6 +16,8 @@ public class RatingDb {
     static final String PASS = "root";
     private static RatingDb instance = null;
     private static List<SongsModel> songsDetails;
+
+
     public static RatingDb intance() {
 
         if (instance == null) {
@@ -134,41 +132,28 @@ public class RatingDb {
         return listOfRatings;
 
     }
-    public List<SongsModel> getRecommendation() throws Exception {
-        Class.forName(JDBC_DRIVER);
-        JSONObject song;
-        String name;
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-        HttpUtil httpUtil = new HttpUtil();
-        List<SongsModel> listOfSongs= new ArrayList<SongsModel>();
-        JSONObject str = httpUtil.getRecommendation();
-        JSONArray array = str.getJSONArray("Payload");
-        for (int i=0;i< array.size();i++)
-        {
-            song=array.getJSONObject(i);
-            name =song.getString("name");
+
+    public static Map<String,Float> getTopMoviesChart(){
+        Map<String,Float> topRatedSongs = new HashMap<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
-            String sql = " select count(r.userId) as noOfUsers,\n" +
-                    "     avg(r.rating) as averageRatings,\n" +
-                    "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
-                    "    where m.movieId = r.movieId and m.title=\""+name+"\"\n" +
-                    "     group by r.movieId\n" +
-                    "     order by averageRatings desc;";
-            ResultSet rs = stmt.executeQuery(sql);
-            SongsModel songsModel = new SongsModel();
-            int j =rs.getInt("noOfUsers");
-            String title=rs.getString("title");
-            int k=(int)rs.getFloat("averageRatings");
-            int l=rs.getInt("movieId");
-            String g= rs.getString("genres").replace("\r", "");
-            songsModel.setAvgRating(k);
-            songsModel.setGenres(g);
-            songsModel.setMovieId(l);
-            songsModel.setNoOfUsers(j);
-            listOfSongs.add(songsModel);
-            rs.close();
+            String query = "select m.title as name, avg(r.rating) as averageRatings from ratings r \n" +
+                    " inner join movies m where m.title = ' \" ' + title + ' \" ' and m.movieId = r.movieId \n" +
+                    " group by r.movieId  having count(r.userId)>200 order by averageRatings DESC limit 5;";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+//            int i= rs.getInt("averageRatings");
+//                String s= rs.getString("name");
+                topRatedSongs.put(rs.getString("name"),rs.getFloat("averageRatings") );
+            }
+            con.close();
+        } catch (Exception e) {
+
+            System.out.println("createStatementError in getUsers()" + e);
         }
-        System.out.println(listOfSongs);
-        return listOfSongs;
+        return topRatedSongs;
     }
+
 }

@@ -206,6 +206,12 @@
                             <span>History</span>
                         </a>
                     </li>
+                    <li class=" ">
+                        <a href="analytics" title="Analysis">
+                            <em class="fa fa-bar-chart"></em>
+                            <span>Analysis</span>
+                        </a>
+                    </li>
 
                 </ul>
                 <!-- END sidebar nav-->

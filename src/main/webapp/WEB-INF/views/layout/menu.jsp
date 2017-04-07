@@ -28,21 +28,15 @@
         <!-- END user info-->
         <!-- Iterates over all sidebar items-->
         <li class=" ">
-          <a href="dashboard" title="Dashboard">
-            <em class="icon-speedometer"></em>
-            <span data-localize="">Dashboard</span>
-          </a>
-        </li>
-        <li class=" ">
           <a href="rateSongs" title="Rate Songs">
             <em class="icon-chemistry"></em>
             <span data-localize="">Rate Songs</span>
           </a>
         </li>
         <li class=" ">
-          <a href="test" title="test">
-            <em class="icon-note"></em>
-            <span>test</span>
+          <a href="dashboard" title="Dashboard">
+            <em class="icon-speedometer"></em>
+            <span data-localize="">Dashboard</span>
           </a>
         </li>
         <li class=" ">
@@ -52,9 +46,9 @@
           </a>
         </li>
         <li class=" ">
-          <a href="history" title="History">
-            <em class="fa fa-history"></em>
-            <span>History</span>
+          <a href="recommendedSongs" title="Recommended">
+            <em class="fa fa-music"></em>
+            <span>Recommended Songs</span>
           </a>
         </li>
         <li class=" ">
@@ -63,6 +57,14 @@
             <span>Analysis</span>
           </a>
         </li>
+        <li class=" ">
+          <a href="history" title="History">
+            <em class="fa fa-history"></em>
+            <span>History</span>
+          </a>
+        </li>
+
+
 
 
       </ul>
