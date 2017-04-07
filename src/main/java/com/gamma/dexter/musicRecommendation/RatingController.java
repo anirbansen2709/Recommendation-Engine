@@ -40,6 +40,23 @@ import java.util.Map;
 
     }
 
+    @RequestMapping(value = "getAllSongsWithRatings", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String listAllTopSongs() {
+        List<SongsModel> listOfAllSongs = ratingHandler.getSongsWithAverageRatings();
+
+//        List<SongsModel> topTenSongs = new ArrayList<SongsModel>(listOfSongs.subList(0,10));
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (SongsModel songsModel : listOfAllSongs) {
+            wrapper.addPayload(songsModel);
+        }
+        return wrapper.getResponse();
+
+    }
+
+
+
 
     @RequestMapping(value = "listRatedSongs", method = RequestMethod.GET)
     public
@@ -132,6 +149,53 @@ import java.util.Map;
         JSONArray array = new JSONArray();
         Map<String, Float> topRatedSongs = RatingDb.getTopMoviesChart();
         for (Map.Entry<String, Float> entry : topRatedSongs.entrySet())
+        {
+            entry.getKey();
+            entry.getValue();
+            JSONObject json = new JSONObject();
+            json.put("label", entry.getKey());
+            json.put("value", entry.getValue());
+            array.add(json);
+
+        }
+        JSONObject mainObj = new JSONObject();
+        mainObj.put("data", array);
+
+        return mainObj.toString();
+
+    }
+
+    @RequestMapping(value = "ratingsWithCountChart", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getRatingWithCount() {
+        JSONArray array = new JSONArray();
+        Map<Float, Integer> ratingWithCount = RatingDb.getRatingWithCount();
+        for (Map.Entry<Float,Integer> entry : ratingWithCount.entrySet())
+        {
+            entry.getKey();
+            entry.getValue();
+            JSONObject json = new JSONObject();
+            json.put("label", entry.getKey());
+            json.put("value", entry.getValue());
+            array.add(json);
+
+        }
+        JSONObject mainObj = new JSONObject();
+        mainObj.put("data", array);
+
+        return mainObj.toString();
+
+    }
+
+
+    @RequestMapping(value = "userDetailsChart", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getUserDetails() {
+        JSONArray array = new JSONArray();
+        Map<Float, Integer> userDetails = RatingDb.getRatingWithCount();
+        for (Map.Entry<Float,Integer> entry : userDetails.entrySet())
         {
             entry.getKey();
             entry.getValue();

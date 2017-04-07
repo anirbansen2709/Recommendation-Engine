@@ -9,8 +9,9 @@ var breakpointDefinition = {
 };
 
 $(document).ready(function () {
-    listAllSongs();
+    //listAllSongs();
     //saveRatings();
+    listAllSongsWithRatings();
 });
 
 function saveRatings() {
@@ -20,12 +21,27 @@ function saveRatings() {
     });
 }
 
-function listAllSongs() {
+//function listAllSongs() {
+//    $('#loadingModal').modal('show');
+//    $.ajax({
+//        type: "GET",
+//        dataType: "json",
+//        url: "getSongsWithAverageRatings",
+//        success: function (data) {
+//            loadTable(data);
+//            $('#loadingModal').modal('hide');
+//
+//        }, error: function (data, status) {
+//        }
+//    });
+//}
+
+function listAllSongsWithRatings() {
     $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "getSongsWithAverageRatings",
+        url: "getAllSongsWithRatings",
         success: function (data) {
             loadTable(data);
             $('#loadingModal').modal('hide');
