@@ -114,12 +114,11 @@ import java.util.Map;
     @ResponseBody
     String getRecommendation() throws Exception{
 
-        HttpUtil httpUtil=new HttpUtil();
         ResponseWrapper responseWrapper = new ResponseWrapper();
-        JSONObject str=httpUtil.getRecommendation();
-        responseWrapper.addPayload(str.get("Payload"));
-        str.put("returnCode", CODE_SUCCESS);
-        str.put("message", "");
+        List<SongsModel> str=ratingHandler.getRecommendation();
+//        responseWrapper.addPayload(str.get("Payload"));
+//        str.put("returnCode", CODE_SUCCESS);
+//        str.put("message", "");
 
         return responseWrapper.getResponse();
 

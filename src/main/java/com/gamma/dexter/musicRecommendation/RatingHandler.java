@@ -23,6 +23,7 @@ public class RatingHandler {
     }
     public List<SongsModel> getSongsWithAverageRatings() {
         return ratingServices.getSongsWithAverageRatings();
+
     }
 
     public  void saveRatings(Map<Integer,Integer> mapOfSongs)throws Exception{
@@ -31,4 +32,6 @@ public class RatingHandler {
     public List<RatingModel> getHistory(){
         return ratingServices.getHistory();
     }
+
+    public List<SongsModel> getRecommendation() throws Exception{ return ratingServices.getRecommendation();}
 }

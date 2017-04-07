@@ -168,8 +168,7 @@
 
         </p>
 
-      </div>
-      <div class="modal-footer">
+      </div>c
         <button type="button" class="btn btn-primary" id="error-close" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="success-close">Close</button>
         <button type="button" class="btn btn-primary" id="redirect-btn">Ok</button>

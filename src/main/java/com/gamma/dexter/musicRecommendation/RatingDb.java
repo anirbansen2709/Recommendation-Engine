@@ -1,4 +1,6 @@
 package com.gamma.dexter.musicRecommendation;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -131,5 +133,42 @@ public class RatingDb {
         }
         return listOfRatings;
 
+    }
+    public List<SongsModel> getRecommendation() throws Exception {
+        Class.forName(JDBC_DRIVER);
+        JSONObject song;
+        String name;
+        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        HttpUtil httpUtil = new HttpUtil();
+        List<SongsModel> listOfSongs= new ArrayList<SongsModel>();
+        JSONObject str = httpUtil.getRecommendation();
+        JSONArray array = str.getJSONArray("Payload");
+        for (int i=0;i< array.size();i++)
+        {
+            song=array.getJSONObject(i);
+            name =song.getString("name");
+            Statement stmt = con.createStatement();
+            String sql = " select count(r.userId) as noOfUsers,\n" +
+                    "     avg(r.rating) as averageRatings,\n" +
+                    "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
+                    "    where m.movieId = r.movieId and m.title=\""+name+"\"\n" +
+                    "     group by r.movieId\n" +
+                    "     order by averageRatings desc;";
+            ResultSet rs = stmt.executeQuery(sql);
+            SongsModel songsModel = new SongsModel();
+            int j =rs.getInt("noOfUsers");
+            String title=rs.getString("title");
+            int k=(int)rs.getFloat("averageRatings");
+            int l=rs.getInt("movieId");
+            String g= rs.getString("genres").replace("\r", "");
+            songsModel.setAvgRating(k);
+            songsModel.setGenres(g);
+            songsModel.setMovieId(l);
+            songsModel.setNoOfUsers(j);
+            listOfSongs.add(songsModel);
+            rs.close();
+        }
+        System.out.println(listOfSongs);
+        return listOfSongs;
     }
 }

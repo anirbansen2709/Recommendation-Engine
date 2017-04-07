@@ -33,4 +33,7 @@ public class RatingServices {
     public List<RatingModel> getHistory(){
         return ratingDb.getHistory();
     }
+
+
+    public List<SongsModel> getRecommendation ()throws Exception{ return ratingDb.getRecommendation();}
 }
