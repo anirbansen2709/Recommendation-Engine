@@ -195,4 +195,53 @@ public class RatingDb {
         }
         return topRatedSongs;
     }
+
+    public static Map<Float,Integer> getRatingWithCount(){
+        Map<Float,Integer> ratingWithCount = new HashMap<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+            String query = "\n" +
+                    "select r.rating as Rating, count(*) as noOfMovies from ratings r \n" +
+                    "where r.rating=' \" ' + rating + ' \" ' group by r.rating order by r.rating DESC;";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+//            int i= rs.getInt("averageRatings");
+//                String s= rs.getString("name");
+                ratingWithCount.put(rs.getFloat("Rating"),rs.getInt("noOfMovies"));
+            }
+            con.close();
+        } catch (Exception e) {
+
+            System.out.println("createStatementError in getUsers()" + e);
+        }
+        return ratingWithCount;
+    }
+
+    public static Map<Float,Integer> getUserDetails(){
+
+
+        Map<Float,Integer> userDetails = new HashMap<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+            String query = "\n" +
+                    "select r.rating as Rating, count(*) as noOfMovies from ratings r \n" +
+                    "where r.rating=' \" ' + rating + ' \" ' group by r.rating order by r.rating DESC;";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+//            int i= rs.getInt("averageRatings");
+//                String s= rs.getString("name");
+                userDetails.put(rs.getFloat("Rating"),rs.getInt("noOfMovies"));
+            }
+            con.close();
+        } catch (Exception e) {
+
+            System.out.println("createStatementError in getUsers()" + e);
+        }
+        return userDetails;
+    }
+
 }

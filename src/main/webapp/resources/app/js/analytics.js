@@ -79,7 +79,10 @@ $(document).ready(function () {
                 "theme": "fint",
                 "showlabels ": "1",
                 "showvalues ": "1",
-                "showLegend ": "1"
+                "showLegend ": "1",
+                //"forceXAxisValueDecimals": "1",
+                "xAxisValueDecimals": "0",
+                "decimalPrecision":"2"
             };
             var chartType = "column3D";
             var renderId = "top-movies-based-on-ratings";

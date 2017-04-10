@@ -144,7 +144,7 @@
                         <b>Recommended Songs</b>
                     <button class="btn btn-primary viewmorebtn2"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
 
-                        <b> <a href="./rateSongs" style="color: whitesmoke">View More >>></a></b>
+                        <b> <a href="./recommendedSongs" style="color: whitesmoke">View More >>></a></b>
 
                         </button>
                     </div>

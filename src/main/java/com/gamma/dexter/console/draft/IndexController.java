@@ -92,9 +92,7 @@ public class
     }
 
     @RequestMapping(value = "dashboard", method = RequestMethod.GET)
-    private String dashboard(){
-        return "dashboard";
-    }
+    private String dashboard(){return "dashboard";}
 
     @RequestMapping(value = "topRatedMovies", method = RequestMethod.GET)
     private String topRatedMovies(){
