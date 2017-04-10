@@ -1,5 +1,4 @@
 package com.gamma.dexter.musicRecommendation;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.sql.*;
@@ -135,42 +134,11 @@ public class RatingDb {
         return listOfRatings;
 
     }
-    public List<SongsModel> getRecommendation() throws Exception {
-        Class.forName(JDBC_DRIVER);
-        JSONObject song;
-        String name;
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+    public JSONObject getRecommendation() throws Exception {
         HttpUtil httpUtil = new HttpUtil();
-        List<SongsModel> listOfSongs= new ArrayList<SongsModel>();
-        JSONObject str = httpUtil.getRecommendation();
-        JSONArray array = str.getJSONArray("Payload");
-        for (int i=0;i< array.size();i++)
-        {
-            song=array.getJSONObject(i);
-            name =song.getString("name");
-            Statement stmt = con.createStatement();
-            String sql = " select count(r.userId) as noOfUsers,\n" +
-                    "     avg(r.rating) as averageRatings,\n" +
-                    "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
-                    "    where m.movieId = r.movieId and m.title=\""+name+"\"\n" +
-                    "     group by r.movieId\n" +
-                    "     order by averageRatings desc;";
-            ResultSet rs = stmt.executeQuery(sql);
-            SongsModel songsModel = new SongsModel();
-            int j =rs.getInt("noOfUsers");
-            String title=rs.getString("title");
-            int k=(int)rs.getFloat("averageRatings");
-            int l=rs.getInt("movieId");
-            String g= rs.getString("genres").replace("\r", "");
-            songsModel.setAvgRating(k);
-            songsModel.setGenres(g);
-            songsModel.setMovieId(l);
-            songsModel.setNoOfUsers(j);
-            listOfSongs.add(songsModel);
-            rs.close();
-        }
-        System.out.println(listOfSongs);
-        return listOfSongs;
+        JSONObject recommendation = httpUtil.getRecommendation();
+
+        return recommendation;
     }
 
     public static Map<String,Float> getTopMoviesChart(){
@@ -195,7 +163,6 @@ public class RatingDb {
         }
         return topRatedSongs;
     }
-
     public static Map<Float,Integer> getRatingWithCount(){
         Map<Float,Integer> ratingWithCount = new HashMap<>();
         try {
@@ -218,30 +185,4 @@ public class RatingDb {
         }
         return ratingWithCount;
     }
-
-    public static Map<Float,Integer> getUserDetails(){
-
-
-        Map<Float,Integer> userDetails = new HashMap<>();
-        try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = con.createStatement();
-            String query = "\n" +
-                    "select r.rating as Rating, count(*) as noOfMovies from ratings r \n" +
-                    "where r.rating=' \" ' + rating + ' \" ' group by r.rating order by r.rating DESC;";
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-//            int i= rs.getInt("averageRatings");
-//                String s= rs.getString("name");
-                userDetails.put(rs.getFloat("Rating"),rs.getInt("noOfMovies"));
-            }
-            con.close();
-        } catch (Exception e) {
-
-            System.out.println("createStatementError in getUsers()" + e);
-        }
-        return userDetails;
-    }
-
 }

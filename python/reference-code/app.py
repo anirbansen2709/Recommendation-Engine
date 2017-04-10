@@ -15,12 +15,13 @@ from flask import Flask, request
 def top_ratings(user_id, count):
     logger.debug("User %s TOP ratings requested", user_id)
     top_ratings = recommendation_engine.get_top_ratings(user_id,count)
+    print json.dumps(top_ratings)
     return json.dumps(top_ratings)
 
 @main.route("/<int:user_id>/ratings", methods = ["POST"])
 def add_ratings(user_id):
     # get the ratings from the Flask POST request object
-    print request;
+    print request
     ratings_list = request.form.keys()[0].strip().split("\n")
     print ratings_list
     ratings_list = map(lambda x: x.split(","), ratings_list)

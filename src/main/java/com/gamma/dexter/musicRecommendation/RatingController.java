@@ -133,10 +133,10 @@ import java.util.Map;
     String getRecommendation() throws Exception{
 
         ResponseWrapper responseWrapper = new ResponseWrapper();
-        List<SongsModel> str=ratingHandler.getRecommendation();
-//        responseWrapper.addPayload(str.get("Payload"));
-//        str.put("returnCode", CODE_SUCCESS);
-//        str.put("message", "");
+        JSONObject str=ratingHandler.getRecommendation();
+        responseWrapper.addPayload(str.get("Payload"));
+        str.put("returnCode", CODE_SUCCESS);
+        str.put("message", "");
 
         return responseWrapper.getResponse();
 
