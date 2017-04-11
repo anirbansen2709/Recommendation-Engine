@@ -31,6 +31,7 @@ $(document).ready(function () {
             var chartChart = {
                 "caption": "Top 5 Movies Based On Ratings",
                 "subCaption": "On Basis of Ratings",
+                "subCaptionFontBold": "1",
                 "numberPrefix": "",
                 "paletteColors": "#0075c2,#1aaf5d,#f2c500,#f45b00,#8e0000",
                 "bgColor": "#ffffff",
@@ -47,13 +48,14 @@ $(document).ready(function () {
                 "decimals": "2",
                 "captionFontSize": "14",
                 "subcaptionFontSize": "14",
-                "subcaptionFontBold": "0",
+                "subcaptionFontBold": "1",
                 "toolTipColor": "#ffffff",
                 "toolTipBorderThickness": "0",
                 "toolTipBgColor": "#000000",
                 "toolTipBgAlpha": "80",
                 "toolTipBorderRadius": "2",
                 "toolTipPadding": "5",
+                "theme": "fint",
 
             };
             var renderId = "top-movies-based-on-count";
@@ -99,26 +101,19 @@ $(document).ready(function () {
 // download chart
     $.ajax({
         type: "Get",
-        url: "Download",
+        url: "getTopGenresWithCountChart",
         success: function (response) {
             response = jQuery.parseJSON(response);
-//        console.log("1: "+response);
+            //$.each(response["Payload"] ,function(index, value){
+            //
+            //});
             var chartChart = {
-                //"caption": "Last 10 Days History Of User",
-                //"subCaption": "with their MAC",
-                //"xAxisName": "Days",
-                //"yAxisName": "Count (In Numbers)",
-                //"numberSuffix": " GB",
-                //"showlabels ": "1",
-                //"showvalues ": "1",
-                //"theme": "fint",
-                //"showLegend ": "1",
 
-
-                "chart": {
-                    "caption": "Last 10 Days History Of User",
-                    "subCaption": "Last week",
-                    "xAxisName": "Day",
+                    "caption": "Count Of Every Genres",
+                    "captionFontBold" :"1",
+                    "subCaption": "Count values",
+                    //"subCaptionFontBold" : "1",
+                    "xAxisName": "Genres",
                     "yAxisName": "Days",
                     "lineThickness": "2",
                     "paletteColors": "#0075c2",
@@ -129,9 +124,9 @@ $(document).ready(function () {
                     "subcaptionFontBold": "0",
                     "showBorder": "0",
                     "bgColor": "#ffffff",
-                    "showShadow": "0",
-                    "canvasBgColor": "#ffffff",
-                    "canvasBorderAlpha": "0",
+                    "showShadow": "1",
+                    //"canvasBgColor": "#ffffff",
+                    "canvasBorderAlpha": "1",
                     "divlineAlpha": "100",
                     "divlineColor": "#999999",
                     "divlineThickness": "1",
@@ -140,8 +135,8 @@ $(document).ready(function () {
                     "showXAxisLine": "1",
                     "xAxisLineThickness": "1",
                     "xAxisLineColor": "#999999",
-                    "showAlternateHGridColor": "0"
-                },
+                    "showAlternateHGridColor": "1"
+
             };
             var chartType = "line";
             var renderId = "movies-based-on-date";

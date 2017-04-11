@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 //import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -188,14 +189,38 @@ import java.util.Map;
 
     }
 
-
-    @RequestMapping(value = "userDetailsChart", method = RequestMethod.GET)
+    @RequestMapping(value = "getTopGenresWithCountChart", method = RequestMethod.GET)
     public
     @ResponseBody
-    String getUserDetails() {
+    String getTopSongsWithGenres() {
+//        Map<String,List<SongsModel>> SongsWithGenres = new HashedMap();
+        Map<String, Integer> countOfGenre= new HashMap<>();
+        String genre;
+        String[] genres;
+//        int count [];
+        int value;
+        List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
+        for(SongsModel song :listOfSongs){
+            genre = song.getGenres();
+            genres= genre.split("\\|");
+            for(String singleGenre:genres)
+            {
+                if(!countOfGenre.containsKey(singleGenre)) {
+                    countOfGenre.put(singleGenre,1);
+
+                }
+                else{
+                    value = countOfGenre.get(singleGenre);
+                    countOfGenre.put(singleGenre,value+1);
+                }
+
+            }
+        }
+
+
         JSONArray array = new JSONArray();
-        Map<Float, Integer> userDetails = RatingDb.getRatingWithCount();
-        for (Map.Entry<Float,Integer> entry : userDetails.entrySet())
+//        Map<String, Integer> genreWithCount = countOfGenre.getTopSongsWithGenres();
+        for (Map.Entry<String,Integer> entry : countOfGenre.entrySet())
         {
             entry.getKey();
             entry.getValue();
@@ -209,7 +234,6 @@ import java.util.Map;
         mainObj.put("data", array);
 
         return mainObj.toString();
-
     }
 
 }
