@@ -63,6 +63,13 @@
             <span>History</span>
           </a>
         </li>
+        </li>
+        <li class=" ">
+          <a href="button" title="Button">
+            <em class="fa fa-bold"></em>
+            <span>Button</span>
+          </a>
+        </li>
 
 
 

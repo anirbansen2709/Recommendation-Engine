@@ -109,9 +109,11 @@ public class
     }
 
     @RequestMapping(value = "recommendedSongs", method = RequestMethod.GET)
-    private String recommendedSongs(){
-        return "recommendedSongs";
+    private String recommendedSongs(){return "recommendedSongs";
     }
 
+    @RequestMapping(value = "button", method = RequestMethod.GET)
+    private String button(){return "button";
+    }
 }
 
