@@ -35,5 +35,5 @@ public class RatingHandler {
         return ratingServices.getHistory();
     }
 
-    public JSONObject getRecommendation() throws Exception{ return ratingServices.getRecommendation();}
+    public List<RecommendationModel> getRecommendation() throws Exception{ return ratingServices.getRecommendation();}
 }

@@ -133,14 +133,13 @@ import java.util.Map;
     @ResponseBody
     String getRecommendation() throws Exception{
 
-        ResponseWrapper responseWrapper = new ResponseWrapper();
-        JSONObject str=ratingHandler.getRecommendation();
-        responseWrapper.addPayload(str.get("Payload"));
-        str.put("returnCode", CODE_SUCCESS);
-        str.put("message", "");
-
-        return responseWrapper.getResponse();
-
+        ResponseWrapper wrapper = new ResponseWrapper();
+        List<RecommendationModel> listOfRecommendation =ratingHandler.getRecommendation();
+        List<RecommendationModel> topTenRecommendation = new ArrayList<>(listOfRecommendation.subList(0,10));
+        for (RecommendationModel recommendationModel : topTenRecommendation) {
+            wrapper.addPayload(recommendationModel);
+        }
+        return wrapper.getResponse();
     }
 
     @RequestMapping(value = "topRatedSongsChart", method = RequestMethod.GET)

@@ -1,7 +1,5 @@
 package com.gamma.dexter.musicRecommendation;
 
-import net.sf.json.JSONObject;
-
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +7,7 @@ import java.util.Map;
  * Created by Anirban on 08-Mar-17.
  */
 public class RatingServices {
-    RatingDb ratingDb = RatingDb.intance();
+    RatingDb ratingDb = RatingDb.getInstance();
     private static RatingServices instance = null;
 
     public static RatingServices instanceRatingServices() {
@@ -37,5 +35,5 @@ public class RatingServices {
     }
 
 
-    public JSONObject getRecommendation ()throws Exception{ return ratingDb.getRecommendation();}
+    public List<RecommendationModel> getRecommendation ()throws Exception{ return ratingDb.getRecommendation();}
 }

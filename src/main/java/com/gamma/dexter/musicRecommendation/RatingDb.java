@@ -1,4 +1,6 @@
 package com.gamma.dexter.musicRecommendation;
+
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.sql.*;
@@ -20,21 +22,23 @@ public class RatingDb {
     static final String PASS = "root";
     private static RatingDb instance = null;
     private static List<SongsModel> songsDetails;
-    public static RatingDb intance() {
+
+    public static RatingDb getInstance() {
 
         if (instance == null) {
             instance = new RatingDb();
         }
         return instance;
     }
-    public static void main(String[] args) {
-        RatingDb ratingDb = new RatingDb();
-        List<RatingModel> list= ratingDb.getHistory();
-        System.out.println(list);
-        int i=0;
 
+    public static void main(String[] args) throws Exception {
+        RatingDb ratingDb = RatingDb.getInstance();
+        List<RecommendationModel> list = ratingDb.getRecommendation();
+        System.out.println(list);
+        int i = 0;
     }
-    public void saveRatings(Map<Integer,Integer> mapOfSongs) {
+
+    public void saveRatings(Map<Integer, Integer> mapOfSongs) {
         try {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             Class.forName(JDBC_DRIVER);
@@ -51,21 +55,20 @@ public class RatingDb {
             stmt.executeBatch();
             stmt.close();
             con.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("" + e);
         }
     }
 
-    public List<SongsModel> getSongsWithAverageRatingsFromMemory(){
-        if(songsDetails == null){
+    public List<SongsModel> getSongsWithAverageRatingsFromMemory() {
+        if (songsDetails == null) {
             songsDetails = getSongsWithAverageRatings();
         }
         return songsDetails;
     }
 
-    public List<SongsModel> getSongsWithAverageRatings(){
-        List<SongsModel> listOfSongs= new ArrayList<SongsModel>();
+    public List<SongsModel> getSongsWithAverageRatings() {
+        List<SongsModel> listOfSongs = new ArrayList<SongsModel>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -84,9 +87,9 @@ public class RatingDb {
                 SongsModel songsModel = new SongsModel();
                 songsModel.setNoOfUsers(rs.getInt("noOfUsers"));
                 songsModel.setName(rs.getString("title"));
-                songsModel.setAvgRating((int)rs.getFloat("averageRatings"));
+                songsModel.setAvgRating((int) rs.getFloat("averageRatings"));
                 songsModel.setMovieId(rs.getInt("movieId"));
-                songsModel.setGenres(rs.getString("genres").replace("\r",""));
+                songsModel.setGenres(rs.getString("genres").replace("\r", ""));
                 listOfSongs.add(songsModel);
             }
             rs.close();
@@ -98,10 +101,11 @@ public class RatingDb {
         return listOfSongs;
 
     }
-    public List<RatingModel> getHistory(){
+
+    public List<RatingModel> getHistory() {
         String time;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        List<RatingModel> listOfRatings= new ArrayList<>();
+        List<RatingModel> listOfRatings = new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -110,16 +114,16 @@ public class RatingDb {
             String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 1;";
             ResultSet resultSet = stmt.executeQuery(sql);
             long time1;
-            while( resultSet.next()) {
+            while (resultSet.next()) {
 
                 RatingModel ratingModel = new RatingModel();
                 ratingModel.setUserId(resultSet.getInt("userId"));
                 ratingModel.setMovieId(resultSet.getInt("movieId"));
                 ratingModel.setName(resultSet.getString("title"));
                 ratingModel.setGenres(resultSet.getString("genres"));
-                ratingModel.setRating((int)resultSet.getFloat("rating"));
-                time = resultSet.getString("timestamp").replace("\r","");
-                time1=Long.parseLong(time);
+                ratingModel.setRating((int) resultSet.getFloat("rating"));
+                time = resultSet.getString("timestamp").replace("\r", "");
+                time1 = Long.parseLong(time);
                 timestamp.setTime(time1);
                 System.out.println(timestamp);
                 ratingModel.setTimestamp(sdf.format(timestamp));
@@ -134,15 +138,62 @@ public class RatingDb {
         return listOfRatings;
 
     }
-    public JSONObject getRecommendation() throws Exception {
-        HttpUtil httpUtil = new HttpUtil();
-        JSONObject recommendation = httpUtil.getRecommendation();
 
-        return recommendation;
+    public List<RecommendationModel> getRecommendation() throws Exception {
+        List<RecommendationModel> listOfRecommendation = new ArrayList<>();
+        Class.forName(JDBC_DRIVER);
+        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        con.setAutoCommit(false);
+        Statement stmt = con.createStatement();
+        String query = "select * from recommendation where userId=0";
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+
+                RecommendationModel recommendationModel = new RecommendationModel();
+//                recommendationModel.setCount(rs.getInt("count"));
+                recommendationModel.setGenres(rs.getString("genres"));
+                recommendationModel.setMovieId(rs.getInt("movieId"));
+                recommendationModel.setTitle(rs.getString("title"));
+                recommendationModel.setAverage(rs.getFloat("average"));
+                recommendationModel.setUserId(rs.getInt("userId"));
+//                recommendationModel.setPrediction(rs.getFloat("prediction"));
+                listOfRecommendation.add(recommendationModel);
+            }
+            return listOfRecommendation;
     }
 
-    public static Map<String,Float> getTopMoviesChart(){
-        Map<String,Float> topRatedSongs = new HashMap<>();
+    public void loadRecommendation() throws Exception{
+        Class.forName(JDBC_DRIVER);
+        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement stmt =con.createStatement();
+        con.setAutoCommit(false);
+        String deletequery = " DELETE * FROM recommendation WHERE userId = 0";
+        stmt.executeUpdate(deletequery);
+        HttpUtil httpUtil = new HttpUtil();
+        JSONObject objectInArray;
+        JSONObject recommendation = httpUtil.getRecommendation();
+        JSONArray jsonArray = recommendation.getJSONArray("Payload");
+        String insertquery = "insert into recommendation(genres,movieId,title,userId,average,rank) values (?, ?, ?, ?,?,?)";
+        PreparedStatement preparedStatement = con.prepareStatement(insertquery);
+        for (int i = 0; i < jsonArray.size(); i++) {
+            int rank = i + 1;
+            objectInArray = jsonArray.getJSONObject(i);
+            preparedStatement.setString(1, objectInArray.getString("genres"));
+            preparedStatement.setInt(2, objectInArray.getInt("movieId"));
+            preparedStatement.setString(3, objectInArray.getString("title"));
+            preparedStatement.setInt(4, objectInArray.getInt("userId"));
+            preparedStatement.setFloat(5, objectInArray.getInt("average"));
+            preparedStatement.setInt(6, rank);
+            preparedStatement.addBatch();
+        }
+        preparedStatement.executeBatch();
+        preparedStatement.close();
+        con.commit();
+        con.close();
+    }
+
+    public static Map<String, Float> getTopMoviesChart() {
+        Map<String, Float> topRatedSongs = new HashMap<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -154,7 +205,7 @@ public class RatingDb {
             while (rs.next()) {
 //            int i= rs.getInt("averageRatings");
 //                String s= rs.getString("name");
-                topRatedSongs.put(rs.getString("name"),rs.getFloat("averageRatings") );
+                topRatedSongs.put(rs.getString("name"), rs.getFloat("averageRatings"));
             }
             con.close();
         } catch (Exception e) {
@@ -163,8 +214,9 @@ public class RatingDb {
         }
         return topRatedSongs;
     }
-    public static Map<Float,Integer> getRatingWithCount(){
-        Map<Float,Integer> ratingWithCount = new HashMap<>();
+
+    public static Map<Float, Integer> getRatingWithCount() {
+        Map<Float, Integer> ratingWithCount = new HashMap<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -176,7 +228,7 @@ public class RatingDb {
             while (rs.next()) {
 //            int i= rs.getInt("averageRatings");
 //                String s= rs.getString("name");
-                ratingWithCount.put(rs.getFloat("Rating"),rs.getInt("noOfMovies"));
+                ratingWithCount.put(rs.getFloat("Rating"), rs.getInt("noOfMovies"));
             }
             con.close();
         } catch (Exception e) {
