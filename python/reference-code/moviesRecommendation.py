@@ -170,8 +170,9 @@ class MovieRecommendation:
 
     def add_ratings(self,ratings):
         print ratings
-    	my_ratings_df = self.sqlContext.createDataFrame(ratings,['userId', 'movieId', 'rating'])
-    	self.ratings_df = self.ratings_df.unionAll(my_ratings_df)
+    	# my_ratings_df = self.sqlContext.createDataFrame(ratings,['userId', 'movieId', 'rating'])
+        self.ratings_df = self.sqlContext.read.format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/music").option("driver", "com.mysql.jdbc.Driver").option("dbtable", "ratings").option("user", "root").option("password", "root").load()
+    	# self.ratings_df = self.ratings_df.unionAll(my_ratings_df)
     	self.topRatedMovies()
     	self.als = ALS(maxIter=5, regParam=0.01, userCol='userId',
                   itemCol='movieId', ratingCol='rating')

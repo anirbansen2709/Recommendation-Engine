@@ -43,8 +43,22 @@ public class RatingDb {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            //check for existing movieID and UserID combination and remove the same
+            String query1 = "DELETE from ratings where userId=? and movieId=?";
+            PreparedStatement stmt1 = con.prepareStatement(query1);
+            for (Map.Entry<Integer, Integer> entry : mapOfSongs.entrySet()) {
+                stmt1.setInt(1, 0);
+                stmt1.setInt(2, entry.getKey());
+                stmt1.addBatch();
+            }
+            stmt1.executeBatch();
+            stmt1.close();
+            con.close();
+
+            //insert values when no previous of movieID and UserID combination exist
+            Connection con1 = DriverManager.getConnection(DB_URL, USER, PASS);
             String query = "insert into ratings values (?, ?, ?, ?)";
-            PreparedStatement stmt = con.prepareStatement(query);
+            PreparedStatement stmt = con1.prepareStatement(query);
             for (Map.Entry<Integer, Integer> entry : mapOfSongs.entrySet()) {
                 stmt.setInt(1, 0);
                 stmt.setInt(2, entry.getKey());
@@ -54,7 +68,7 @@ public class RatingDb {
             }
             stmt.executeBatch();
             stmt.close();
-            con.close();
+            con1.close();
         } catch (Exception e) {
             System.out.println("" + e);
         }
