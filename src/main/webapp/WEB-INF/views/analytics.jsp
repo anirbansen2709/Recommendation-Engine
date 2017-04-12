@@ -103,7 +103,7 @@
                 <div id="panel-3" class="panel panel-default panel-demo col-xs-4 col-md-4 col-ls-4 col-lg-4"
                      style="padding: 0 !important;">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        User's Last 10 days Review
+                        Count Of Every Genres
                         <a href="#" data-tool="panel-dismiss" data-toggle="tooltip" title="Close Panel"
                            class="pull-right">
                             <em class="fa fa-times"></em>
