@@ -113,9 +113,10 @@
   <jsp:include page="layout/menu.jsp"/>
 
   <section style="margin-bottom: 10px !important;">
-    <button type="button" class="btn btn-info btn-lg pull-right"
+      <center>
+    <button type="button" class="btn btn-info btn-lg pull-right" style="position: absolute; top:45%;left:45%;"
             id="getRecommendation">Get Recommendation
-      </button>
+      </button></center>
   </section>
     <jsp:include page="layout/footer.jsp"/>
 </div>
