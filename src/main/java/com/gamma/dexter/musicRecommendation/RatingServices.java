@@ -36,4 +36,9 @@ public class RatingServices {
 
 
     public List<RecommendationModel> getRecommendation ()throws Exception{ return ratingDb.getRecommendation();}
+
+    public void loadRecommendation() throws Exception
+    {
+        ratingDb.loadRecommendation();
+    }
 }

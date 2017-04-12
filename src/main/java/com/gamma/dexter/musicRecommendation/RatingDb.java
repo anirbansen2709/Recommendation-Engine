@@ -161,17 +161,18 @@ public class RatingDb {
             }
             return listOfRecommendation;
     }
-
+//python server
     public void loadRecommendation() throws Exception{
+        HttpUtil httpUtil = new HttpUtil();
+        JSONObject recommendation = httpUtil.getRecommendation();
         Class.forName(JDBC_DRIVER);
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         Statement stmt =con.createStatement();
-        con.setAutoCommit(false);
-        String deletequery = " DELETE * FROM recommendation WHERE userId = 0";
-        stmt.executeUpdate(deletequery);
-        HttpUtil httpUtil = new HttpUtil();
+        //con.setAutoCommit(false);
+        int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = 0");
+        System.out.println("rows Affected:"+result);
         JSONObject objectInArray;
-        JSONObject recommendation = httpUtil.getRecommendation();
+
         JSONArray jsonArray = recommendation.getJSONArray("Payload");
         String insertquery = "insert into recommendation(genres,movieId,title,userId,average,rank) values (?, ?, ?, ?,?,?)";
         PreparedStatement preparedStatement = con.prepareStatement(insertquery);
@@ -222,8 +223,8 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
             String query = "\n" +
-                    "select r.rating as Rating, count(*) as noOfMovies from ratings r \n" +
-                    "where r.rating=' \" ' + rating + ' \" ' group by r.rating order by r.rating DESC;";
+                    "select CEILING(r.rating) as Rating, count(*) as noOfMovies from ratings r \n" +
+                    "where r.rating=' \" ' + rating + ' \" ' group by CEILING(r.rating) order by r.rating DESC;";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
 //            int i= rs.getInt("averageRatings");

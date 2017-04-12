@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
-//import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+//import java.util.Collections;
 
 /**
  * Created by Anirban on 07-Mar-17.
@@ -235,4 +236,11 @@ import java.util.Map;
         return mainObj.toString();
     }
 
+    @RequestMapping(value = "getRecommendationButton", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getRecommendationButton()throws Exception{
+        ratingHandler.loadRecommendation();
+    return null;
+    }
 }

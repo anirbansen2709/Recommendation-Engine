@@ -31,7 +31,6 @@ $(document).ready(function () {
             var chartChart = {
                 "caption": "Top 5 Movies Based On Ratings",
                 "subCaption": "On Basis of Ratings",
-                "subCaptionFontBold": "1",
                 "numberPrefix": "",
                 "paletteColors": "#0075c2,#1aaf5d,#f2c500,#f45b00,#8e0000",
                 "bgColor": "#ffffff",
@@ -48,7 +47,6 @@ $(document).ready(function () {
                 "decimals": "2",
                 "captionFontSize": "14",
                 "subcaptionFontSize": "14",
-                "subcaptionFontBold": "1",
                 "toolTipColor": "#ffffff",
                 "toolTipBorderThickness": "0",
                 "toolTipBgColor": "#000000",
@@ -110,9 +108,7 @@ $(document).ready(function () {
             var chartChart = {
 
                     "caption": "Count Of Every Genres",
-                    "captionFontBold" :"1",
                     "subCaption": "Count values",
-                    //"subCaptionFontBold" : "1",
                     "xAxisName": "Genres",
                     "yAxisName": "Days",
                     "lineThickness": "2",
@@ -121,7 +117,6 @@ $(document).ready(function () {
                     "baseFont": "Helvetica Neue,Arial",
                     "captionFontSize": "14",
                     "subcaptionFontSize": "14",
-                    "subcaptionFontBold": "0",
                     "showBorder": "0",
                     "bgColor": "#ffffff",
                     "showShadow": "1",
