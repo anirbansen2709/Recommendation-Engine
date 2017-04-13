@@ -103,6 +103,46 @@
     button.viewmorebtn1:hover, button.viewmorebtn1:active {font-size: 120%;}
     button.viewmorebtn2:hover, button.viewmorebtn2:active {font-size: 120%;}
 
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #191970;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 400px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
   </style>
 
 
@@ -114,9 +154,8 @@
 
   <section style="margin-bottom: 10px !important;">
       <center>
-    <button type="button" class="btn btn-info btn-lg pull-right" style="position: absolute; top:45%;left:45%;"
-            id="getRecommendation">Get Recommendation
-      </button></center>
+        <button class="button" style="vertical-align:middle;position: absolute; top:40%;left:40%;" id="getRecommendation"><span>Get Recommendation </span></button>
+    </center>
   </section>
     <jsp:include page="layout/footer.jsp"/>
 </div>
