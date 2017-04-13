@@ -142,6 +142,39 @@ import java.util.Map;
         }
         return wrapper.getResponse();
     }
+    //getting recommendation without sublist
+    @RequestMapping(value = "getMoviesRecommendation", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getMoviesRecommendation() throws Exception{
+        Map<String,List<RecommendationModel>> SongsWithGenres = new HashedMap();
+        String genre;
+        String[] genres;
+        List<RecommendationModel> listOfRecommendation =ratingHandler.getRecommendation();
+        for(RecommendationModel song :listOfRecommendation){
+            genre = song.getGenres();
+            genres= genre.split("\\|");
+            for(String singleGenre:genres)
+            {
+                if(!SongsWithGenres.containsKey(singleGenre)) {
+                    List<RecommendationModel> listOfSongsWithGenre = new ArrayList<>();
+                    listOfSongsWithGenre.add(song);
+                    SongsWithGenres.put(singleGenre,listOfSongsWithGenre);
+                }
+                else{
+                    List<RecommendationModel> listOfSongsWithGenre = SongsWithGenres.get(singleGenre);
+                    listOfSongsWithGenre.add(song);
+                }
+            }
+        }
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (Map.Entry<String, List<RecommendationModel>> entry : SongsWithGenres.entrySet())
+        {
+            wrapper.addPayload(entry);
+        }
+        return wrapper.getResponse();
+
+    }
 
     @RequestMapping(value = "topRatedSongsChart", method = RequestMethod.GET)
     public
@@ -244,3 +277,4 @@ import java.util.Map;
     return null;
     }
 }
+
