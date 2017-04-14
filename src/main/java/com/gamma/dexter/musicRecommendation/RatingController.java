@@ -5,15 +5,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //import java.util.Collections;
 
@@ -74,7 +68,7 @@ import java.util.Map;
 
     public static void main(String[] args) throws Exception{
         RatingController ratingController = new RatingController();
-        String s= ratingController.listAllUser();
+        String s= ratingController.getUserDetails("");
         System.out.println(s);
         int i = 0;
     }
@@ -249,8 +243,6 @@ import java.util.Map;
 
             }
         }
-
-
         JSONArray array = new JSONArray();
 //        Map<String, Integer> genreWithCount = countOfGenre.getTopSongsWithGenres();
         for (Map.Entry<String,Integer> entry : countOfGenre.entrySet())
@@ -276,5 +268,20 @@ import java.util.Map;
         ratingHandler.loadRecommendation();
     return null;
     }
+
+
+    @RequestMapping(value = "userDetails", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getUserDetails(@RequestParam String movieName)throws Exception{
+        List<RatingModel> listOfAllSongs = ratingHandler.getUserDetails(movieName);
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (RatingModel ratingModel: listOfAllSongs) {
+            wrapper.addPayload(ratingModel);
+        }
+        return wrapper.getResponse();
+
+    }
+
 }
 

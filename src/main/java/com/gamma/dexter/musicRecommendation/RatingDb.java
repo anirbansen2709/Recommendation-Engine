@@ -252,4 +252,41 @@ public class RatingDb {
         }
         return ratingWithCount;
     }
+
+
+    public List<RatingModel> getUserDetails(String movieName) {
+        String time;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        List<RatingModel> listOfUsers= new ArrayList<>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "select r.userId as UserId, r.rating as Rating, r.timestamp as Time\n" +
+                    "from ratings r inner join movies m where m.title = \""+movieName+" \"and m.movieId = r.movieId;";
+            ResultSet resultSet = stmt.executeQuery(sql);
+            long time1;
+            while (resultSet.next()) {
+
+                RatingModel ratingModel = new RatingModel();
+                ratingModel.setUserId(resultSet.getInt("UserId"));
+                ratingModel.setRating((int) resultSet.getFloat("Rating"));
+                time = resultSet.getString("Time").replace("\r", "");
+                time1 = Long.parseLong(time);
+                timestamp.setTime(time1);
+                System.out.println(timestamp);
+                ratingModel.setTimestamp(sdf.format(timestamp));
+                listOfUsers.add(ratingModel);
+            }
+            resultSet.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println("createStatementError in getUsers()" + e);
+        }
+        return listOfUsers;
+
+    }
+
 }

@@ -1,3 +1,13 @@
+var tableRow;
+var table;
+var mapOfSongs = {};
+var responsiveHelper_datatable_tabletools = undefined;
+var ifUserSelectedFlag = false;
+var userDetailsTable;
+var breakpointDefinition = {
+    tablet: 1024,
+    phone: 480
+};
 
 $(document).ready(function () {
     function simplechart(chartChart,data, chartType, renderId) {
@@ -5,7 +15,8 @@ $(document).ready(function () {
         $.each(data.data, function (key, value) {
             chartData.push({
                 "label": value["label"],
-                "value": value["value"].toFixed(2)
+                "value": value["value"].toFixed(2),
+                "link": "j-showSelectedField-"+value["label"]+""
             });
         });
         var revenueChart = new FusionCharts({
@@ -22,7 +33,6 @@ $(document).ready(function () {
         });
         revenueChart.render();
     }
-
     $.ajax({
         type: "Get",
         url: "topRatedSongsChart",
@@ -53,16 +63,18 @@ $(document).ready(function () {
                 "toolTipBgAlpha": "80",
                 "toolTipBorderRadius": "2",
                 "toolTipPadding": "5",
-                "theme": "fint",
+                "theme": "fint"
+                }
 
-            };
             var renderId = "top-movies-based-on-count";
             var chartType = "doughnut3d";
             simplechart(chartChart,response,chartType,renderId);
         },
+
         error: function (e) {
             alert("error");
         }
+
     });
 
     $.ajax({
@@ -146,3 +158,80 @@ $(document).ready(function () {
     });
 });
 
+function showSelectedField(value){
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "userDetails?movieName="+value,
+        success: function (data) {
+            loadTable(data);
+        }, error: function (data, status) {
+        }
+    });
+}
+function loadTable(data) {
+
+
+    if (data['returnCode'] == '200') {
+        userDetailsTable = $('#user_Details_table').DataTable({
+            "bLengthChange": false,
+            //"bDestroy": true,
+            "bRetrieve": true,
+            "pageLength": 7,
+            "columnDefs": [
+                {className: "dt-body-right", "targets": []}/*,
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }*/
+            ],
+            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
+            "t" +
+            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+
+            "preDrawCallback": function () {
+                // Initialize the responsive datatables helper once.
+                if (!responsiveHelper_datatable_tabletools) {
+                    responsiveHelper_datatable_tabletools =
+                        new ResponsiveDatatablesHelper($('#user_Details_table'), breakpointDefinition);
+                }
+            },
+            "rowCallback": function (nRow) {
+                responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
+            },
+            "drawCallback": function (oSettings) {
+                responsiveHelper_datatable_tabletools.respond();
+            }
+        });
+
+
+        userDetailsTable.clear();
+
+        jQuery.each(data['Payload'], function (index, value) {
+            var r = [];
+
+            r[0] = value['userId'];
+            r[1] = averageStar(value['rating']);
+            r[2] = value['timestamp'];
+
+
+            userDetailsTable.row.add(r);
+
+        });
+        userDetailsTable.draw();
+    } else {
+        showToastr(data['message'], 'Error', 'error');
+    }
+
+
+}
+
+function averageStar(value) {
+    var stmt = "<td>";
+    for(var i=0; i< value ;i++){
+        stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
+    }
+    stmt+='</td>';
+    return stmt;
+}

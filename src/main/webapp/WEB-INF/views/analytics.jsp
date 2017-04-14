@@ -36,6 +36,70 @@
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Main section-->
+
+    <style>
+        .content-wrapper > h3, /* .content-wrapper > .content-heading*/
+        {
+            margin-bottom: 4px;
+            padding: 4px;
+        }
+
+        .wrapper > section {
+            top: -20px;
+        }
+
+        .user-rating {
+            direction: rtl;
+            font-size: 20px;
+            unicode-bidi: bidi-override;
+            padding: 18px 10px;
+            display: inline-block;
+        }
+
+        .user-rating input {
+            opacity: 0;
+            position: relative;
+            left: -15px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .user-rating span.star:before {
+            color: #777777;
+            content: "";
+            /*padding-right: 5px;*/
+        }
+
+        .user-rating span.star {
+            display: inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-rating span {
+            margin-left: -15px;
+        }
+
+        .user-rating span.star:before {
+            color: #777777;
+            content: "\f006";
+            /*padding-right: 5px;*/
+        }
+
+        .user-rating input:hover + span.star:before, .user-rating input:hover + span.star  span.star:before, .user-rating input:checked + span.star:before, .user-rating input:checked + span.star  span.star:before {
+            color: #ffd100;
+            content: "\f005";
+        }
+
+        .selected-rating {
+            color: #ffd100;
+            font-weight: bold;
+            font-size: 3em;
+        }
+    </style>
 </head>
 
 <div class="wrapper">
@@ -131,33 +195,25 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                            <b>Rate Songs</b></div>
+                            <b>Top 5 Movies Details</b></div>
                         <div class="panel-body">
                             <form role="form" class="form-inline" id="formid">
                                 <div class="fixedscroll">
-                                    <table class="table table-bordered table-striped table-hover" id="songs_table">
+                                    <table class="table table-bordered table-striped table-hover" id="user_Details_table">
                                         <thead>
                                         <tr>
                                             <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">
-                                                Movie Id
-                                            </th>
-                                            <th style="text-align: center;background-color: #007BA7; color: white; width: 25%;">
-                                                Movie
-                                                Name
-                                            </th>
-                                            <th style="text-align: center;background-color: #007BA7; color: white; width: 30%;">
-                                                Genres
+                                                User Id
                                             </th>
                                             <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
-                                                Avg
-                                                Rate
+                                                User Rating
                                             </th>
                                             <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">
-                                                Rate
+                                                Time
                                             </th>
                                         </tr>
                                         </thead>
-                                        <tbody style="cursor: pointer; padding: 0 !important;"></tbody>
+                                        <tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>
                                     </table>
                                 </div>
                             </form>
@@ -168,6 +224,23 @@
     </section>
     <jsp:include page="layout/footer.jsp"/>
 </div>
+
+<div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                Loading. Please Wait...
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <!-- MODERNIZR-->
@@ -214,20 +287,21 @@
 <script src="./resources/app/js/demo/demo-panels.js"></script>
 <!-- =============== APP SCRIPTS ===============-->
 <script src="./resources/app/js/app.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<%--for glypicon--%>
+
+<script src="./resources/fusionCharts/jquery.min.js"></script>
+<script src="./resources/fusionCharts/fusion/FusionCharts.js"></script>
+<script src="./resources/fusionCharts/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
 
 <script src="resources/datatables/datatables/jquery.dataTables.js"></script>
 <script src="resources/datatables/datatables/dataTables.colVis.min.js"></script>
 <script src="resources/datatables/datatables/dataTables.tableTools.min.js"></script>
 <script src="resources/datatables/datatables/dataTables.bootstrap.min.js"></script>
 <script src="resources/datatable-responsive/datatable-responsive/datatables.responsive.min.js"></script>
-<%--for glypicon--%>
-
-<script src="./resources/fusionCharts/jquery.min.js"></script>
-<script src="./resources/fusionCharts/fusion/FusionCharts.js"></script>
-<script src="./resources/fusionCharts/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
 <script src="./resources/app/js/analytics.js"></script>
 
 <script>
