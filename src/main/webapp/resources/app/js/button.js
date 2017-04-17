@@ -35,7 +35,7 @@ $("#getRecommendation").click(function (e) {
         url: "getRecommendationButton",
         success: function (data) {
             $("#animate").hide();
-            $("#loading").hide();
+            $("#load").hide();
             $("#getRecommendation").show();
 
         }, error: function (data, status) {
