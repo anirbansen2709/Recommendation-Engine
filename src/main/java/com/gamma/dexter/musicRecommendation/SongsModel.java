@@ -20,10 +20,6 @@ public class SongsModel {
         this.noOfUsers = noOfUsers;
     }
 
-
-
-
-
     public String getGenres() {
         return genres;
     }

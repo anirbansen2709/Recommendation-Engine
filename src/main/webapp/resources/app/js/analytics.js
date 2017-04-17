@@ -3,7 +3,7 @@ var table;
 var mapOfSongs = {};
 var responsiveHelper_datatable_tabletools = undefined;
 var ifUserSelectedFlag = false;
-var userDetailsTable;
+var movieDetailsTable;
 var breakpointDefinition = {
     tablet: 1024,
     phone: 480
@@ -16,7 +16,8 @@ $(document).ready(function () {
             chartData.push({
                 "label": value["label"],
                 "value": value["value"].toFixed(2),
-                "link": "j-showSelectedField-"+value["label"]+""
+                //"link": "j-showSelectedField-"+value["label"]+"",
+                "link": "j-showMovieDetails-"+value["label"]+""
             });
         });
         var revenueChart = new FusionCharts({
@@ -108,7 +109,6 @@ $(document).ready(function () {
         }
     });
 
-// download chart
     $.ajax({
         type: "Get",
         url: "getTopGenresWithCountChart",
@@ -157,12 +157,84 @@ $(document).ready(function () {
         }
     });
 });
+// ***********First Chart**************//
 
-function showSelectedField(value){
+
+//function showSelectedField(value){
+//    $.ajax({
+//        type: "GET",
+//        dataType: "json",
+//        url: "userDetails?movieName="+value,
+//        success: function (data) {
+//            loadTable(data);
+//        }, error: function (data, status) {
+//        }
+//    });
+//}
+//function loadTable(data) {
+//
+//
+//    if (data['returnCode'] == '200') {
+//        movieDetailsTable = $('#user_Details_table').DataTable({
+//            "bLengthChange": false,
+//            //"bDestroy": true,
+//            "bRetrieve": true,
+//            "pageLength": 7,
+//            "columnDefs": [
+//                {className: "dt-body-right", "targets": []}/*,
+//                {
+//                    "targets": [0],
+//                    "visible": false,
+//                    "searchable": false
+//                }*/
+//            ],
+//            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
+//            "t" +
+//            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+//
+//            "preDrawCallback": function () {
+//                // Initialize the responsive datatables helper once.
+//                if (!responsiveHelper_datatable_tabletools) {
+//                    responsiveHelper_datatable_tabletools =
+//                        new ResponsiveDatatablesHelper($('#user_Details_table'), breakpointDefinition);
+//                }
+//            },
+//            "rowCallback": function (nRow) {
+//                responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
+//            },
+//            "drawCallback": function (oSettings) {
+//                responsiveHelper_datatable_tabletools.respond();
+//            }
+//        });
+//
+//
+//        movieDetailsTable.clear();
+//
+//        jQuery.each(data['Payload'], function (index, value) {
+//            var r = [];
+//
+//            r[0] = value['userId'];
+//            r[1] = averageStar(value['rating']);
+//            r[2] = value['timestamp'];
+//
+//
+//            movieDetailsTable.row.add(r);
+//
+//        });
+//        movieDetailsTable.draw();
+//    } else {
+//        showToastr(data['message'], 'Error', 'error');
+//    }
+//
+//
+//}
+// ***********Second Chart**************//
+
+function showMovieDetails(value){
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "userDetails?movieName="+value,
+        url: "moviesDetails?movieRating="+value,
         success: function (data) {
             loadTable(data);
         }, error: function (data, status) {
@@ -173,18 +245,18 @@ function loadTable(data) {
 
 
     if (data['returnCode'] == '200') {
-        userDetailsTable = $('#user_Details_table').DataTable({
+        movieDetailsTable = $('#movies_Details_table').DataTable({
             "bLengthChange": false,
             //"bDestroy": true,
             "bRetrieve": true,
             "pageLength": 7,
             "columnDefs": [
                 {className: "dt-body-right", "targets": []}/*,
-                {
-                    "targets": [0],
-                    "visible": false,
-                    "searchable": false
-                }*/
+                 {
+                 "targets": [0],
+                 "visible": false,
+                 "searchable": false
+                 }*/
             ],
             "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
             "t" +
@@ -194,7 +266,7 @@ function loadTable(data) {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper_datatable_tabletools) {
                     responsiveHelper_datatable_tabletools =
-                        new ResponsiveDatatablesHelper($('#user_Details_table'), breakpointDefinition);
+                        new ResponsiveDatatablesHelper($('#movies_Details_table'), breakpointDefinition);
                 }
             },
             "rowCallback": function (nRow) {
@@ -206,20 +278,21 @@ function loadTable(data) {
         });
 
 
-        userDetailsTable.clear();
+        movieDetailsTable.clear();
 
         jQuery.each(data['Payload'], function (index, value) {
             var r = [];
 
-            r[0] = value['userId'];
-            r[1] = averageStar(value['rating']);
-            r[2] = value['timestamp'];
+            r[0] = value['movieId'];
+            r[1] = value['name'];
+            r[2] = value['noOfUsers'];
+            r[3] = value['genres'];
 
 
-            userDetailsTable.row.add(r);
+            movieDetailsTable.row.add(r);
 
         });
-        userDetailsTable.draw();
+        movieDetailsTable.draw();
     } else {
         showToastr(data['message'], 'Error', 'error');
     }
@@ -227,11 +300,11 @@ function loadTable(data) {
 
 }
 
-function averageStar(value) {
-    var stmt = "<td>";
-    for(var i=0; i< value ;i++){
-        stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
-    }
-    stmt+='</td>';
-    return stmt;
-}
+//function averageStar(value) {
+//    var stmt = "<td>";
+//    for(var i=0; i< value ;i++){
+//        stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
+//    }
+//    stmt+='</td>';
+//    return stmt;
+//}

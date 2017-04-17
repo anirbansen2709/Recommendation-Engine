@@ -252,32 +252,64 @@ public class RatingDb {
         }
         return ratingWithCount;
     }
+//    public List<RatingModel> getUserDetails(String movieName) {
+//        String time;
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//        List<RatingModel> listOfUsers= new ArrayList<>();
+//        try {
+//            Class.forName(JDBC_DRIVER);
+//            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+//            Statement stmt = con.createStatement();
+//
+//            String sql = "select r.userId as UserId, r.rating as Rating, r.timestamp as Time\n" +
+//                    "from ratings r inner join movies m where m.title = \""+movieName+" \"and m.movieId = r.movieId;";
+//            ResultSet resultSet = stmt.executeQuery(sql);
+//            long time1;
+//            while (resultSet.next()) {
+//
+//                RatingModel ratingModel = new RatingModel();
+//                ratingModel.setUserId(resultSet.getInt("UserId"));
+//                ratingModel.setRating((int) resultSet.getFloat("Rating"));
+//                time = resultSet.getString("Time").replace("\r", "");
+//                time1 = Long.parseLong(time);
+//                timestamp.setTime(time1);
+//                System.out.println(timestamp);
+//                ratingModel.setTimestamp(sdf.format(timestamp));
+//                listOfUsers.add(ratingModel);
+//            }
+//            resultSet.close();
+//            stmt.close();
+//            con.close();
+//        } catch (Exception e) {
+//            System.out.println("createStatementError in getUsers()" + e);
+//        }
+//        return listOfUsers;
+//
+//    }
 
+//*************Second Chart******************//
+    public List<SongsModel> getMoviesDetails(Integer movieRating) {
 
-    public List<RatingModel> getUserDetails(String movieName) {
-        String time;
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        List<RatingModel> listOfUsers= new ArrayList<>();
+        List<SongsModel> listOfMovies= new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = "select r.userId as UserId, r.rating as Rating, r.timestamp as Time\n" +
-                    "from ratings r inner join movies m where m.title = \""+movieName+" \"and m.movieId = r.movieId;";
+            String sql = "\n" +
+                    "select m.movieId, m.title,count(m.title) as noOfUsers, m.genres from ratings r, movies m " +
+                    "where m.movieId = r.movieId and CEILING(r.rating) = \""+movieRating+" \" group by m.movieId;";
             ResultSet resultSet = stmt.executeQuery(sql);
-            long time1;
+
             while (resultSet.next()) {
 
-                RatingModel ratingModel = new RatingModel();
-                ratingModel.setUserId(resultSet.getInt("UserId"));
-                ratingModel.setRating((int) resultSet.getFloat("Rating"));
-                time = resultSet.getString("Time").replace("\r", "");
-                time1 = Long.parseLong(time);
-                timestamp.setTime(time1);
-                System.out.println(timestamp);
-                ratingModel.setTimestamp(sdf.format(timestamp));
-                listOfUsers.add(ratingModel);
+                SongsModel songsModel = new SongsModel();
+                songsModel.setMovieId(resultSet.getInt("movieId"));
+                songsModel.setName(resultSet.getString("title"));
+                songsModel.setNoOfUsers(resultSet.getInt("noOfUsers"));
+                songsModel.setGenres(resultSet.getString("genres"));
+
+                listOfMovies.add(songsModel);
             }
             resultSet.close();
             stmt.close();
@@ -285,7 +317,7 @@ public class RatingDb {
         } catch (Exception e) {
             System.out.println("createStatementError in getUsers()" + e);
         }
-        return listOfUsers;
+        return listOfMovies;
 
     }
 

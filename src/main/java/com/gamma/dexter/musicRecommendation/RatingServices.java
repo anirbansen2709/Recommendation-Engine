@@ -41,4 +41,13 @@ public class RatingServices {
     {
         ratingDb.loadRecommendation();
     }
+//    public List<RatingModel> getUserDetails(String movieName)throws Exception
+//    {
+//        return ratingDb.getUserDetails(movieName);
+//    }
+
+    public List<SongsModel> getMoviesDetails(Integer movieRating)throws Exception
+    {
+        return ratingDb.getMoviesDetails(movieRating);
+    }
 }

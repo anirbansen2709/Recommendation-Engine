@@ -192,34 +192,67 @@
                 </div>
 
                 <!-- END panel-->
-                <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                            <b>Top 5 Movies Details</b></div>
-                        <div class="panel-body">
-                            <form role="form" class="form-inline" id="formid">
-                                <div class="fixedscroll">
-                                    <table class="table table-bordered table-striped table-hover" id="user_Details_table">
-                                        <thead>
-                                        <tr>
-                                            <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">
-                                                User Id
-                                            </th>
-                                            <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
-                                                User Rating
-                                            </th>
-                                            <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">
-                                                Time
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>
-                                    </table>
-                                </div>
-                            </form>
-                        </div>
+                <%--<div class="row">--%>
+                    <%--<div class="panel panel-default">--%>
+                        <%--<div class="panel-heading" style="background-color: #003153 !important; color: white !important;">--%>
+                            <%--<b>Top 5 Movies Details</b></div>--%>
+                        <%--<div class="panel-body">--%>
+                            <%--<form role="form" class="form-inline" id="formid1">--%>
+                                <%--<div class="fixedscroll">--%>
+                                    <%--<table class="table table-bordered table-striped table-hover" id="user_Details_table">--%>
+                                        <%--<thead>--%>
+                                        <%--<tr>--%>
+                                            <%--<th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">--%>
+                                                <%--User Id--%>
+                                            <%--</th>--%>
+                                            <%--<th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">--%>
+                                                <%--User Rating--%>
+                                            <%--</th>--%>
+                                            <%--<th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">--%>
+                                                <%--Time--%>
+                                            <%--</th>--%>
+                                        <%--</tr>--%>
+                                        <%--</thead>--%>
+                                        <%--<tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>--%>
+                                    <%--</table>--%>
+                                <%--</div>--%>
+                            <%--</form>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
+                        <b>Movies With Corresponding Rating</b></div>
+                    <div class="panel-body">
+                        <form role="form" class="form-inline" id="formid2">
+                            <div class="fixedscroll">
+                                <table class="table table-bordered table-striped table-hover" id="movies_Details_table">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">
+                                            Movie Id
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
+                                            Movie Name
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
+                                            Count
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">
+                                            Genre
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>
+                                </table>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+
             </div>
     </section>
     <jsp:include page="layout/footer.jsp"/>

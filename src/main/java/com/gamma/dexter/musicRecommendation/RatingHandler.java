@@ -39,4 +39,12 @@ public class RatingHandler {
     {
         ratingServices.loadRecommendation();
     }
+//    public List<RatingModel> getUserDetails(String movieName)throws Exception
+//    {
+//        return ratingServices.getUserDetails(movieName);
+//    }
+    public List<SongsModel> getMoviesDetails(Integer movieRating)throws Exception {
+
+        return ratingServices.getMoviesDetails(movieRating);
+    }
 }

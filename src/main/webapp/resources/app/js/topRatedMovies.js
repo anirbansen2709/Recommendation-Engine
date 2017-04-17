@@ -122,7 +122,8 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     $('#listOfMovies').empty();
     stmt = '';
 
-    jQuery.each(mapOfGenres[genre], function (index, value) {
+    jQuery.each(mapOfGenres[genre], function (index
+        , value) {
         stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
             '<div style="border:inset">' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+

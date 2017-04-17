@@ -68,8 +68,9 @@ import java.util.*;
 
     public static void main(String[] args) throws Exception{
         RatingController ratingController = new RatingController();
-        String s= ratingController.getUserDetails("");
-        System.out.println(s);
+//        String s= ratingController.getUserDetails("");
+        String s= ratingController.getMoviesDetails(5);
+//        System.out.println(s);
         int i = 0;
     }
 
@@ -270,14 +271,27 @@ import java.util.*;
     }
 
 
-    @RequestMapping(value = "userDetails", method = RequestMethod.GET)
+//    @RequestMapping(value = "userDetails", method = RequestMethod.GET)
+//    public
+//    @ResponseBody
+//    String getUserDetails(@RequestParam String movieName)throws Exception{
+//        List<RatingModel> listOfAllSongs = ratingHandler.getUserDetails(movieName);
+//        ResponseWrapper wrapper = new ResponseWrapper();
+//        for (RatingModel ratingModel: listOfAllSongs) {
+//            wrapper.addPayload(ratingModel);
+//        }
+//        return wrapper.getResponse();
+//
+//    }
+
+    @RequestMapping(value = "moviesDetails", method = RequestMethod.GET)
     public
     @ResponseBody
-    String getUserDetails(@RequestParam String movieName)throws Exception{
-        List<RatingModel> listOfAllSongs = ratingHandler.getUserDetails(movieName);
+    String getMoviesDetails(@RequestParam Integer movieRating)throws Exception{
+        List<SongsModel> listOfAllMovies = ratingHandler.getMoviesDetails(movieRating);
         ResponseWrapper wrapper = new ResponseWrapper();
-        for (RatingModel ratingModel: listOfAllSongs) {
-            wrapper.addPayload(ratingModel);
+        for (SongsModel songsModel: listOfAllMovies) {
+            wrapper.addPayload(songsModel);
         }
         return wrapper.getResponse();
 
