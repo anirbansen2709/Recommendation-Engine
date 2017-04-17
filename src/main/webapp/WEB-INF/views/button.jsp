@@ -38,6 +38,9 @@
   <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
   <style>
     .content-wrapper > h3, /* .content-wrapper > .content-heading*/
     {
@@ -143,10 +146,20 @@
       right: 0;
     }
 
+
   </style>
 
 
 </head>
+<div id="animate" style="text-align: center;position: absolute; top:40%;left:50%">
+  <i class="fa fa-spinner fa-spin" style="font-size:100px"></i>
+</div>
+
+<div id="load" style="text-align: center;position: absolute; top:55%;left:49%">
+  <h1><a id="loading">Loading</a></h1>
+</div>
+
+
 
 <div class="wrapper">
   <jsp:include page="layout/header.jsp"/>
@@ -175,6 +188,12 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
 <!-- MODERNIZR-->
 <script src="./resources/vendor/modernizr/modernizr.js"></script>
 <!-- JQUERY-->
@@ -228,6 +247,7 @@
 <%--for glypicon--%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%--JS file for inserting user--%>
 <script src="/resources/app/js/button.js"></script>

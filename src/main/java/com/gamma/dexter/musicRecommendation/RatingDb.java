@@ -125,7 +125,7 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 1;";
+            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 0;";
             ResultSet resultSet = stmt.executeQuery(sql);
             long time1;
             while (resultSet.next()) {
@@ -176,35 +176,42 @@ public class RatingDb {
             return listOfRecommendation;
     }
 //python server
-    public void loadRecommendation() throws Exception{
-        HttpUtil httpUtil = new HttpUtil();
-        JSONObject recommendation = httpUtil.getRecommendation();
-        Class.forName(JDBC_DRIVER);
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-        Statement stmt =con.createStatement();
-        //con.setAutoCommit(false);
-        int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = 0");
-        System.out.println("rows Affected:"+result);
-        JSONObject objectInArray;
+    public void loadRecommendation() {
+        try {
+            HttpUtil httpUtil = new HttpUtil();
+            JSONObject recommendation = httpUtil.getRecommendation();
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+            con.setAutoCommit(false);
+            int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = 0");
+            System.out.println("rows Affected:" + result);
+            JSONObject objectInArray;
 
-        JSONArray jsonArray = recommendation.getJSONArray("Payload");
-        String insertquery = "insert into recommendation(genres,movieId,title,userId,average,rank) values (?, ?, ?, ?,?,?)";
-        PreparedStatement preparedStatement = con.prepareStatement(insertquery);
-        for (int i = 0; i < jsonArray.size(); i++) {
-            int rank = i + 1;
-            objectInArray = jsonArray.getJSONObject(i);
-            preparedStatement.setString(1, objectInArray.getString("genres"));
-            preparedStatement.setInt(2, objectInArray.getInt("movieId"));
-            preparedStatement.setString(3, objectInArray.getString("title"));
-            preparedStatement.setInt(4, objectInArray.getInt("userId"));
-            preparedStatement.setFloat(5, objectInArray.getInt("average"));
-            preparedStatement.setInt(6, rank);
-            preparedStatement.addBatch();
+            JSONArray jsonArray = recommendation.getJSONArray("Payload");
+            String insertquery = "insert into recommendation(genres,movieId,title,userId,average,rank) values (?, ?, ?, ?,?,?)";
+            PreparedStatement preparedStatement = con.prepareStatement(insertquery);
+            for (int i = 0; i < jsonArray.size(); i++) {
+                int rank = i + 1;
+                objectInArray = jsonArray.getJSONObject(i);
+                preparedStatement.setString(1, objectInArray.getString("genres"));
+                preparedStatement.setInt(2, objectInArray.getInt("movieId"));
+                preparedStatement.setString(3, objectInArray.getString("title"));
+                preparedStatement.setInt(4, objectInArray.getInt("userId"));
+                preparedStatement.setFloat(5, objectInArray.getInt("average"));
+                preparedStatement.setInt(6, rank);
+                preparedStatement.addBatch();
+            }
+            preparedStatement.executeBatch();
+            preparedStatement.close();
+            stmt.close();
+            con.commit();
+            con.close();
         }
-        preparedStatement.executeBatch();
-        preparedStatement.close();
-        con.commit();
-        con.close();
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
     public static Map<String, Float> getTopMoviesChart() {
