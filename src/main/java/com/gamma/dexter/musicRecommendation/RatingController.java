@@ -265,8 +265,15 @@ import java.util.*;
     public
     @ResponseBody
     String getRecommendationButton()throws Exception{
+        //String CODE_SUCCESS = "200";
+        JSONObject json = new JSONObject();
         ratingHandler.loadRecommendation();
-    return null;
+        json.put("returnCode","200");
+        json.put("message", "");
+        json.put("Payload", "");
+
+        return json.toString();
+
     }
 
 
