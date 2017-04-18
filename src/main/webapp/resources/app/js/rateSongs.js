@@ -95,6 +95,7 @@ function loadTable(data) {
             r[4] = userStar(value['movieId']);
 
 
+
             songTable.row.add(r);
 
         });

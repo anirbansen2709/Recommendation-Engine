@@ -7,7 +7,9 @@
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
     <title>Listen Me</title>
+
     <!-- =============== VENDOR STYLES ===============-->
+    <link rel="stylesheet" href="/resources/css/dashboard.css">
     <!-- FONT AWESOME-->
     <link rel="stylesheet" href="./resources/vendor/fontawesome/css/font-awesome.min.css">
     <!-- SIMPLE LINE ICONS-->
@@ -125,7 +127,7 @@
                         </button>
 
                     </div>
-                    <div class="panel-body" style="height: 180px; background-color: cadetblue">
+                    <div class="panel-body">
                         <div class="container">
                             <div class="row" id="topXRatedSongs">
                             </div>
@@ -148,7 +150,7 @@
 
                         </button>
                     </div>
-                    <div class="panel-body" style="height: 180px; background-color: cadetblue">
+                    <div class="panel-body" >
                         <div class="container">
                             <div class="row" id="recommendedSongs">
                             </div>

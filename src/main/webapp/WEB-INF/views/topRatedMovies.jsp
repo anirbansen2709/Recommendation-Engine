@@ -8,6 +8,8 @@
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
     <title>Listen Me</title>
+    <link rel="stylesheet" href="resources/css/cards.css">
+
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
     <link rel="stylesheet" href="./resources/vendor/fontawesome/css/font-awesome.min.css">

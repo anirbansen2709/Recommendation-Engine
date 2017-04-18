@@ -120,19 +120,32 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     $('#listOfMovies').empty();
     stmt = '';
 
-    jQuery.each(mapOfGenres[genre], function (index, value) {
-        stmt+='<div id= '+value["title"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
-            '<div style="border:inset">' +
+    jQuery.each(mapOfGenres[genre], function (index
+        , value) {
+        stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
+            '<div>' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             '</object>'+
             '</div>'+
-            '<div style="border:ridge; height: 55px; min-height: 55px;text-align: center">' +
-            '<span>' + value["title"] + '</span><br><br>' +
+
+            '<div class= "card-name" style=" height: 50px; min-height: 50px;text-align: center">' +
+            '<span>' + value["title"]  + '</span><br>' +
+            '</div>'+
+            '<div class= "card-body" style=" height: 25px; text-align: center">' +
+            '<span>' + averageStar(value["average"])  + '</span><br>' +
             '</div>'+
             '</div>'
     });
     $('#listOfMovies').append(stmt);
 
 });
+function averageStar(value) {
+    var stmt = "<td>";
+    for (var i = 0; i < value; i++) {
+        stmt += '<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
+    }
+    stmt += '</td>';
+    return stmt;
+}
 

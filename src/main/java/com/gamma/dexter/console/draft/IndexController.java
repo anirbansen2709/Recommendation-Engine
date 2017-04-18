@@ -21,15 +21,11 @@ public class
      *
      * @return the string
      */
-    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public String welcome() {
-        return "deviceManagement";
+    @RequestMapping(value = "login1", method = {RequestMethod.GET, RequestMethod.HEAD})
+    public String login1() {
+        return "login1";
     }
 
-//    @RequestMapping(value = "settings", method = RequestMethod.GET)
-//    public String settings(){
-//        return "settings";
-//    }
 
     @RequestMapping(value = "administration", method = RequestMethod.GET)
     public String administration(@RequestParam String type){
@@ -41,10 +37,10 @@ public class
         return "Tests";
     }
 
-//    @RequestMapping(value = "dashboard", method = RequestMethod.GET)
-//    public String dashboard(){
-//        return "dashboard";
-//    }
+     @RequestMapping(value = "demo", method = RequestMethod.GET)
+     public String demo(){
+    return "demo";
+}
 
     @RequestMapping(value = "deviceManagement", method = RequestMethod.GET)
     public String deviceManagement(){
