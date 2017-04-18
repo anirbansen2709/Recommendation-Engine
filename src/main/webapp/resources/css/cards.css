@@ -1,0 +1,21 @@
+img{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+object{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.wrapper{
+    background-color: #C0C0C0;
+}
+.card-body{
+    background-color: #fffafa;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-weight: bold;
+}
+.card-name{
+    background-color: #fffafa;
+    font-weight: bold;
+}

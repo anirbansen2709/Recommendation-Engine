@@ -1,0 +1,14 @@
+img{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height: 100%;
+}
+object{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height:100%;
+}
+.panel-body{
+    height: 30%;
+    background-color: cadetblue;
+}

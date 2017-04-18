@@ -1,0 +1,193 @@
+btn {border-radius: 0}
+.btn:focus, .btn:active, .btn.active, .btn:active:focus {outline: 0;border-radius: 0}
+.btn-larger {padding: 15px 40px !important;border:2px solid #F05F40 !important;border-radius: 0px !important;font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;font-size: 18px;	font-weight: 300;color: #F05F40;background-color: transparent;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+.btn-larger:hover, .btn-larger:focus, .btn-larger:active, .btn-larger.active, .open .dropdown-toggle.btn-larger {border-color: #F05F40;color: #fff;background-color: #F05F40; border-radius: 0}
+.btn-larger:active, .btn-larger.active, .open .dropdown-toggle.btn-larger {background-image: none;}
+.btn-larger.disabled, .btn-larger[disabled], fieldset[disabled] .btn-larger, .btn-larger.disabled:hover, .btn-larger[disabled]:hover, fieldset[disabled] .btn-larger:hover, .btn-larger.disabled:focus, .btn-larger[disabled]:focus, fieldset[disabled] .btn-larger:focus, .btn-larger.disabled:active, .btn-larger[disabled]:active, fieldset[disabled] .btn-larger:active, .btn-larger.disabled.active, .btn-larger[disabled].active, fieldset[disabled] .btn-larger.active {border-color: #AEA8D3;background-color: #AEA8D3;}
+.btn-larger .badge {color: #AEA8D3;background-color: #fff;}
+div#form {color: #fff;background-attachment: scroll;background: #1c1e21 url(/resources/background/immitationGame.gif);background-position: center center;background-repeat: none;	-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover; min-height:100%;}
+#userform p {font-size: 14px;margin-bottom: 5px;}
+#userform ul {list-style-type: none;padding: 0;margin-bottom: 0px;}
+#userform {background: rgba(0,0,0,0.8);margin: 20px 0 20px 0}
+@media (min-width: 768px) {
+    #userform {background: rgba(0,0,0,0.8);margin: 150px 0 20px 0}
+}
+#userform .nav-tabs.nav-justified > li > a {font-size: 20px;color: #F05F40;background-color: rgba(90,90,90,0.5);}
+#userform .nav-tabs.nav-justified > .active > a, #userform .nav-tabs.nav-justified > .active > a:hover, #userform .nav-tabs.nav-justified > .active > a:focus {border: 0;background: #F05F40;	color: white;border-radius: 0;}
+#userform .nav-justified > li > a {margin-bottom: 0;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+#userform .nav-justified > li > a:hover {background: #AEA8D3;color: #FFF;}
+#userform .nav-tabs > li > a {border: 0px solid transparent;border-radius: 0}
+#userform .nav-tabs.nav-justified > li > a:hover {background: #F05F40;color: #FFF;border-radius: 0;border: 0;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+#userform .nav-tabs > li.active > a, #userform .nav-tabs > li.active > a:hover, #userform .nav-tabs > li.active > a:focus {color: #F05F40;cursor: default;background-color: transparent;	border: 0;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+@media (min-width: 768px) {
+    #userform .nav-tabs.nav-justified > li > a {border: 0;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+    #userform .nav-tabs.nav-justified > li > a:hover {background-color: #F05F40;border-color: transparent;border: 0;-webkit-transition: all .6s;-moz-transition: all .6s;transition: all .6s;}
+}
+@media (max-width: 768px) {
+    .nav-justified > li {display: table-cell !important;width: 1% !important;}
+}
+#userform .nav-tabs {border-bottom: 0px solid #ddd;}
+#userform .tab-pane h2 {margin: 10px 0;color: #FFF;}
+#userform .tab-pane p.lead {margin-top: 20px;}
+#userform .tab-content {padding: 20px}
+#userform .form-group {margin-bottom: 0px;color: #FFF;}
+#userform .form-group input, #userform .form-group textarea {padding: 10px;}
+#userform .form-group input.form-control {height: auto;	background-color: rgba(237, 235, 250, 0.1);color: #FFF;}
+#userform .form-control {border-radius: 0;border: 1px solid #fff;}
+#userform .form-control:focus {border-color:#F05F40;box-shadow: none;}
+#userform::-webkit-input-placeholder {font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;font-weight: 700; color: #bbb;}
+#userform #signup .form-group label {position: relative;-webkit-transform: translateY(35px);-ms-transform: translateY(35px);transform: translateY(35px);left: 10px;top: 0px;color: rgba(255, 255, 255, 0.5);-webkit-transition: all 0.25s ease;transition: all 0.25s ease;-webkit-backface-visibility: hidden;pointer-events: none;font-size: 12px;font-weight: 300}
+#userform #signup .form-group label .req {margin: 2px;color: #F05F40;}
+#userform #signup .form-group label.active {-webkit-transform: translateY(0px);-ms-transform: translateY(0px);transform: translateY(0px);left: 2px;font-size: 12px;}
+#userform #signup .form-group label.active .req {opacity: 0;}
+#userform label.highlight {color: #ffffff;}
+#userform #login .form-group label {position: relative;-webkit-transform: translateY(35px);-ms-transform: translateY(35px);transform: translateY(35px);	left: 10px;top: 0px;color: rgba(255, 255, 255, 0.5);	-webkit-transition: all 0.25s ease;transition: all 0.25s ease;-webkit-backface-visibility: hidden;pointer-events: none;font-size: 12px;font-weight: 300}
+#userform #login .form-group label .req {margin: 2px;color: #F05F40;}
+#userform #login .form-group label.active {-webkit-transform: translateY(0px);-ms-transform: translateY(0px);transform: translateY(0px);left: 2px;font-size: 12px;}
+#userform #login .form-group label.active .req {opacity: 0;}
+.mrgn-30-top {margin-top: 30px}
+#header .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+
+}
+#userform{
+    display: none;
+}
+#homeHeading{
+    font: 400 100px/1.3 'Lobster Two', Helvetica, sans-serif;
+    text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+}
+
+.btn-default {
+    color: #222222;
+    background-color: white;
+    border-color: white;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: #222222;
+    background-color: #f2f2f2;
+    border-color: #ededed;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+    background-color: white;
+    border-color: white;
+}
+.btn-default .badge {
+    color: white;
+    background-color: #222222;
+}
+.btn-primary {
+    color: white;
+    background-color: #F05F40;
+    border-color: #F05F40;
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    color: white;
+    background-color: #ee4b28;
+    border-color: #ed431f;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+    background-color: #F05F40;
+    border-color: #F05F40;
+}
+.btn-primary .badge {
+    color: #F05F40;
+    background-color: white;
+}
+.btn {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    border: none;
+    border-radius: 300px;
+    font-weight: 700;
+}
+p {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+.btn-xl {
+    padding: 15px 30px;
+}
+hr {
+    border-color: #F05F40;
+    border-width: 3px;
+    max-width: 500px;
+}
+hr.light {
+    border-color: white;
+}
+header .header-content .header-content-inner hr {
+    margin: 30px auto;
+}
+.header-content{
+    position: absolute;
+    top: 30%;
+    left: 17%;
+}
+.container{
+    padding-top: 2%;
+}
+#userform{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
