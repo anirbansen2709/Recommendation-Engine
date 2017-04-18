@@ -1,7 +1,9 @@
 var tableRow;
 var table;
 var mapOfSongs = {};
-var responsiveHelper_datatable_tabletools = undefined;
+var responsiveHelper_datatable_tabletools1 = undefined;
+var responsiveHelper_datatable_tabletools2 = undefined;
+var responsiveHelper_datatable_tabletools3 = undefined;
 var ifUserSelectedFlag = false;
 var movieDetailsTable;
 var breakpointDefinition = {
@@ -10,30 +12,6 @@ var breakpointDefinition = {
 };
 
 $(document).ready(function () {
-    function simplechart(chartChart,data, chartType, renderId) {
-        var chartData = [];
-        $.each(data.data, function (key, value) {
-            chartData.push({
-                "label": value["label"],
-                "value": value["value"].toFixed(2),
-                //"link": "j-showSelectedField-"+value["label"]+"",
-                "link": "j-showMovieDetails-"+value["label"]+""
-            });
-        });
-        var revenueChart = new FusionCharts({
-            "type": chartType,
-            "renderAt": renderId,
-            "width": "100%",
-            "height": "350%",
-            "dataFormat": "json",
-            "dataSource": {
-                "chart": chartChart,
-                "data": chartData
-            }
-
-        });
-        revenueChart.render();
-    }
     $.ajax({
         type: "Get",
         url: "topRatedSongsChart",
@@ -65,11 +43,12 @@ $(document).ready(function () {
                 "toolTipBorderRadius": "2",
                 "toolTipPadding": "5",
                 "theme": "fint"
-                }
+            }
 
             var renderId = "top-movies-based-on-count";
             var chartType = "doughnut3d";
-            simplechart(chartChart,response,chartType,renderId);
+            var chartName = "top-movies";
+            simplechart(chartChart, response, chartType, renderId, chartName);
         },
 
         error: function (e) {
@@ -84,7 +63,8 @@ $(document).ready(function () {
         success: function (response) {
             response = jQuery.parseJSON(response);
 //        console.log("1: "+response);
-            var chartChart = {"caption": "Movies With Corresponding Ratings",
+            var chartChart = {
+                "caption": "Movies With Corresponding Ratings",
                 "subCaption": "Count Values",
                 "xAxisName": "Ratings",
                 "yAxisName": "Count (In Numbers)",
@@ -95,12 +75,13 @@ $(document).ready(function () {
                 "showLegend ": "1",
                 //"forceXAxisValueDecimals": "1",
                 "xAxisValueDecimals": "0",
-                "decimalPrecision":"2"
+                "decimalPrecision": "2"
             };
             var chartType = "column3D";
             var renderId = "top-movies-based-on-ratings";
-//        simplechart(chart,data,chartType,renderId);
-            simplechart(chartChart,response,chartType,renderId);
+            var chartName = "top-ratings";
+
+            simplechart(chartChart, response, chartType, renderId, chartName);
 
 
         },
@@ -114,41 +95,39 @@ $(document).ready(function () {
         url: "getTopGenresWithCountChart",
         success: function (response) {
             response = jQuery.parseJSON(response);
-            //$.each(response["Payload"] ,function(index, value){
-            //
-            //});
+
             var chartChart = {
 
-                    "caption": "Count Of Every Genres",
-                    "subCaption": "Count values",
-                    "xAxisName": "Genres",
-                    "yAxisName": "Days",
-                    "lineThickness": "2",
-                    "paletteColors": "#0075c2",
-                    "baseFontColor": "#333333",
-                    "baseFont": "Helvetica Neue,Arial",
-                    "captionFontSize": "14",
-                    "subcaptionFontSize": "14",
-                    "showBorder": "0",
-                    "bgColor": "#ffffff",
-                    "showShadow": "1",
-                    //"canvasBgColor": "#ffffff",
-                    "canvasBorderAlpha": "1",
-                    "divlineAlpha": "100",
-                    "divlineColor": "#999999",
-                    "divlineThickness": "1",
-                    "divLineDashed": "1",
-                    "divLineDashLen": "1",
-                    "showXAxisLine": "1",
-                    "xAxisLineThickness": "1",
-                    "xAxisLineColor": "#999999",
-                    "showAlternateHGridColor": "1"
+                "caption": "Count Of Every Genres",
+                "subCaption": "Count values",
+                "xAxisName": "Genres",
+                "yAxisName": "Days",
+                "lineThickness": "2",
+                "paletteColors": "#0075c2",
+                "baseFontColor": "#333333",
+                "baseFont": "Helvetica Neue,Arial",
+                "captionFontSize": "14",
+                "subcaptionFontSize": "14",
+                "showBorder": "0",
+                "bgColor": "#ffffff",
+                "showShadow": "1",
+                //"canvasBgColor": "#ffffff",
+                "canvasBorderAlpha": "1",
+                "divlineAlpha": "100",
+                "divlineColor": "#999999",
+                "divlineThickness": "1",
+                "divLineDashed": "1",
+                "divLineDashLen": "1",
+                "showXAxisLine": "1",
+                "xAxisLineThickness": "1",
+                "xAxisLineColor": "#999999",
+                "showAlternateHGridColor": "1"
 
             };
             var chartType = "line";
             var renderId = "movies-based-on-date";
-//        simplechart(chart,data,chartType,renderId);
-            simplechart(chartChart,response,chartType,renderId);
+            var chartName = "top-genre";
+            simplechart(chartChart, response, chartType, renderId, chartName);
 
 
         },
@@ -157,93 +136,135 @@ $(document).ready(function () {
         }
     });
 });
+
+function simplechart(chartChart, data, chartType, renderId, chartName) {
+    var chartData = [];
+    $.each(data.data, function (key, value) {
+        if (chartName == "top-movies") {
+            value["link"] = "j-showSelectedField-" + value["label"] + "";
+        }
+        else if (chartName == "top-ratings") {
+            value["link"] = "j-showMovieDetails-" + value["label"] + "";
+        } else if(chartName == "top-genre"){
+            value["link"] = "j-showGenresDetails-" + value["label"] + "";
+        }
+        chartData.push({
+            "label": value["label"],
+            "value": value["value"].toFixed(2),
+            "link": value["link"]
+        });
+    })
+
+    var revenueChart = new FusionCharts({
+        "type": chartType,
+        "renderAt": renderId,
+        "width": "100%",
+        "height": "350%",
+        "dataFormat": "json",
+        "dataSource": {
+            "chart": chartChart,
+            "data": chartData
+        }
+
+    });
+    revenueChart.render();
+}
+
 // ***********First Chart**************//
 
 
-//function showSelectedField(value){
-//    $.ajax({
-//        type: "GET",
-//        dataType: "json",
-//        url: "userDetails?movieName="+value,
-//        success: function (data) {
-//            loadTable(data);
-//        }, error: function (data, status) {
-//        }
-//    });
-//}
-//function loadTable(data) {
-//
-//
-//    if (data['returnCode'] == '200') {
-//        movieDetailsTable = $('#user_Details_table').DataTable({
-//            "bLengthChange": false,
-//            //"bDestroy": true,
-//            "bRetrieve": true,
-//            "pageLength": 7,
-//            "columnDefs": [
-//                {className: "dt-body-right", "targets": []}/*,
-//                {
-//                    "targets": [0],
-//                    "visible": false,
-//                    "searchable": false
-//                }*/
-//            ],
-//            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
-//            "t" +
-//            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
-//
-//            "preDrawCallback": function () {
-//                // Initialize the responsive datatables helper once.
-//                if (!responsiveHelper_datatable_tabletools) {
-//                    responsiveHelper_datatable_tabletools =
-//                        new ResponsiveDatatablesHelper($('#user_Details_table'), breakpointDefinition);
-//                }
-//            },
-//            "rowCallback": function (nRow) {
-//                responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
-//            },
-//            "drawCallback": function (oSettings) {
-//                responsiveHelper_datatable_tabletools.respond();
-//            }
-//        });
-//
-//
-//        movieDetailsTable.clear();
-//
-//        jQuery.each(data['Payload'], function (index, value) {
-//            var r = [];
-//
-//            r[0] = value['userId'];
-//            r[1] = averageStar(value['rating']);
-//            r[2] = value['timestamp'];
-//
-//
-//            movieDetailsTable.row.add(r);
-//
-//        });
-//        movieDetailsTable.draw();
-//    } else {
-//        showToastr(data['message'], 'Error', 'error');
-//    }
-//
-//
-//}
-// ***********Second Chart**************//
-
-function showMovieDetails(value){
+function showSelectedField(value) {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "moviesDetails?movieRating="+value,
+        url: "userDetails?movieName=" + value,
         success: function (data) {
-            loadTable(data);
+            loadTable1(data);
+            $(".table-header").text("User Details of the Movie :-  ");
+            $(".click-value").text(" ' "+value+" '");
         }, error: function (data, status) {
         }
     });
 }
-function loadTable(data) {
+function loadTable1(data) {
+
+    $('#table2').addClass('display-none');
+    $('#table3').addClass('display-none');
+    $('#table1').removeClass('display-none');
+    if (data['returnCode'] == '200') {
+        movieDetailsTable = $('#user_Details_table').DataTable({
+            "bLengthChange": false,
+            //"bDestroy": true,
+            "bRetrieve": true,
+            "pageLength": 7,
+            "columnDefs": [
+                {className: "dt-body-right", "targets": []}/*,
+                 {
+                 "targets": [0],
+                 "visible": false,
+                 "searchable": false
+                 }*/
+            ],
+            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
+            "t" +
+            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+
+            "preDrawCallback": function () {
+                // Initialize the responsive datatables helper once.
+                if (!responsiveHelper_datatable_tabletools1) {
+                    responsiveHelper_datatable_tabletools1 =
+                        new ResponsiveDatatablesHelper($('#user_Details_table'), breakpointDefinition);
+                }
+            },
+            "rowCallback": function (nRow) {
+                responsiveHelper_datatable_tabletools1.createExpandIcon(nRow);
+            },
+            "drawCallback": function (oSettings) {
+                responsiveHelper_datatable_tabletools1.respond();
+            }
+        });
 
 
+        movieDetailsTable.clear();
+
+        jQuery.each(data['Payload'], function (index, value) {
+            var r = [];
+
+            r[0] = value['userId'];
+            r[1] = averageStar(value['rating']);
+            r[2] = value['timestamp'];
+
+
+            movieDetailsTable.row.add(r);
+
+        });
+        movieDetailsTable.draw();
+    } else {
+        showToastr(data['message'], 'Error', 'error');
+    }
+
+
+}
+// ***********Second Chart**************//
+//
+function showMovieDetails(value) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "moviesDetails?movieRating=" + value,
+        success: function (data) {
+            loadTable2(data);
+            $(".table-header").text("Number Of Movies Having Rating :-  ");
+            $(".click-value").text(" ' "+value+" '");
+        }, error: function (data, status) {
+        }
+    });
+}
+function loadTable2(data) {
+
+    $('#table1').addClass('display-none');
+    $('#table3').addClass('display-none');
+    $('#table2').removeClass('display-none');
     if (data['returnCode'] == '200') {
         movieDetailsTable = $('#movies_Details_table').DataTable({
             "bLengthChange": false,
@@ -264,16 +285,16 @@ function loadTable(data) {
 
             "preDrawCallback": function () {
                 // Initialize the responsive datatables helper once.
-                if (!responsiveHelper_datatable_tabletools) {
-                    responsiveHelper_datatable_tabletools =
+                if (!responsiveHelper_datatable_tabletools2) {
+                    responsiveHelper_datatable_tabletools2 =
                         new ResponsiveDatatablesHelper($('#movies_Details_table'), breakpointDefinition);
                 }
             },
             "rowCallback": function (nRow) {
-                responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
+                responsiveHelper_datatable_tabletools2.createExpandIcon(nRow);
             },
             "drawCallback": function (oSettings) {
-                responsiveHelper_datatable_tabletools.respond();
+                responsiveHelper_datatable_tabletools2.respond();
             }
         });
 
@@ -300,11 +321,86 @@ function loadTable(data) {
 
 }
 
-//function averageStar(value) {
-//    var stmt = "<td>";
-//    for(var i=0; i< value ;i++){
-//        stmt+='<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
-//    }
-//    stmt+='</td>';
-//    return stmt;
-//}
+//**********Third Chart**********************
+
+function showGenresDetails(value) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "genresDetails?genre=" + value,
+        success: function (data) {
+            loadGenreTable(data);
+            $(".table-header").text("Movies Details Having Genre :-  ");
+            $(".click-value").text(" ' "+value+" '");
+        }, error: function (data, status) {
+        }
+    });
+}
+function loadGenreTable(data) {
+    $('#table1').addClass('display-none');
+    $('#table2').addClass('display-none');
+    $('#table3').removeClass('display-none');
+    if (data['returnCode'] == '200') {
+
+        genreDetailsTable = $('#genres_Details_table').DataTable({
+            "bLengthChange": false,
+            //"bDestroy": true,
+            "bRetrieve": true,
+            "pageLength": 7,
+            "columnDefs": [
+                {className: "dt-body-right", "targets": []}/*,
+                 {
+                 "targets": [0],
+                 "visible": false,
+                 "searchable": false
+                 }*/
+            ],
+            "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-12'f>" +
+            "t" +
+            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+
+            "preDrawCallback": function () {
+                // Initialize the responsive datatables helper once.
+                if (!responsiveHelper_datatable_tabletools3) {
+                    responsiveHelper_datatable_tabletools3 =
+                        new ResponsiveDatatablesHelper($('#genres_Details_table'), breakpointDefinition);
+                }
+            },
+            "rowCallback": function (nRow) {
+                responsiveHelper_datatable_tabletools3.createExpandIcon(nRow);
+            },
+            "drawCallback": function (oSettings) {
+                responsiveHelper_datatable_tabletools3.respond();
+            }
+        });
+
+
+        genreDetailsTable.clear();
+
+        jQuery.each(data['Payload'], function (index, value) {
+            var r = [];
+
+            r[0] = value['movieId'];
+            r[1] = value['name'];
+            r[2] = averageStar(value['avgRating']);
+
+
+            genreDetailsTable.row.add(r);
+
+        });
+        genreDetailsTable.draw();
+    } else {
+        showToastr(data['message'], 'Error', 'error');
+    }
+
+
+}
+
+function averageStar(value) {
+    var stmt = "<td>";
+    for (var i = 0; i < value; i++) {
+        stmt += '<i style="color: red; font-size: x-large;" class="fa fa-star fa-lg fa-fw"></i>';
+    }
+    stmt += '</td>';
+    return stmt;
+}

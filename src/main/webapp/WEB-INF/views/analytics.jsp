@@ -99,6 +99,9 @@
             font-weight: bold;
             font-size: 3em;
         }
+        .display-none{
+            display: none;
+        }
     </style>
 </head>
 
@@ -192,39 +195,40 @@
                 </div>
 
                 <!-- END panel-->
-                <%--<div class="row">--%>
-                    <%--<div class="panel panel-default">--%>
-                        <%--<div class="panel-heading" style="background-color: #003153 !important; color: white !important;">--%>
-                            <%--<b>Top 5 Movies Details</b></div>--%>
-                        <%--<div class="panel-body">--%>
-                            <%--<form role="form" class="form-inline" id="formid1">--%>
-                                <%--<div class="fixedscroll">--%>
-                                    <%--<table class="table table-bordered table-striped table-hover" id="user_Details_table">--%>
-                                        <%--<thead>--%>
-                                        <%--<tr>--%>
-                                            <%--<th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">--%>
-                                                <%--User Id--%>
-                                            <%--</th>--%>
-                                            <%--<th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">--%>
-                                                <%--User Rating--%>
-                                            <%--</th>--%>
-                                            <%--<th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">--%>
-                                                <%--Time--%>
-                                            <%--</th>--%>
-                                        <%--</tr>--%>
-                                        <%--</thead>--%>
-                                        <%--<tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>--%>
-                                    <%--</table>--%>
-                                <%--</div>--%>
-                            <%--</form>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-
-            <div class="row">
+            <%--*****************First Chart**********************--%>
+                <div class="row display-none" id="table1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
+                            <b class="table-header"></b> <b class="click-value" style="color: yellow"></b></div>
+                        <div class="panel-body">
+                            <form role="form" class="form-inline" id="formid1">
+                                <div class="fixedscroll">
+                                    <table class="table table-bordered table-striped table-hover" id="user_Details_table">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">
+                                                User Id
+                                            </th>
+                                            <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
+                                                User Rating
+                                            </th>
+                                            <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">
+                                                Time
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+<%--*****************Second Chart********************--%>
+            <div class="row display-none" id="table2">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Movies With Corresponding Rating</b></div>
+                        <b class="table-header"></b> <b class="click-value" style="color: yellow"></b></div>
                     <div class="panel-body">
                         <form role="form" class="form-inline" id="formid2">
                             <div class="fixedscroll">
@@ -252,7 +256,37 @@
                     </div>
                 </div>
             </div>
+<%--**********************Third Chart***********************--%>
 
+
+            <div class="row display-none" id="table3">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
+                        <b class="table-header"></b><b class="click-value" style="color: yellow"></b></div>
+                    <div class="panel-body">
+                        <form role="form" class="form-inline" id="formid3">
+                            <div class="fixedscroll">
+                                <table class="table table-bordered table-striped table-hover" id="genres_Details_table">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">
+                                            Movie Id
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
+                                            Movie Name
+                                        </th>
+                                        <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">
+                                            Average Rating
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody style="cursor: pointer; padding: 0 !important; text-align: center;"></tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             </div>
     </section>
     <jsp:include page="layout/footer.jsp"/>
@@ -337,30 +371,5 @@
 <script src="resources/datatable-responsive/datatable-responsive/datatables.responsive.min.js"></script>
 <script src="./resources/app/js/analytics.js"></script>
 
-<script>
-    function simplechart(chartChart,data, chartType, renderId) {
-        var chartData = [];
-        $.each(data.data, function (key, value) {
-            chartData.push({
-                "label": value["label"],
-                "value": value["value"].toFixed(2)
-            });
-        });
-        var revenueChart = new FusionCharts({
-            "type": chartType,
-            "renderAt": renderId,
-            "width": "100%",
-            "height": "350",
-            "dataFormat": "json",
-            "dataSource": {
-                "chart": chartChart,
-                "data": chartData
-            }
-
-        });
-        revenueChart.render();
-    }
-
-</script>
 </html>
 

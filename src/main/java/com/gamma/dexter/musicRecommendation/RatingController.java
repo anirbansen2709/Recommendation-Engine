@@ -42,7 +42,6 @@ import java.util.*;
     String listAllTopSongs() {
         List<SongsModel> listOfAllSongs = ratingHandler.getSongsWithAverageRatings();
 
-//        List<SongsModel> topTenSongs = new ArrayList<SongsModel>(listOfSongs.subList(0,10));
         ResponseWrapper wrapper = new ResponseWrapper();
         for (SongsModel songsModel : listOfAllSongs) {
             wrapper.addPayload(songsModel);
@@ -69,7 +68,7 @@ import java.util.*;
     public static void main(String[] args) throws Exception{
         RatingController ratingController = new RatingController();
 //        String s= ratingController.getUserDetails("");
-        String s= ratingController.getMoviesDetails(5);
+        String s= ratingController.getGenresDetails("Action");
 //        System.out.println(s);
         int i = 0;
     }
@@ -271,18 +270,18 @@ import java.util.*;
     }
 
 
-//    @RequestMapping(value = "userDetails", method = RequestMethod.GET)
-//    public
-//    @ResponseBody
-//    String getUserDetails(@RequestParam String movieName)throws Exception{
-//        List<RatingModel> listOfAllSongs = ratingHandler.getUserDetails(movieName);
-//        ResponseWrapper wrapper = new ResponseWrapper();
-//        for (RatingModel ratingModel: listOfAllSongs) {
-//            wrapper.addPayload(ratingModel);
-//        }
-//        return wrapper.getResponse();
-//
-//    }
+    @RequestMapping(value = "userDetails", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getUserDetails(@RequestParam String movieName)throws Exception{
+        List<RatingModel> listOfAllSongs = ratingHandler.getUserDetails(movieName);
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (RatingModel ratingModel: listOfAllSongs) {
+            wrapper.addPayload(ratingModel);
+        }
+        return wrapper.getResponse();
+
+    }
 
     @RequestMapping(value = "moviesDetails", method = RequestMethod.GET)
     public
@@ -291,6 +290,19 @@ import java.util.*;
         List<SongsModel> listOfAllMovies = ratingHandler.getMoviesDetails(movieRating);
         ResponseWrapper wrapper = new ResponseWrapper();
         for (SongsModel songsModel: listOfAllMovies) {
+            wrapper.addPayload(songsModel);
+        }
+        return wrapper.getResponse();
+
+    }
+
+    @RequestMapping(value = "genresDetails", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getGenresDetails(@RequestParam String genre)throws Exception{
+        List<SongsModel> listOfAllMoviesWithGenre = ratingHandler.getGenresDetails(genre);
+        ResponseWrapper wrapper = new ResponseWrapper();
+        for (SongsModel songsModel: listOfAllMoviesWithGenre) {
             wrapper.addPayload(songsModel);
         }
         return wrapper.getResponse();
