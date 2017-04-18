@@ -12,6 +12,7 @@ var breakpointDefinition = {
 };
 
 $(document).ready(function () {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "Get",
         url: "topRatedSongsChart",
@@ -135,6 +136,7 @@ $(document).ready(function () {
             alert("error");
         }
     });
+    $('#loadingModal').modal('hide');
 });
 
 function simplechart(chartChart, data, chartType, renderId, chartName) {
@@ -174,6 +176,7 @@ function simplechart(chartChart, data, chartType, renderId, chartName) {
 
 
 function showSelectedField(value) {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -182,9 +185,11 @@ function showSelectedField(value) {
             loadTable1(data);
             $(".table-header").text("User Details of the Movie :-  ");
             $(".click-value").text(" ' "+value+" '");
+            $('#loadingModal').modal('hide');
         }, error: function (data, status) {
         }
     });
+
 }
 function loadTable1(data) {
 
@@ -248,6 +253,7 @@ function loadTable1(data) {
 // ***********Second Chart**************//
 //
 function showMovieDetails(value) {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -256,6 +262,7 @@ function showMovieDetails(value) {
             loadTable2(data);
             $(".table-header").text("Number Of Movies Having Rating :-  ");
             $(".click-value").text(" ' "+value+" '");
+            $('#loadingModal').modal('hide');
         }, error: function (data, status) {
         }
     });
@@ -324,6 +331,7 @@ function loadTable2(data) {
 //**********Third Chart**********************
 
 function showGenresDetails(value) {
+    $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -332,6 +340,7 @@ function showGenresDetails(value) {
             loadGenreTable(data);
             $(".table-header").text("Movies Details Having Genre :-  ");
             $(".click-value").text(" ' "+value+" '");
+            $('#loadingModal').modal('hide');
         }, error: function (data, status) {
         }
     });

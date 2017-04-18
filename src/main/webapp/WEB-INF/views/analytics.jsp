@@ -30,8 +30,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -311,7 +311,6 @@
 
 
 <!-- MODERNIZR-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="./resources/vendor/modernizr/modernizr.js"></script>
 <!-- JQUERY-->
 <script src="./resources/vendor/jquery/dist/jquery.js"></script>
@@ -342,6 +341,7 @@
 <script src="./resources/vendor/Flot/jquery.flot.time.js"></script>
 <script src="./resources/vendor/Flot/jquery.flot.categories.js"></script>
 <script src="./resources/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
+
 <!-- CLASSY LOADER-->
 <script src="./resources/vendor/jquery-classyloader/js/jquery.classyloader.min.js"></script>
 <!-- MOMENT JS-->
@@ -354,16 +354,16 @@
 <script src="./resources/app/js/demo/demo-panels.js"></script>
 <!-- =============== APP SCRIPTS ===============-->
 <script src="./resources/app/js/app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<%--for glypicon--%>
 
 <script src="./resources/fusionCharts/jquery.min.js"></script>
 <script src="./resources/fusionCharts/fusion/FusionCharts.js"></script>
 <script src="./resources/fusionCharts/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
 
+
+<%--for glypicon--%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="resources/datatables/datatables/jquery.dataTables.js"></script>
 <script src="resources/datatables/datatables/dataTables.colVis.min.js"></script>
 <script src="resources/datatables/datatables/dataTables.tableTools.min.js"></script>
