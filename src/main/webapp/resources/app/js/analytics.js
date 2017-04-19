@@ -13,6 +13,7 @@ var breakpointDefinition = {
 
 $(document).ready(function () {
     $('#loadingModal').modal('show');
+
     $.ajax({
         type: "Get",
         url: "topRatedSongsChart",
@@ -183,6 +184,7 @@ function showSelectedField(value) {
         url: "userDetails?movieName=" + value,
         success: function (data) {
             loadTable1(data);
+            $('#footer').css('position','static');
             $(".table-header").text("User Details of the Movie :-  ");
             $(".click-value").text(" ' "+value+" '");
             $('#loadingModal').modal('hide');
@@ -260,6 +262,7 @@ function showMovieDetails(value) {
         url: "moviesDetails?movieRating=" + value,
         success: function (data) {
             loadTable2(data);
+            $('#footer').css('position','static');
             $(".table-header").text("Number Of Movies Having Rating :-  ");
             $(".click-value").text(" ' "+value+" '");
             $('#loadingModal').modal('hide');
@@ -271,7 +274,7 @@ function loadTable2(data) {
 
     $('#table1').addClass('display-none');
     $('#table3').addClass('display-none');
-    $('#table2').removeClass('display-none');
+    $('#table2').removeClass('display-none');;
     if (data['returnCode'] == '200') {
         movieDetailsTable = $('#movies_Details_table').DataTable({
             "bLengthChange": false,
@@ -332,12 +335,14 @@ function loadTable2(data) {
 
 function showGenresDetails(value) {
     $('#loadingModal').modal('show');
+
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "genresDetails?genre=" + value,
         success: function (data) {
-            loadGenreTable(data);
+            loadGenreTable3(data);
+            $('#footer').css('position','static');
             $(".table-header").text("Movies Details Having Genre :-  ");
             $(".click-value").text(" ' "+value+" '");
             $('#loadingModal').modal('hide');
@@ -345,7 +350,7 @@ function showGenresDetails(value) {
         }
     });
 }
-function loadGenreTable(data) {
+function loadGenreTable3(data) {
     $('#table1').addClass('display-none');
     $('#table2').addClass('display-none');
     $('#table3').removeClass('display-none');

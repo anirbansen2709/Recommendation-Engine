@@ -8,6 +8,8 @@
     <title>Listen Me </title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="./resources/scrollTop/scrollTop.css">
+
     <link rel="stylesheet" href="./resources/vendor/fontawesome/css/font-awesome.min.css">
     <!-- SIMPLE LINE ICONS-->
     <link rel="stylesheet" href="./resources/vendor/simple-line-icons/css/simple-line-icons.css">
@@ -102,6 +104,7 @@
         .display-none{
             display: none;
         }
+
     </style>
 </head>
 
@@ -109,9 +112,12 @@
     <jsp:include page="layout/header.jsp"/>
     <jsp:include page="layout/menu.jsp"/>
 
+
     <section style="margin-bottom: 10px !important;">
+
         <!-- Page content-->
         <div class="content-wrapper">
+
             <div class="row mb-lg">
                 <!-- START panel-->
                 <div id="panel-1" class="panel panel-default panel-demo col-xs-4 col-md-4 col-ls-4 col-lg-4"
@@ -287,10 +293,19 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+
     </section>
+    <a href="#" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+
     <jsp:include page="layout/footer.jsp"/>
+
 </div>
+
+</div>
+
+
+
 
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -307,7 +322,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- MODERNIZR-->
@@ -360,6 +374,7 @@
 <script src="./resources/fusionCharts/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
 
 
+
 <%--for glypicon--%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -370,6 +385,8 @@
 <script src="resources/datatables/datatables/dataTables.bootstrap.min.js"></script>
 <script src="resources/datatable-responsive/datatable-responsive/datatables.responsive.min.js"></script>
 <script src="./resources/app/js/analytics.js"></script>
+<script src="./resources/scrollTop/scrollTop.js"></script>
+
 
 </html>
 

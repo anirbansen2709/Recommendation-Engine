@@ -1,5 +1,5 @@
 
-<footer style="background-color: #003153 !important; color: white; height: 0 !important;">
+<footer id="footer" style="background-color: #003153 !important; color: white; height: 0 !important;">
   <%--<span>@MAHAAN:2016</span>--%>
   <div class="page-footer"  style="margin-top: -6px;;">
     <div class="row">
