@@ -3,18 +3,21 @@
  */
 
 $(document).ready(function () {
-    $("#animate").hide();
-    $("#load").hide();
+    $('#loadingModal').modal('show');
+    $('#loadingModal').modal('hide');
+    $("#getRecommendation").removeClass('display-none');
 
 });
 
-
 $("#getRecommendation").click(function (e) {
-    $("#getRecommendation").hide();
-    $("#animate").show();
-    $("#load").show();
 
-    var originalText = $("#loading").text(),
+    $("#getRecommendation").addClass('display-none');
+    //$("#animate").show();
+    //$("#load").show();
+    $('#animation1').removeClass('display-none');
+    $('#animation2').removeClass('display-none');
+
+     var originalText = $("#loading").text(),
         i  = 0;
     setInterval(function() {
 
@@ -28,16 +31,17 @@ $("#getRecommendation").click(function (e) {
         }
 
     }, 500);
-
     $.ajax({
         type: "GET",
         dataType: "json",
         url: "getRecommendationButton",
         success: function (data) {
-            $("#animate").hide();
-            $("#load").hide();
-            $("#getRecommendation").show();
-
+            $('#animation1').removeClass('display-none');
+            $('#animation2').removeClass('display-none');
+            //$("#animate").hide();
+            //$("#load").hide();
+            //$("#getRecommendation").show();
+            $('#getRecommendation').removeClass('display-none');
         }, error: function (data, status) {
         }
     });
