@@ -23,6 +23,9 @@ $(document).ready(function(){
         $('#userform').show(500);
 
         });
+
+    loginUser();
+    signupUser();
     });
 $('#form').find('input, textarea').on('keyup blur focus', function (e) {
     var $this = $(this),
@@ -57,3 +60,77 @@ $('.tab a').on('click', function (e) {
     $('.tab-content > div').not(target).hide();
     $(target).fadeIn(800);
 });
+function Redirect() {
+    window.location="/dashboard";
+}
+
+
+function loginUser() {
+    $("#userLogin").click(function (e) {
+
+        e.preventDefault();
+
+        var password = $("#password1").val();
+        var emailId = $("#email1").val();
+
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "userLogin",
+            data: JSON.stringify({
+                'emailId': emailId,
+                'password': password,
+            }),
+            dataType: "json",
+            success: function (data, status) {
+                if (data['returnCode'] == '200') {
+                    Redirect();
+
+                }
+                else {
+                    alert("Try Again! EmailId/Password not matched");
+                }
+            }, error: function (xhr) {
+            }
+        });
+    });
+}
+function signupUser() {
+    $("#userSignup").click(function (e) {
+
+        e.preventDefault();
+
+        var password = $("#password").val();
+        var emailId = $("#email").val();
+        var firstName = $("#first_name").val();
+        var lastName = $("#last_name").val();
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: "userSignup",
+            data: JSON.stringify({
+                'emailId': emailId,
+                'password': password,
+                'firstName': firstName,
+                'lastName': lastName
+            }),
+            dataType: "json",
+            success: function (data, status) {
+                if (data['returnCode'] == '200') {
+                    alert("Signup Successful");
+
+                }
+                else {
+                    alert("Try Again! Error");
+                }
+            }, error: function (xhr) {
+            }
+        });
+    });
+}

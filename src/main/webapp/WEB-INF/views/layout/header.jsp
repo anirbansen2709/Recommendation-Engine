@@ -39,7 +39,8 @@
         <!-- START User logout-->
         <li title="Logout">
           <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-          <a href="logout">
+          <a href="userLogout">
+          <%--<a href="logout">--%>
             <em class="fa fa-sign-out fa-lg"></em>
           </a>
         </li>
@@ -95,3 +96,4 @@
     <!-- END Nav wrapper-->
   </nav>
 </header>
+
