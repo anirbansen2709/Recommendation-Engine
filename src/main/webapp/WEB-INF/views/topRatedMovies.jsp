@@ -103,6 +103,18 @@
             font-weight: bold;
             font-size: 3em;
         }
+        .genre-size:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            /*transform: rotate scale(1.1);*/
+            -webkit-transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -117,8 +129,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
                         <b>Top Rated Movies</b></div>
-                    <div class="panel-body" style="height: 180px; background-color: powderblue;">
-                        <div class="container">
+                    <div class="panel-body" style="height: 180px; background-color: powderblue; padding-left:40px">
+                        <div class="container" style="margin-top: 8px">
                             <div class="row" id="topXRatedMovies">
                             </div>
                         </div>

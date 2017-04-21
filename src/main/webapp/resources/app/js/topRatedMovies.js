@@ -32,9 +32,9 @@ function loadMoviesWithGenre(data) {
     var genre = '';
 
     jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
+        stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick genre-size row-table" style="cursor: pointer; height:90%; width:105% !important">'+
             '<div class="widget bg-red">'+
-            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="background-color: brown;color: white ;border-radius: 25px">'+
+            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="background-color: brown;color: white ;border-radius: 25px;">'+
             '<div class="col-xs-8 pv-lg">'+
             '<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
             '</div>'+
@@ -61,6 +61,16 @@ function loadMoviesWithGenre(data) {
             {
                 breakpoint: 1200,
                 settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1130,
+                settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
@@ -69,7 +79,102 @@ function loadMoviesWithGenre(data) {
                 }
             },
             {
+                breakpoint: 1160,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1190,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+
+            {
                 breakpoint: 1100,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+
+            {
+                breakpoint: 1080,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1030,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 970,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+
+
+            {
+                breakpoint: 870,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+
+            {
+                breakpoint: 780,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 720,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 670,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -80,6 +185,17 @@ function loadMoviesWithGenre(data) {
             },
             {
                 breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    arrows: true,
+                    dots: false
+                }
+            },
+
+            {
+                breakpoint: 520,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -100,6 +216,7 @@ function loadMoviesWithGenre(data) {
             }
 
         ]
+
     });
     //displayMovies(mapOfGenres);
 }
@@ -127,7 +244,7 @@ $('#topXRatedMovies').on('click','.criteriaBasedClick', function() {
         var stmt='';
     jQuery.each(data, function(index
         , value) {
-        stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
+        stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2 genre-size">'+
             '<div>' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
