@@ -131,6 +131,8 @@
     <div class="row">
       <div id="listOfMovies"></div>
     </div>
+    <div class="loading-info" align="center"><img src="resources/background/loading.svg" /></div>
+    <div class="noMoreRecords"></div>
   </section>
 
   <jsp:include page="layout/footer.jsp"/>

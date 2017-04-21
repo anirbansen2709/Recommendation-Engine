@@ -1,10 +1,13 @@
 /**
  * Created by Debashish Sen on 20-Mar-17.
  */
+var genre;
+var track_page = 1; //track user scroll as page number, right now page number is 1
+var loading  = false;
 var lastGenre;
 var mapOfGenres={};
 $(document).ready(function () {
-
+    $('.loading-info').hide();
     $('#listOfMovies').empty();
     topRatedMovies();
 
@@ -112,17 +115,17 @@ function check(val, value) {
 $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
     $('#'+lastGenre).css('backgroundColor','brown');
-    var genre;
-    var stmt;
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
     $('#'+genre+'clickedGenre').css('backgroundColor','#003153')
     lastGenre = genre+'clickedGenre';
     $('#listOfMovies').empty();
-    stmt = '';
-
-    jQuery.each(mapOfGenres[genre], function (index
+    divCreation(mapOfGenres[genre]);
+});
+    function divCreation(data){
+        var stmt='';
+    jQuery.each(data, function(index
         , value) {
         stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
             '<div>' +
@@ -141,7 +144,7 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     });
     $('#listOfMovies').append(stmt);
 
-});
+}
 function averageStar(value) {
     var stmt = "<td>";
     for (var i = 0; i < value; i++) {
@@ -150,4 +153,32 @@ function averageStar(value) {
     stmt += '</td>';
     return stmt;
 }
-
+$(window).scroll(function() { //detect page scroll
+    if($(window).scrollTop() + $(window).height() >= $(document).height()) { //if user scrolled to bottom of the page
+        track_page++; //page number increment
+        load_contents(track_page); //load content
+    }
+});
+function load_contents(track_page) {
+    if (loading == false) {
+        loading = true;  //set loading flag on
+        $('.loading-info').show(); //show loading animation
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            async: false,
+            url: "getMoreMovies?track_page="+track_page+"&genre="+genre,
+            success: function (data) {
+                loading = false; //set loading flag off once the content is loaded
+                divCreation(data["Payload"]);
+                $('.loading-info').hide(); //hide loading animation once data is received//app
+                loading == false;
+            }, error: function (data, status) {
+                if(data["message"]!=null){
+                        $(".noMoreRecords").append(data["message"])
+                }
+                loading == false;
+            }
+        });
+    }
+}

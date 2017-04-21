@@ -57,7 +57,7 @@
             font-size: 20px;
             unicode-bidi: bidi-override;
             padding: 10px 30px;
-            display: inline-block;
+            display: inline-block;top
         }
 
         .user-rating input {
@@ -132,6 +132,8 @@
         <div class="row">
             <div id="listOfMovies"></div>
         </div>
+        <div class="loading-info"><img src="resources/background/loading.svg" /></div>
+        <div class="noMoreRecords"></div>
     </section>
 
     <jsp:include page="layout/footer.jsp"/>

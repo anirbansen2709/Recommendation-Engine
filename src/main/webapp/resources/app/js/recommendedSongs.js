@@ -1,10 +1,13 @@
 /**
  * Created by Debashish Sen on 20-Mar-17.
  */
+var loading=false;
+var track_page=1;
+var genre;
 var lastGenre;
 var mapOfGenres={};
 $(document).ready(function () {
-
+    $('.loading-info').hide();
     $('#listOfMovies').empty();
     recommendedMovies();
 
@@ -110,18 +113,18 @@ function check(val, value) {
 $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
     $('#'+lastGenre).css('backgroundColor','brown');
-    var genre;
-    var stmt;
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
     $('#'+genre+'clickedGenre').css('backgroundColor','#003153')
     lastGenre = genre+'clickedGenre';
     $('#listOfMovies').empty();
-    stmt = '';
+    divCreation(mapOfGenres[genre]);
+});
 
-    jQuery.each(mapOfGenres[genre], function (index
-        , value) {
+function divCreation(data){
+    var stmt='';
+    jQuery.each(mapOfGenres[genre], function (index, value) {
         stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
             '<div>' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+
@@ -138,8 +141,7 @@ $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
             '</div>'
     });
     $('#listOfMovies').append(stmt);
-
-});
+}
 function averageStar(value) {
     var stmt = "<td>";
     for (var i = 0; i < value; i++) {
@@ -149,3 +151,32 @@ function averageStar(value) {
     return stmt;
 }
 
+$(window).scroll(function() { //detect page scroll
+    if($(window).scrollTop() + $(window).height() >= $(document).height()) { //if user scrolled to bottom of the page
+        track_page++; //page number increment
+        load_contents(track_page); //load content
+    }
+});
+function load_contents(track_page) {
+    if (loading == false) {
+        loading = true;  //set loading flag on
+        $('.loading-info').show(); //show loading animation
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            async: false,
+            url: "getMoreRecommendation?track_page="+track_page+"&genre="+genre,
+            success: function (data) {
+                loading = false; //set loading flag off once the content is loaded
+                divCreation(data["Payload"]);
+                $('.loading-info').hide(); //hide loading animation once data is received//app
+                loading == false;
+            }, error: function (data, status) {
+                if(data["message"]!=null){
+                    $(".noMoreRecords").append(data["message"])
+                }
+                loading == false;
+            }
+        });
+    }
+}
