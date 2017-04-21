@@ -118,7 +118,7 @@
             <b>Recommended Movies</b></div>
           <div class="panel-body" style="height: 180px; background-color: powderblue;">
             <div class="container">
-              <div class="row" id="topXRatedSongs">
+              <div class="row" id="topXRatedMovies">
               </div>
             </div>
           </div>
@@ -233,6 +233,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%--JS file for inserting user--%>
 <script type="text/javascript" src="resources/slick/slick.js"></script>
-<script src="resources/app/js/recommendedSongs
-.js"></script>
+<script src="resources/app/js/recommendedMovies.js"></script>
 </html>

@@ -18,16 +18,16 @@ public class RatingHandler {
     }
     public static void main(String[] args) {
         RatingHandler ratingHandler = RatingHandler.instanceRatingHandler();
-        List<SongsModel> listOfSongs = ratingHandler.getSongsWithAverageRatings();
+        List<MoviesModel> listOfMovies = ratingHandler.getMoviesWithAverageRatings();
         int i=0;
     }
-    public List<SongsModel> getSongsWithAverageRatings() {
-        return ratingServices.getSongsWithAverageRatings();
+    public List<MoviesModel> getMoviesWithAverageRatings() {
+        return ratingServices.getMoviesWithAverageRatings();
 
     }
 
-    public  void saveRatings(Map<Integer,Integer> mapOfSongs)throws Exception{
-        ratingServices.saveRatings(mapOfSongs);
+    public  void saveRatings(Map<Integer,Integer> mapOfMovies)throws Exception{
+        ratingServices.saveRatings(mapOfMovies);
     }
     public List<RatingModel> getHistory(){
         return ratingServices.getHistory();
@@ -43,11 +43,11 @@ public class RatingHandler {
     {
         return ratingServices.getUserDetails(movieName);
     }
-    public List<SongsModel> getMoviesDetails(Integer movieRating)throws Exception {
+    public List<MoviesModel> getMoviesDetails(Integer movieRating)throws Exception {
 
         return ratingServices.getMoviesDetails(movieRating);
     }
-      public List<SongsModel> getGenresDetails(String genre)throws Exception {
+      public List<MoviesModel> getGenresDetails(String genre)throws Exception {
 
          return ratingServices.getGenresDetails(genre);
       }

@@ -20,14 +20,14 @@ function recommendedMovies() {
         dataType: "json",
         url: "getMoviesRecommendation",
         success: function (data) {
-            loadSongsWithGenre(data);
+            loadMoviesWithGenre(data);
             $('#loadingModal').modal('hide');
 
         }, error: function (data, status) {
         }
     });
 }
-function loadSongsWithGenre(data) {
+function loadMoviesWithGenre(data) {
     var stmt = '';
     var genre = '';
 
@@ -46,8 +46,8 @@ function loadSongsWithGenre(data) {
     });
 
 
-    $('#topXRatedSongs').append(stmt);
-    $('#topXRatedSongs').slick({
+    $('#topXRatedMovies').append(stmt);
+    $('#topXRatedMovies').slick({
         dots: false,
 
         //autoplay: true,
@@ -110,7 +110,7 @@ function check(val, value) {
     }
 }
 
-$('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
+$('#topXRatedMovies').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
     $('#'+lastGenre).css('backgroundColor','brown');
     var count=0;

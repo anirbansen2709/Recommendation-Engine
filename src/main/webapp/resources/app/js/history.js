@@ -3,7 +3,7 @@
  */
 var tableRow;
 var table;
-var mapOfSongs = {};
+var mapOfMovies = {};
 var responsiveHelper_datatable_tabletools = undefined;
 var ifUserSelectedFlag = false;
 var breakpointDefinition = {
@@ -11,16 +11,16 @@ var breakpointDefinition = {
     phone: 480
 };
 $(document).ready(function () {
-    listRatedSongs();
+    listRatedMovies();
 
 });
 
-function listRatedSongs() {
+function listRatedMovies() {
     $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "listRatedSongs",
+        url: "listRatedMovies",
         success: function (data) {
             loadTable(data);
             $('#loadingModal').modal('hide');

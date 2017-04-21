@@ -28,9 +28,9 @@
         <!-- END user info-->
         <!-- Iterates over all sidebar items-->
         <li class=" ">
-          <a href="rateSongs" title="Rate Songs">
+          <a href="rateMovies" title="Rate Movies">
             <em class="icon-chemistry"></em>
-            <span data-localize="">Rate Songs</span>
+            <span data-localize="">Rate Movies</span>
           </a>
         </li>
         <li class=" ">
@@ -46,9 +46,9 @@
           </a>
         </li>
         <li class=" ">
-          <a href="recommendedSongs" title="Recommended">
+          <a href="recommendedMovies" title="Recommended">
             <em class="fa fa-music"></em>
-            <span>Recommended Songs</span>
+            <span>Recommended Movies</span>
           </a>
         </li>
         <li class=" ">

@@ -2,25 +2,25 @@
  * Created by Kumar on 16-Mar-17.
  */
 $(document).ready(function () {
-    topRatedSongs();
-    recommendedSongs();
+    topRatedMovies();
+    recommendedMovies();
     $('#loadingModal').modal('show');
-    $.when(topRatedSongs(),recommendedSongs())
+    $.when(topRatedMovies(),recommendedMovies())
         .done(function (a1, a2) {
             loadData(a1[0]);
-            loadRecommendedSongs(a2[0]);
+            loadRecommendedMovies(a2[0]);
             $('#loadingModal').modal('hide');
         })
 });
 var i = 1;
-function topRatedSongs() {
+function topRatedMovies() {
     return $.ajax({
         type: "GET",
-        url: "getSongsWithAverageRatings",
+        url: "getMoviesWithAverageRatings",
         dataType: "json"
     });
 }
-function recommendedSongs() {
+function recommendedMovies() {
     return $.ajax({
         type: "GET",
         url: "getRecommendation",
@@ -45,9 +45,9 @@ function loadData(data) {
     });
 
 
-    $('#topXRatedSongs').append(stmt);
+    $('#topXRatedMovies').append(stmt);
 
-    $('#topXRatedSongs').slick({
+    $('#topXRatedMovies').slick({
         dots: false,
 
         //autoplay: true,
@@ -103,7 +103,7 @@ function loadData(data) {
     });
 }
 
-function loadRecommendedSongs(data) {
+function loadRecommendedMovies(data) {
     var stmt = '';
     jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 8px;">' +
@@ -119,8 +119,8 @@ function loadRecommendedSongs(data) {
             '</div>';
     });
 
-    $('#recommendedSongs').append(stmt);
-    $('#recommendedSongs').slick({
+    $('#recommendedMovies').append(stmt);
+    $('#recommendedMovies').slick({
         dots: false,
 
         //autoplay: true,

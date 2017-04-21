@@ -1,6 +1,6 @@
 var tableRow;
 var table;
-var mapOfSongs = {};
+var mapOfMovies = {};
 var responsiveHelper_datatable_tabletools = undefined;
 var ifUserSelectedFlag = false;
 var breakpointDefinition = {
@@ -9,9 +9,7 @@ var breakpointDefinition = {
 };
 
 $(document).ready(function () {
-    //listAllSongs();
-    //saveRatings();
-    listAllSongsWithRatings();
+    listAllMoviesWithRatings();
 });
 
 function saveRatings() {
@@ -21,27 +19,14 @@ function saveRatings() {
     });
 }
 
-//function listAllSongs() {
-//    $('#loadingModal').modal('show');
-//    $.ajax({
-//        type: "GET",
-//        dataType: "json",
-//        url: "getSongsWithAverageRatings",
-//        success: function (data) {
-//            loadTable(data);
-//            $('#loadingModal').modal('hide');
-//
-//        }, error: function (data, status) {
-//        }
-//    });
-//}
 
-function listAllSongsWithRatings() {
+
+function listAllMoviesWithRatings() {
     $('#loadingModal').modal('show');
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "getAllSongsWithRatings",
+        url: "getAllMoviesWithRatings",
         success: function (data) {
             loadTable(data);
             $('#loadingModal').modal('hide');
@@ -53,7 +38,7 @@ function listAllSongsWithRatings() {
 
 function loadTable(data) {
     if (data['returnCode'] == '200') {
-        var songTable = $('#songs_table').DataTable({
+        var movieTable = $('#movies_table').DataTable({
             "bLengthChange": false,
             "pageLength": 7,
             "columnDefs": [
@@ -72,7 +57,7 @@ function loadTable(data) {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper_datatable_tabletools) {
                     responsiveHelper_datatable_tabletools =
-                        new ResponsiveDatatablesHelper($('#songs_table'), breakpointDefinition);
+                        new ResponsiveDatatablesHelper($('#movies_table'), breakpointDefinition);
                 }
             },
             "rowCallback": function (nRow) {
@@ -83,7 +68,7 @@ function loadTable(data) {
             }
         });
 
-        songTable.clear();
+        movieTable.clear();
 
         jQuery.each(data['Payload'], function (index, value) {
             var r = [];
@@ -96,11 +81,11 @@ function loadTable(data) {
 
 
 
-            songTable.row.add(r);
+            movieTable.row.add(r);
 
         });
 
-        songTable.draw();
+        movieTable.draw();
     } else {
         showToastr(data['message'], 'Error', 'error');
     }
@@ -135,11 +120,11 @@ function userStar(movieId) {
         "</form> </div> </span> ";
     return stmt;
 }
-$("#songs_table").on('click', 'input[name=user-ratings]', function (e) {
+$("#movies_table").on('click', 'input[name=user-ratings]', function (e) {
     var value = $(this).val();
     var movieId = value.split('~')[0];
     var rating = value.split('~')[1];
-    mapOfSongs[movieId] = rating;
+    mapOfMovies[movieId] = rating;
     ifUserSelectedFlag = true;
 
 })
@@ -154,7 +139,7 @@ $("#saveRatings").click(function (e) {
                 'Content-Type': 'application/json'
             },
             url: "saveRatings",
-            data: JSON.stringify(mapOfSongs),
+            data: JSON.stringify(mapOfMovies),
             dataType: "json",
             success: function (data, status) {
                 if (data['returnCode'] == '200') {
@@ -186,7 +171,7 @@ $('#redirect-btn').click(function(){
 });
 
 $('#success-close').click(function(){
-    window.location.replace("rateSongs");
+    window.location.replace("rateMovies");
 });
 
 
