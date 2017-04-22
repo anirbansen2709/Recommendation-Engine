@@ -116,7 +116,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
             <b>Recommended Movies</b></div>
-          <div class="panel-body" style="height: 180px; background-color: powderblue;">
+          <div class="panel-body" style="height: 210px; padding:0px;background-color: powderblue;">
             <div class="container">
               <div class="row" id="topXRatedSongs">
               </div>

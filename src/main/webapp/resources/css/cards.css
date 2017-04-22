@@ -19,3 +19,7 @@ object{
     background-color: #fffafa;
     font-weight: bold;
 }
+.genre{
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

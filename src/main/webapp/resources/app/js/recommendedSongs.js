@@ -34,10 +34,11 @@ function loadSongsWithGenre(data) {
     jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
             '<div class="widget bg-red">'+
-            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="background-color: brown;color: white ;border-radius: 25px">'+
-            '<div class="col-xs-8 pv-lg">'+
-            '<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
-            '</div>'+
+            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="color: white ; padding-top: 15px;">'+
+            '<img src="resources/genres/'+value["key"]+'.jpg" class="img-responsive genre" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
+                //'<div class="col-xs-8 pv-lg">'+
+                //'<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
+                //'</div>'+
             '</div>'+
             '</div>'+
             '</div>';
@@ -112,19 +113,19 @@ function check(val, value) {
 
 $('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
-    $('#'+lastGenre).css('backgroundColor','brown');
+    $('#'+lastGenre).css('backgroundColor','powderblue');
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
-    $('#'+genre+'clickedGenre').css('backgroundColor','#003153')
-    lastGenre = genre+'clickedGenre';
+    $('#'+genre).css('backgroundColor','#003153')
+    lastGenre = genre;
     $('#listOfMovies').empty();
     divCreation(mapOfGenres[genre]);
 });
 
 function divCreation(data){
     var stmt='';
-    jQuery.each(mapOfGenres[genre], function (index, value) {
+    jQuery.each(data, function (index, value) {
         stmt+='<div id= '+value["name"]+' style="margin-bottom: 50px !important;" class="col-sm-2">'+
             '<div>' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304px" height="236px" style="max-width: 100%; height: 170px;" type="image/jpg">'+

@@ -42,15 +42,7 @@
     <%--<%@ include file="./uiFrame.jsp" %>--%>
 
     <style>
-        /*.content-wrapper > h3, /!* .content-wrapper > .content-heading*!/*/
-        /*{*/
-            /*margin-bottom: 4px;*/
-            /*padding: 4px;*/
-        /*}*/
 
-        /*.wrapper > section {*/
-            /*top: -20px;*/
-        /*}*/
 
         .user-rating {
             direction: rtl;
@@ -117,7 +109,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
                         <b>Top Rated Songs</b></div>
-                    <div class="panel-body" style="height: 180px; background-color: powderblue;">
+                    <div class="panel-body" style="height: 210px; padding:0px;background-color: powderblue;">
                         <div class="container">
                             <div class="row" id="topXRatedSongs">
                             </div>
@@ -132,7 +124,7 @@
         <div class="row">
             <div id="listOfMovies"></div>
         </div>
-        <div class="loading-info"><img src="resources/background/loading.svg" /></div>
+        <div class="loading-info" align="center"><img src="resources/background/loading.svg" /></div>
         <div class="noMoreRecords"></div>
     </section>
 
