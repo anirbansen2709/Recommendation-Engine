@@ -18,28 +18,28 @@ function topRatedMovies() {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "getSongsWithGenres",
+            url: "getMoviesWithGenres",
             success: function (data) {
-                loadSongsWithGenre(data);
+                loadMoviesWithGenre(data);
                 $('#loadingModal').modal('hide');
 
             }, error: function (data, status) {
             }
         });
  }
-function loadSongsWithGenre(data) {
+function loadMoviesWithGenre(data) {
     var stmt = '';
     var genre = '';
 
     jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
-            '<div class="widget bg-red">'+
-            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="color: white ; padding-top: 15px;">'+
+
+            '<div class="row row-table clickedGenre widget bg-red" id ="'+value["key"]+'clickedGenre" style="color: white ; padding-top: 15px;padding-left: 15px;">'+
             '<img src="resources/genres/'+value["key"]+'.jpg" class="img-responsive genre" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             //'<div class="col-xs-8 pv-lg">'+
             //'<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
             //'</div>'+
-            '</div>'+
+
             '</div>'+
             '</div>';
                mapOfGenres[value["key"]] = value["value"]
@@ -47,8 +47,8 @@ function loadSongsWithGenre(data) {
     });
 
 
-    $('#topXRatedSongs').append(stmt);
-    $('#topXRatedSongs').slick({
+    $('#topXRatedMovies').append(stmt);
+    $('#topXRatedMovies').slick({
         dots: false,
 
         //autoplay: true,
@@ -113,7 +113,7 @@ function check(val, value) {
 //function displayMovies(mapOfGenres) {
 //    console.log(mapOfGenres)
 //    }
-$('#topXRatedSongs').on('click','.criteriaBasedClick', function() {
+$('#topXRatedMovies').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
     $('#'+lastGenre).css('backgroundColor','powderblue');
     var count=0;

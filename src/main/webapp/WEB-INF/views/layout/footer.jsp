@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <center>
-            <span>&copy; Music Recommendation, 2017. All Rights Reserved.</span>
+            <span>&copy; Movie Recommendation, 2017. All Rights Reserved.</span>
         </center>
         <%--<a target="_blank" href="http://www.gammanalytics.com "> http://www.gammanalytics.com </a></span>--%>
       </div>
