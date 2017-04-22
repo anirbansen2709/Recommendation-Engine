@@ -183,9 +183,9 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="rateSongs" title="Rate Songs">
+                        <a href="rateMovies" title="Rate Movies">
                             <em class="icon-chemistry"></em>
-                            <span data-localize="">Rate Songs</span>
+                            <span data-localize="">Rate Movies</span>
                         </a>
                     </li>
                     <li class=" ">

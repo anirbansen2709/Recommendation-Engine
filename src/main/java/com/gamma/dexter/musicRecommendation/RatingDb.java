@@ -21,7 +21,7 @@ public class RatingDb {
     static final String USER = "root";
     static final String PASS = "root";
     private static RatingDb instance = null;
-    private static List<SongsModel> songsDetails;
+    private static List<MoviesModel> moviesDetails;
 
     public static RatingDb getInstance() {
 
@@ -38,7 +38,7 @@ public class RatingDb {
         int i = 0;
     }
 
-    public void saveRatings(Map<Integer, Integer> mapOfSongs) {
+    public void saveRatings(Map<Integer, Integer> mapOfMovies) {
         try {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             Class.forName(JDBC_DRIVER);
@@ -46,7 +46,7 @@ public class RatingDb {
             //check for existing movieID and UserID combination and remove the same
             String query1 = "DELETE from ratings where userId=? and movieId=?";
             PreparedStatement stmt1 = con.prepareStatement(query1);
-            for (Map.Entry<Integer, Integer> entry : mapOfSongs.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : mapOfMovies.entrySet()) {
                 stmt1.setInt(1, 0);
                 stmt1.setInt(2, entry.getKey());
                 stmt1.addBatch();
@@ -59,7 +59,7 @@ public class RatingDb {
             Connection con1 = DriverManager.getConnection(DB_URL, USER, PASS);
             String query = "insert into ratings values (?, ?, ?, ?)";
             PreparedStatement stmt = con1.prepareStatement(query);
-            for (Map.Entry<Integer, Integer> entry : mapOfSongs.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : mapOfMovies.entrySet()) {
                 stmt.setInt(1, 0);
                 stmt.setInt(2, entry.getKey());
                 stmt.setFloat(3, entry.getValue());
@@ -74,15 +74,15 @@ public class RatingDb {
         }
     }
 
-    public List<SongsModel> getSongsWithAverageRatingsFromMemory() {
-        if (songsDetails == null) {
-            songsDetails = getSongsWithAverageRatings();
+    public List<MoviesModel> getMoviesWithAverageRatingsFromMemory() {
+        if (moviesDetails == null) {
+            moviesDetails = getMoviesWithAverageRatings();
         }
-        return songsDetails;
+        return moviesDetails;
     }
 
-    public List<SongsModel> getSongsWithAverageRatings() {
-        List<SongsModel> listOfSongs = new ArrayList<SongsModel>();
+    public List<MoviesModel> getMoviesWithAverageRatings() {
+        List<MoviesModel> listOfMovies = new ArrayList<MoviesModel>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -98,13 +98,13 @@ public class RatingDb {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
 
-                SongsModel songsModel = new SongsModel();
-                songsModel.setNoOfUsers(rs.getInt("noOfUsers"));
-                songsModel.setName(rs.getString("title"));
-                songsModel.setAvgRating((int) rs.getFloat("averageRatings"));
-                songsModel.setMovieId(rs.getInt("movieId"));
-                songsModel.setGenres(rs.getString("genres").replace("\r", ""));
-                listOfSongs.add(songsModel);
+                MoviesModel moviesModel = new MoviesModel();
+                moviesModel.setNoOfUsers(rs.getInt("noOfUsers"));
+                moviesModel.setName(rs.getString("title"));
+                moviesModel.setAvgRating((int) rs.getFloat("averageRatings"));
+                moviesModel.setMovieId(rs.getInt("movieId"));
+                moviesModel.setGenres(rs.getString("genres").replace("\r", ""));
+                listOfMovies.add(moviesModel);
             }
             rs.close();
             stmt.close();
@@ -112,7 +112,7 @@ public class RatingDb {
         } catch (Exception e) {
             System.out.println("createStatementError in getUsers()" + e);
         }
-        return listOfSongs;
+        return listOfMovies;
 
     }
 
@@ -215,7 +215,7 @@ public class RatingDb {
     }
 
     public static Map<String, Float> getTopMoviesChart() {
-        Map<String, Float> topRatedSongs = new HashMap<>();
+        Map<String, Float> topRatedMovies = new HashMap<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -227,14 +227,14 @@ public class RatingDb {
             while (rs.next()) {
 //            int i= rs.getInt("averageRatings");
 //                String s= rs.getString("name");
-                topRatedSongs.put(rs.getString("name"), rs.getFloat("averageRatings"));
+                topRatedMovies.put(rs.getString("name"), rs.getFloat("averageRatings"));
             }
             con.close();
         } catch (Exception e) {
 
             System.out.println("createStatementError in getUsers()" + e);
         }
-        return topRatedSongs;
+        return topRatedMovies;
     }
 
     public static Map<Float, Integer> getRatingWithCount() {
@@ -298,9 +298,9 @@ public class RatingDb {
     }
 
 //*************Second Chart******************//
-    public List<SongsModel> getMoviesDetails(Integer movieRating) {
+    public List<MoviesModel> getMoviesDetails(Integer movieRating) {
 
-        List<SongsModel> listOfMovies= new ArrayList<>();
+        List<MoviesModel> listOfMovies= new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -313,13 +313,13 @@ public class RatingDb {
 
             while (resultSet.next()) {
 
-                SongsModel songsModel = new SongsModel();
-                songsModel.setMovieId(resultSet.getInt("movieId"));
-                songsModel.setName(resultSet.getString("title"));
-                songsModel.setNoOfUsers(resultSet.getInt("noOfUsers"));
-                songsModel.setGenres(resultSet.getString("genres"));
+                MoviesModel moviesmodel = new MoviesModel();
+                 moviesmodel.setMovieId(resultSet.getInt("movieId"));
+                 moviesmodel.setName(resultSet.getString("title"));
+                 moviesmodel.setNoOfUsers(resultSet.getInt("noOfUsers"));
+                 moviesmodel.setGenres(resultSet.getString("genres"));
 
-                listOfMovies.add(songsModel);
+                listOfMovies.add( moviesmodel);
             }
             resultSet.close();
             stmt.close();
@@ -332,8 +332,8 @@ public class RatingDb {
     }
 //*****************************Third Chart******************************
 
-    public List<SongsModel> getGenresDetails(String genre) {
-        List<SongsModel> listOfMoviesWithGenre= new ArrayList<>();
+    public List<MoviesModel> getGenresDetails(String genre) {
+        List<MoviesModel> listOfMoviesWithGenre= new ArrayList<>();
         try {
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -343,11 +343,11 @@ public class RatingDb {
                     "where m.movieId = r.movieId and m.genres LIKE  '%"+genre+"%' group by m.title;";
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
-                SongsModel songsModel = new SongsModel();
-                songsModel.setMovieId(resultSet.getInt("movieId"));
-                songsModel.setName(resultSet.getString("title"));
-                songsModel.setAvgRating((int) resultSet.getFloat("rating"));
-                listOfMoviesWithGenre.add(songsModel);
+                MoviesModel moviesModel = new MoviesModel();
+                moviesModel.setMovieId(resultSet.getInt("movieId"));
+                moviesModel.setName(resultSet.getString("title"));
+                moviesModel.setAvgRating((int) resultSet.getFloat("rating"));
+                listOfMoviesWithGenre.add(moviesModel);
             }
             resultSet.close();
             stmt.close();

@@ -18,17 +18,17 @@ public class RatingServices {
     }
     public static void main(String[] args) {
         RatingServices ratingServices = RatingServices.instanceRatingServices();
-        List<SongsModel> listOfSongs = ratingServices.getSongsWithAverageRatings();
+        List<MoviesModel> listOfMovies = ratingServices.getMoviesWithAverageRatings();
         int i=0;
     }
-    public List<SongsModel> getSongsWithAverageRatings() {
-        return ratingDb.getSongsWithAverageRatingsFromMemory();
+    public List<MoviesModel> getMoviesWithAverageRatings() {
+        return ratingDb.getMoviesWithAverageRatingsFromMemory();
     }
 
-    public  void saveRatings(Map<Integer,Integer> mapOfSongs) throws Exception{
-        ratingDb.saveRatings(mapOfSongs);
+    public  void saveRatings(Map<Integer,Integer> mapOfMovies) throws Exception{
+        ratingDb.saveRatings(mapOfMovies);
         HttpUtil httpUtil = new HttpUtil();
-        httpUtil.sendRatings(mapOfSongs);
+        httpUtil.sendRatings(mapOfMovies);
     }
     public List<RatingModel> getHistory(){
         return ratingDb.getHistory();
@@ -46,11 +46,11 @@ public class RatingServices {
         return ratingDb.getUserDetails(movieName);
     }
 
-    public List<SongsModel> getMoviesDetails(Integer movieRating)throws Exception
+    public List<MoviesModel> getMoviesDetails(Integer movieRating)throws Exception
     {
         return ratingDb.getMoviesDetails(movieRating);
     }
-      public List<SongsModel> getGenresDetails(String genre)throws Exception
+      public List<MoviesModel> getGenresDetails(String genre)throws Exception
       {
           return ratingDb.getGenresDetails(genre);
       }

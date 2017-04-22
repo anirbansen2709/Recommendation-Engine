@@ -1,6 +1,6 @@
 var tableRow;
 var table;
-var mapOfSongs = {};
+var mapOfMovies = {};
 var responsiveHelper_datatable_tabletools1 = undefined;
 var responsiveHelper_datatable_tabletools2 = undefined;
 var responsiveHelper_datatable_tabletools3 = undefined;
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "Get",
-        url: "topRatedSongsChart",
+        url: "topRatedMoviesChart",
         success: function (response) {
             response = jQuery.parseJSON(response);
             var chartChart = {

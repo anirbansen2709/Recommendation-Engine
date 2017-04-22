@@ -82,9 +82,9 @@ public class
     }
 
 
-    @RequestMapping(value = "rateSongs", method = RequestMethod.GET)
-    private String rateSongs(){
-        return "rateSongs";
+    @RequestMapping(value = "rateMovies", method = RequestMethod.GET)
+    private String rateMovies(){
+        return "rateMovies";
     }
 
     @RequestMapping(value = "dashboard", method = RequestMethod.GET)
@@ -104,8 +104,8 @@ public class
         return "analytics";
     }
 
-    @RequestMapping(value = "recommendedSongs", method = RequestMethod.GET)
-    private String recommendedSongs(){return "recommendedSongs";
+    @RequestMapping(value = "recommendedMovies", method = RequestMethod.GET)
+    private String recommendedMovies(){return "recommendedMovies";
     }
 
     @RequestMapping(value = "button", method = RequestMethod.GET)

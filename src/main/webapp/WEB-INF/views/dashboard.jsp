@@ -119,7 +119,7 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Top Rated Songs</b>
+                        <b>Top Rated Movies</b>
                         <button class="btn btn-primary viewmorebtn1"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
 
                             <b> <a href="./topRatedMovies" style="color: whitesmoke">View More >>></a></b>
@@ -129,7 +129,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="container">
-                            <div class="row" id="topXRatedSongs">
+                            <div class="row" id="topXRatedMovies">
                             </div>
 
                         </div>
@@ -143,16 +143,16 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Recommended Songs</b>
+                        <b>Recommended Movies</b>
                     <button class="btn btn-primary viewmorebtn2"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
 
-                        <b> <a href="./recommendedSongs" style="color: whitesmoke">View More >>></a></b>
+                        <b> <a href="./recommendedMovies" style="color: whitesmoke">View More >>></a></b>
 
                         </button>
                     </div>
                     <div class="panel-body" >
                         <div class="container">
-                            <div class="row" id="recommendedSongs">
+                            <div class="row" id="recommendedMovies">
                             </div>
 
 

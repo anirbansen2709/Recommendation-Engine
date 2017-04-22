@@ -113,11 +113,11 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
-                        <b>Rate Songs</b></div>
+                        <b>Rate Movies</b></div>
                     <div class="panel-body">
                         <form role="form" class="form-inline" id="formid">
                             <div class="fixedscroll">
-                                <table class="table table-bordered table-striped table-hover" id="songs_table">
+                                <table class="table table-bordered table-striped table-hover" id="movies_table">
                                     <thead>
                                     <tr>
                                         <th style="width: 5%; text-align: center; background-color: #007BA7; color: white;">Movie Id
@@ -253,6 +253,6 @@
 
 <%--JS file for inserting user--%>
 <%--<script type="text/javascript" src="resources/slick/slick.js"></script>--%>
-<script src="./resources/app/js/rateSongs.js"></script>
+<script src="./resources/app/js/rateMovies.js"></script>
 
 </html>
