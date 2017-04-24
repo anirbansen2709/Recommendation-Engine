@@ -1,7 +1,7 @@
 
 <footer id="footer" style="background-color: #003153 !important; color: white; height: 0 !important;">
   <%--<span>@MAHAAN:2016</span>--%>
-  <div class="page-footer"  style="margin-top: -6px;;">
+  <div class="page-footer"  style="margin-top: -9px;;">
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <center>

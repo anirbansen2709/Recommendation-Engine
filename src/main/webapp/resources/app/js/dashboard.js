@@ -115,6 +115,7 @@ function loadRecommendedMovies(data) {
             '<div class="col-md-6 col-sm-6">' +
             'Name: <span>' + value["title"] + '</span><br><br>' +
             'Average Rating: <span>' + value["average"] + '</span><br><br>' +
+            '<span>' + averageStar(value["average"]) + '</span>' +
             '</div>' +
             '</div>';
     });
@@ -194,6 +195,7 @@ function loadRecommendedMovies(data) {
 
     return stmt;
 }
+
 function check(val, value) {
     if (val == value) {
         return 'checked';
