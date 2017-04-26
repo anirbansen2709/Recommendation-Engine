@@ -168,8 +168,10 @@ public class RatingDb {
                 recommendationModel.setGenres(rs.getString("genres"));
                 recommendationModel.setMovieId(rs.getInt("movieId"));
                 recommendationModel.setTitle(rs.getString("title"));
-                recommendationModel.setAverage(rs.getFloat("average"));
+                recommendationModel.setAverage((int)rs.getFloat("average"));
                 recommendationModel.setUserId(rs.getInt("userId"));
+//                recommendationModel.setAverage((int) rs.getFloat("averageRatings"));
+//                recommendationModel.setPrediction(rs.getFloat("prediction"));
                 listOfRecommendation.add(recommendationModel);
             }
             return listOfRecommendation;
@@ -198,6 +200,7 @@ public class RatingDb {
                 preparedStatement.setString(3, objectInArray.getString("title"));
                 preparedStatement.setInt(4, objectInArray.getInt("userId"));
                 preparedStatement.setFloat(5, objectInArray.getInt("average"));
+                preparedStatement.setFloat(6,objectInArray.getInt("averageRating"));
                 preparedStatement.setInt(6, rank);
                 preparedStatement.addBatch();
             }

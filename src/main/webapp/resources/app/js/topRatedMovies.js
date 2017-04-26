@@ -115,11 +115,15 @@ function check(val, value) {
 //    }
 $('#topXRatedMovies').on('click','.criteriaBasedClick', function() {
     //$('.clickedGenre').css('backgroundColor','brown');
-    $('#'+lastGenre).css('backgroundColor','powderblue');
+    $('#'+lastGenre+"clickedGenre").css('border','none');
     var count=0;
     console.log(mapOfGenres);
     genre = $(this).attr('id');
-    $('#'+genre).css('backgroundColor','#003153')
+    $('#'+genre+"clickedGenre").css({
+        "border-bottom-color": "#98bf21",
+        "border-bottom-style": "inset",
+        "border-bottom-width": "thick",
+    });
     lastGenre = genre;
     $('#listOfMovies').empty();
     divCreation(mapOfGenres[genre]);
