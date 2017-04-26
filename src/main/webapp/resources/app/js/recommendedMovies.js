@@ -136,7 +136,6 @@ function divCreation(data){
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             '</object>'+
             '</div>'+
-
             '<div class= "card-name" style=" height: 50px; min-height: 50px;text-align: center">' +
             '<span>' + value["title"]  + '</span><br>' +
             '</div>'+
@@ -162,6 +161,7 @@ $(window).scroll(function() { //detect page scroll
         load_contents(track_page); //load content
     }
 });
+
 function load_contents(track_page) {
     if (loading == false) {
         loading = true;  //set loading flag on

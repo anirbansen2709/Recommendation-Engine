@@ -150,6 +150,7 @@ $('#topXRatedMovies').on('click','.criteriaBasedClick', function() {
     $('#listOfMovies').append(stmt);
 
 }
+
 function averageStar(value) {
     var stmt = "<td>";
     for (var i = 0; i < value; i++) {
