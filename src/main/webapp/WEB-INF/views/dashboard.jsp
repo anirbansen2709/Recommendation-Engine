@@ -102,6 +102,18 @@
             font-weight: bold;
             font-size: 3em;
         }
+        .genre-size:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            /*transform: rotate scale(1.1);*/
+            -webkit-transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
         button.viewmorebtn1:hover, button.viewmorebtn1:active {font-size: 120%;}
         button.viewmorebtn2:hover, button.viewmorebtn2:active {font-size: 120%;}
 

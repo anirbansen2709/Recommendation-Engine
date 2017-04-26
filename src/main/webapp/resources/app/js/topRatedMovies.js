@@ -34,7 +34,7 @@ function loadMoviesWithGenre(data) {
     jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
 
-            '<div class="row row-table clickedGenre widget bg-red" id ="'+value["key"]+'clickedGenre" style="color: white ; padding-top: 15px;padding-left: 15px;">'+
+            '<div class="row row-table clickedGenre widget bg-red genre-size" id ="'+value["key"]+'clickedGenre" style="color: white ; padding-top: 15px;padding-left: 15px;">'+
             '<img src="resources/genres/'+value["key"]+'.jpg" class="img-responsive genre" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             //'<div class="col-xs-8 pv-lg">'+
             //'<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
