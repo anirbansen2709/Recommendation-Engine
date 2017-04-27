@@ -135,11 +135,13 @@ class MovieRecommendation:
 
 
     def get_top_ratings(self,user_id,movies_count):
-
+        print user_id;
         ratings_df_for_user = self.ratings_df.filter('userId='+str(user_id)+'')
-        print ratings_df_for_user
+        ratings_df_for_user.show(5);
         list_of_movies_row = ratings_df_for_user.select('movieId').collect()
         my_rated_movie_ids = [i.movieId for i in list_of_movies_row]
+        print "my_rated_movies:"
+        print my_rated_movie_ids
         not_rated_df = self.movies_df.filter(~self.movies_df['ID'
         ].isin(my_rated_movie_ids))
 

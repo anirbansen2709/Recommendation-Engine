@@ -198,18 +198,18 @@ public class HttpUtil {
 //        httpUtil.sendRatings(map);
 //        httpUtil.getRecommendation();
     }
-    public JSONObject getRecommendation() throws Exception{
-        String recommendation= HttpUtil.get("http://192.168.1.6:5432/0/ratings/top/5");
+    public JSONObject getRecommendation(int userId) throws Exception{
+        String recommendation= HttpUtil.get("http://127.0.0.1:5432/"+userId+"/ratings/top/5");
         recommendation= recommendation.replaceAll("\\\\","").replaceAll("\"\"","\"");
         JSONObject jsonObject = (JSONObject) JSONWrapper.getJSON("Payload", recommendation);
         return jsonObject;
     }
-    public void sendRatings(Map<Integer,Integer> mapOfRatings) throws Exception{
+    public void sendRatings(Map<Integer,Integer> mapOfRatings,int userId) throws Exception{
         String str="";
         for(Map.Entry<Integer,Integer> entry: mapOfRatings.entrySet()){
             str+=entry.getKey()+","+entry.getValue()+"\n";
         }
-        String t= HttpURLConnectionExample.post("http://192.168.1.6:5432/0/ratings", str);
+        String t= HttpURLConnectionExample.post("http://127.0.0.1:5432/"+userId+"/ratings", str);
         System.out.println(t);
     }
 }

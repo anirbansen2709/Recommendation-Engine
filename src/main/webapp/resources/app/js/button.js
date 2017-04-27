@@ -36,12 +36,12 @@ $("#getRecommendation").click(function (e) {
         dataType: "json",
         url: "getRecommendationButton",
         success: function (data) {
-            $('#animation1').removeClass('display-none');
-            $('#animation2').removeClass('display-none');
+            $('#animation1').hide();
+            $('#animation2').hide();
             //$("#animate").hide();
             //$("#load").hide();
             //$("#getRecommendation").show();
-            $('#getRecommendation').removeClass('display-none');
+            $('#getRecommendation').show();
         }, error: function (data, status) {
         }
     });

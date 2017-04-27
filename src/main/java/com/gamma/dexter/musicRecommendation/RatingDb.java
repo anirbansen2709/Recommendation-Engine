@@ -33,12 +33,12 @@ public class RatingDb {
 
     public static void main(String[] args) throws Exception {
         RatingDb ratingDb = RatingDb.getInstance();
-        List<RecommendationModel> list = ratingDb.getRecommendation();
-        System.out.println(list);
+       // List<RecommendationModel> list = ratingDb.getRecommendation();
+       // System.out.println(list);
         int i = 0;
     }
 
-    public void saveRatings(Map<Integer, Integer> mapOfMovies) {
+    public void saveRatings(Map<Integer, Integer> mapOfMovies,int userId) {
         try {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             Class.forName(JDBC_DRIVER);
@@ -47,7 +47,7 @@ public class RatingDb {
             String query1 = "DELETE from ratings where userId=? and movieId=?";
             PreparedStatement stmt1 = con.prepareStatement(query1);
             for (Map.Entry<Integer, Integer> entry : mapOfMovies.entrySet()) {
-                stmt1.setInt(1, 0);
+                stmt1.setInt(1, userId);
                 stmt1.setInt(2, entry.getKey());
                 stmt1.addBatch();
             }
@@ -60,7 +60,7 @@ public class RatingDb {
             String query = "insert into ratings values (?, ?, ?, ?)";
             PreparedStatement stmt = con1.prepareStatement(query);
             for (Map.Entry<Integer, Integer> entry : mapOfMovies.entrySet()) {
-                stmt.setInt(1, 0);
+                stmt.setInt(1, userId);
                 stmt.setInt(2, entry.getKey());
                 stmt.setFloat(3, entry.getValue());
                 stmt.setString(4, String.valueOf(timestamp.getTime()));
@@ -116,7 +116,7 @@ public class RatingDb {
 
     }
 
-    public List<RatingModel> getHistory() {
+    public List<RatingModel> getHistory(int userId) {
         String time;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         List<RatingModel> listOfRatings = new ArrayList<>();
@@ -125,7 +125,7 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId = 0;";
+            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId ="+userId+";";
             ResultSet resultSet = stmt.executeQuery(sql);
             long time1;
             while (resultSet.next()) {
@@ -152,14 +152,14 @@ public class RatingDb {
         return listOfRatings;
 
     }
-//access recommendation from server
-    public List<RecommendationModel> getRecommendation() throws Exception {
+//access recommendation from table
+    public List<RecommendationModel> getRecommendation(int userId) throws Exception {
         List<RecommendationModel> listOfRecommendation = new ArrayList<>();
         Class.forName(JDBC_DRIVER);
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
         con.setAutoCommit(false);
         Statement stmt = con.createStatement();
-        String query = "select * from recommendation where userId=0";
+        String query = "select * from recommendation where userId="+userId+"";
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
 
@@ -177,15 +177,15 @@ public class RatingDb {
             return listOfRecommendation;
     }
 //python server
-    public void loadRecommendation() {
+    public void loadRecommendation(int userId) {
         try {
             HttpUtil httpUtil = new HttpUtil();
-            JSONObject recommendation = httpUtil.getRecommendation();
+            JSONObject recommendation = httpUtil.getRecommendation(userId);
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
             con.setAutoCommit(false);
-            int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = 0");
+            int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = "+userId+"");
             System.out.println("rows Affected:" + result);
             JSONObject objectInArray;
 

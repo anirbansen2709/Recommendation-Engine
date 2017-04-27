@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserLoginController {
     private static UserLoginHandler userLoginHandler = UserLoginHandler.instanceUserLoginHandler();
-
+    private static UserContext userContext = UserContext.getInstance();
     @RequestMapping(value = "userLogin", method = RequestMethod.POST)
     public
     @ResponseBody
@@ -29,7 +29,7 @@ public class UserLoginController {
                 wrapper.setSuccess(true);
                 int userId=userLoginHandler.getUserId(userLoginModel);
                 HttpSession session=request.getSession();
-                session.setAttribute("userId",userId);
+                userContext.setUserId(userId);
             }
             else{
                 wrapper.setSuccess(false);

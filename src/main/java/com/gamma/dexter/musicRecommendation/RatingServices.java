@@ -9,6 +9,7 @@ import java.util.Map;
 public class RatingServices {
     RatingDb ratingDb = RatingDb.getInstance();
     private static RatingServices instance = null;
+    private static UserContext userContext = UserContext.getInstance();
 
     public static RatingServices instanceRatingServices() {
         if (instance == null) {
@@ -26,20 +27,24 @@ public class RatingServices {
     }
 
     public  void saveRatings(Map<Integer,Integer> mapOfMovies) throws Exception{
-        ratingDb.saveRatings(mapOfMovies);
+        int userId= userContext.getUserId();
+        ratingDb.saveRatings(mapOfMovies,userId);
         HttpUtil httpUtil = new HttpUtil();
-        httpUtil.sendRatings(mapOfMovies);
+        httpUtil.sendRatings(mapOfMovies,userId);
     }
     public List<RatingModel> getHistory(){
-        return ratingDb.getHistory();
+        int userId= userContext.getUserId();
+        return ratingDb.getHistory(userId);
     }
 
 
-    public List<RecommendationModel> getRecommendation ()throws Exception{ return ratingDb.getRecommendation();}
+    public List<RecommendationModel> getRecommendation ()throws Exception{
+        int userId= userContext.getUserId();
+        return ratingDb.getRecommendation(userId);}
 
     public void loadRecommendation() throws Exception
-    {
-        ratingDb.loadRecommendation();
+    {   int userId= userContext.getUserId();
+        ratingDb.loadRecommendation(userId);
     }
     public List<RatingModel> getUserDetails(String movieName)throws Exception
     {
