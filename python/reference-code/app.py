@@ -13,6 +13,7 @@ from flask import Flask, request
  
 @main.route("/<int:user_id>/ratings/top/<int:count>", methods=["GET"])
 def top_ratings(user_id, count):
+    print user_id
     logger.debug("User %s TOP ratings requested", user_id)
     top_ratings = recommendation_engine.get_top_ratings(user_id,count)
     print json.dumps(top_ratings)

@@ -146,19 +146,20 @@ class MovieRecommendation:
         ].isin(my_rated_movie_ids))
 
         # Rename the "ID" column to be "movieId", and add a column with my_user_id as "userId".
+        print my_rated_movie_ids
 
         my_unrated_movies_df = not_rated_df.selectExpr('ID as movieId'
                                                        ).withColumn('userId', F.lit(user_id))
 
         # Use my_rating_model to predict ratings for the movies that I did not manually rate.
-
+        my_unrated_movies_df.show(5)
         raw_predicted_ratings_df = \
             self.my_model.transform(my_unrated_movies_df)
 
         predicted_ratings_df = \
             raw_predicted_ratings_df.filter(raw_predicted_ratings_df['prediction'
                                             ] != float('nan')).withColumnRenamed("movieId", "ID")
-
+        predicted_ratings_df.show(5)
         # Join your predicted_ratings_df DataFrame with the movie_names_with_avg_ratings_df DataFrame to obtain the ratings counts for each movie
 
         predicted_with_counts_df = \

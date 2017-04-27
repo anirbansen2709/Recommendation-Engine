@@ -90,7 +90,7 @@ public class RatingDb {
 
             String sql = " select count(r.userId) as noOfUsers,\n" +
                     "     avg(r.rating) as averageRatings,\n" +
-                    "     r.movieId , m.title, m.genres from ratings r inner join movies m\n" +
+                    "     r.movieId , m.title, m.genres from ratings r, movies m\n" +
                     "    where m.movieId = r.movieId \n" +
                     "     group by r.movieId\n" +
 
@@ -125,7 +125,7 @@ public class RatingDb {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
 
-            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId ="+userId+";";
+            String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId ="+userId+"";
             ResultSet resultSet = stmt.executeQuery(sql);
             long time1;
             while (resultSet.next()) {
@@ -200,7 +200,7 @@ public class RatingDb {
                 preparedStatement.setString(3, objectInArray.getString("title"));
                 preparedStatement.setInt(4, objectInArray.getInt("userId"));
                 preparedStatement.setFloat(5, objectInArray.getInt("average"));
-                preparedStatement.setFloat(6,objectInArray.getInt("averageRating"));
+               // preparedStatement.setFloat(6,objectInArray.getInt("averageRating"));
                 preparedStatement.setInt(6, rank);
                 preparedStatement.addBatch();
             }

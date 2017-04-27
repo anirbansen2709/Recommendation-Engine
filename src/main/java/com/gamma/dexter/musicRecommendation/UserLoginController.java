@@ -44,8 +44,8 @@ public class UserLoginController {
     public String userLogout(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session=request.getSession();
-        int uid=(int)(session.getAttribute("userId"));
-        System.out.println("Session Invalidated for UserId: "+uid);
+      //  int uid=(int)(session.getAttribute("userId"));
+        //System.out.println("Session Invalidated for UserId: "+uid);
         session.invalidate();
 
 

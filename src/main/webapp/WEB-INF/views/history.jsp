@@ -127,10 +127,10 @@
                     <th style="text-align: center;background-color: #007BA7; color: white; width: 25%;">Movie
                       Name
                     </th>
-                    <th style="text-align: center;background-color: #007BA7; color: white; width: 30%;">Genres
+                    <th style="text-align: center;background-color: #007BA7; color: white; width: 20%;">Genres
                     </th>
                     <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">Your Rating</th>
-                    <th style="text-align: center;background-color: #007BA7; color: white;width: 15%;">Timestamp</th>
+                    <th style="text-align: center;background-color: #007BA7; color: white;width: 20%;">Timestamp</th>
                   </tr>
                   </thead>
                   <tbody style="cursor: pointer; padding: 0 !important;"></tbody>
