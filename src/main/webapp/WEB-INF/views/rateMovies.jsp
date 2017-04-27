@@ -97,6 +97,18 @@
             font-weight: bold;
             font-size: 3em;
         }
+
+        .button-size:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            /*transform: rotate scale(1.1);*/
+            -webkit-transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
     </style>
 </head>
 
@@ -135,8 +147,8 @@
                                     </thead>
                                     <tbody style="cursor: pointer; padding: 0 !important;"></tbody>
                                 </table>
-                                <button type="button" class="btn btn-info btn-lg pull-right"
-                                        id="saveRatings">Save
+                                <button type="button" class="btn btn-info btn-lg pull-right button-size"
+                                        id="saveRatings" style="background-color: rgb(0, 123, 167); width:18%; border-radius:0%">Save
                                 </button>
                             </div>
                         </form>

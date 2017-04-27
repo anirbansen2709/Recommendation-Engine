@@ -111,16 +111,18 @@ function userStar(movieId) {
     stmt = "<span><div>" +
         "<form id='user-rating-form'>" +
         "<span class='user-rating'>" +
-        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~5'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~4'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~3'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~2'><span class='star'></span>" +
-        "<input type='radio' name='user-ratings' style='margin-left:3px' value='" + movieId + "~1'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:2px' value='" + movieId + "~5'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:2px' value='" + movieId + "~4'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:2px' value='" + movieId + "~3'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:2px' value='" + movieId + "~2'><span class='star'></span>" +
+        "<input type='radio' name='user-ratings' style='margin-left:2px' value='" + movieId + "~1'><span class='star'></span>" +
         "</span>" +
         "</form> </div> </span> ";
     return stmt;
 }
 $("#movies_table").on('click', 'input[name=user-ratings]', function (e) {
+    $('#saveRatings').css('-webkit-transform', 'scale(1.1)');
+    $('#saveRatings').css('background-color', '#003153');
     var value = $(this).val();
     var movieId = value.split('~')[0];
     var rating = value.split('~')[1];
@@ -151,6 +153,7 @@ $("#saveRatings").click(function (e) {
                     $('#error-close').hide();
                     $('#myModal').modal('show');
                     $('#loadingModal').modal('hide');
+
                 }
                 else {
                 }
@@ -166,6 +169,7 @@ $("#saveRatings").click(function (e) {
 
     }
 });
+
 $('#redirect-btn').click(function(){
     window.location.replace("dashboard");
 });
