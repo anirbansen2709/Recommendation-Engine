@@ -34,7 +34,7 @@ function loadMoviesWithGenre(data) {
     jQuery.each(data['Payload'], function (index, value) {
         stmt += '<div id ="'+value["key"]+'" class="col-xs-6 col-sm-6 col-md-12 col-lg-12 criteriaBasedClick" style="cursor: pointer">'+
             //'<div class="widget bg-red">'+
-            '<div class="row row-table clickedGenre" id ="'+value["key"]+'clickedGenre" style="color: white ; position: absolute;padding-left: 5%;padding-right: 5%; padding-top: 5%;" align="center">'+
+            '<div class="row row-table clickedGenre genre-size" id ="'+value["key"]+'clickedGenre" style="color: white ; position: absolute;padding-left: 5%;padding-right: 5%; padding-top: 5%;" align="center">'+
             '<img src="resources/genres/'+value["key"]+'.jpg" class="img-responsive genre" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
                 //'<div class="col-xs-8 pv-lg">'+
                 //'<div class="text-uppercase" style="font-size: 127%;margin-left: -13px; text-align: center;"><b>'+value.key+'</b></div>'+
@@ -136,7 +136,6 @@ function divCreation(data){
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 100%; height: 170px;"  >' +
             '</object>'+
             '</div>'+
-
             '<div class= "card-name" style=" height: 50px; min-height: 50px;text-align: center">' +
             '<span>' + value["title"]  + '</span><br>' +
             '</div>'+
@@ -162,6 +161,7 @@ $(window).scroll(function() { //detect page scroll
         load_contents(track_page); //load content
     }
 });
+
 function load_contents(track_page) {
     if (loading == false) {
         loading = true;  //set loading flag on
