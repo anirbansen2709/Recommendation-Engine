@@ -1,100 +1,114 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Anirban
+  Date: 14-Apr-17
+  Time: 12:40 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>N View | Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-    <link href="./resources/login/css/style.css" rel='stylesheet' type='text/css'/>
-    <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="./resources/vendor/fontawesome/css/font-awesome.min.css">
-    <!-- =============== BOOTSTRAP STYLES ===============-->
-    <link rel="stylesheet" href="./resources/vendor/bootstrap/dist/css/bootstrap.css" id="bscss">
-
-    <link rel="icon" href="./resources/images/snmp.jpg" type="image/x-icon">
-
-
-    <script src="./resources/login/js/jquery.min.js"></script>
-    <script src="./resources/login/js/easyResponsiveTabs.js" type="text/javascript"></script>
-    <%--<script src="http://code.jquery.com/jquery-1.10.2.js"></script>--%>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#horizontalTab').easyResponsiveTabs({
-                type: 'default', //Types: default, vertical, accordion
-                width: 'auto', //auto or any width like 600px
-                fit: true   // 100% fit in a container
-            });
-            $(function() {
-                $( ".box" ).draggable();
-            });
-        });
-    </script>
-<style>
-    body {
-        color: #9E9FA0;
-    }
-</style>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="/resources/css/demo.css" rel='stylesheet' type='text/css'/>
+    <script src="./resources/vendor/jquery/dist/jquery.js"></script>
+    <script src="/resources/app/js/demo.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
-<div class="main-content box blurred-bg tinted">
-    <div class="sap_tabs ">
+<center>
+    <div id="form">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div id="homeHeading">Recommendation Engine</div>
+                <hr>
+                <p>Want Recommendations for movies? We are here to help</p>
+                <button id="button" class="btn btn-primary btn-xl page-scroll">Login/ Sign Up</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+                <div id="userform">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="active"><a href="#signup"  role="tab" data-toggle="tab">Sign up</a></li>
+                        <li><a href="#login"  role="tab" data-toggle="tab">Log in</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="signup">
+                            <h2 class="text-uppercase text-center"> Sign Up for Free</h2>
+                            <form id="signup">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>First Name<span class="req">*</span> </label>
+                                            <input type="text" class="form-control" id="first_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label> Last Name<span class="req">*</span> </label>
+                                            <input type="text" class="form-control" id="last_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label> Your Email<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
 
-        <div id="horizontalTab" style="display: block; width: 80%; margin: 0px;" class="blurIt">
-
-            <ul>
-                <li class="resp-tab-item"><span>musicRecommendation</span></li>
-
-            </ul>
-            <!---->
-
-            <div class="tab-2 resp-tab-content">
-                <div class="facts">
-                    <div class="register">
-                        <form:form class="form-1" method="POST" action="login" commandName="loginDetails">
-                            <p class="field">
-                                <input type="text" name="userId" id="userId" placeholder="User ID" required="">
-                                <span class="fa fa-user"></span>
-
-                            </p>
-                            <p class="field">
-                                <%--<input type="password" name="passwd" id="passwd"  placeholder="PASSWORD">--%>
-                                <input type="password" name="passwd" id="passwd"  placeholder="Password" required="" autocomplete="off">
-                                <span class="fa fa-lock"></span>
-                            </p>
-                            <p class="field" style="width: 55%;">
-                            <input type="checkbox" value="" name="remember">
-                                <span font: 26px Serif; margin: 0 0 40px 0; color: ghostwhite;>Remember Me</span>
-                            </p>
-                            <p class="submit">
-                            <div class="sign-in">
-                                <input type="submit" value="Sign in"/>
-                            </div>
-                            </p>
-                        </form:form>
-                        <c:if test="${not empty errorMessage}">
-                            <span style="color:#dd0000;font-size:0.8em;">   ${errorMessage}</span>
-                        </c:if>
-
+                                <div class="form-group">
+                                    <label> Password<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="mrgn-30-top">
+                                    <button type="submit" class="btn btn-larger btn-block" id="userSignup"/>
+                                    Sign up
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade in" id="login">
+                            <h2 class="text-uppercase text-center"> Log in</h2>
+                            <form id="login2">
+                                <div class="form-group">
+                                    <label> Your Email<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="email1" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Password<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="password1" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="mrgn-30-top">
+                                    <button type="submit" class="btn btn-larger btn-block" id="userLogin"/>
+                                    Log in
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <!--start-copyright-->
-            <div class="copy-right">
-                <div class="wrap">
-                    <p style="font-size: small;opacity: 0.36;">&copy; 2016 musicRecommendation. All Rights Reserved </p><p style="font-size: small;opacity: 0.3;"> Design by Rushil and Rishav</p>
-                </div>
-            </div>
-            <!--//end-copyright-->
-
         </div>
-
+        <!-- /.container -->
     </div>
-</div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="js/index.js"></script>
+
+    <script src="/resources/app/js/demo.js"></script>
+
+</center>
 </body>
+
+
 </html>

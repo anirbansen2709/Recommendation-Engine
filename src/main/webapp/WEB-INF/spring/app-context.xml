@@ -25,7 +25,8 @@
             <value>
 				/resources/** = anon
 				/login = anon
-				/documentation = anon
+				/userLogin = anon
+				<!--/documentation = auth-->
 				<!--/aboutCaseTracker = anon-->
                 <!--/forgotPassword = anon-->
                 <!--/emailPassword = anon-->
@@ -34,9 +35,9 @@
                 <!--/home/** = authc-->
                 <!--/registration/** = anon-->
                 <!--/integration/** = anon-->
-                <!--/logout = logout-->
-				<!--/** = authc-->
-				/** = anon
+                /logout = logout
+				/** = authc
+				<!--/** = anon-->
             </value>
         </property>
 	</bean>	
@@ -47,7 +48,7 @@
 
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 	
-	<bean id="customRealm" class="com.gamma.dexter.auth.musicRecommendationRealm">
+	<bean id="customRealm" class="com.gamma.dexter.auth.MovieRecommendationRealm">
 	
 	</bean>		
 </beans>

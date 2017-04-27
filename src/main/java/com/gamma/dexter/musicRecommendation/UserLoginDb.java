@@ -82,16 +82,19 @@ public class UserLoginDb {
         }
     }
 
-    public int getUserId(UserLoginModel userLoginModel) {
+    public int getUserIdByEmail(UserLoginModel userLoginModel) {
+        return getUserIdByEmail(userLoginModel.getEmailId());
+    }
+
+    public int getUserIdByEmail(String email) {
         int userId=-1;
         try {
 
             Class.forName(JDBC_DRIVER);
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
-            String emailId = userLoginModel.getEmailId();
 
-            String sql = "select userId from users where emailId = " + '"' + emailId + '"' + "";
+            String sql = "select userId from users where emailId = " + '"' + email + '"' + "";
 
             ResultSet rs = stmt.executeQuery(sql);
 

@@ -51,6 +51,9 @@ public class UserLoginServices {
         return userLoginDb.verifyUserIdPasswordCombination(userLoginModel);
     }
     public int getUserId(UserLoginModel userLoginModel){
-        return userLoginDb.getUserId(userLoginModel);
+        return userLoginDb.getUserIdByEmail(userLoginModel);
+    }
+    public int getUserIdByEmail(String email){
+        return userLoginDb.getUserIdByEmail(email);
     }
 }
