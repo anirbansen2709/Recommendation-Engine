@@ -152,7 +152,9 @@ public class RatingDb {
         return listOfRatings;
 
     }
+
 //access recommendation from table
+
     public List<RecommendationModel> getRecommendation(int userId) throws Exception {
         List<RecommendationModel> listOfRecommendation = new ArrayList<>();
         Class.forName(JDBC_DRIVER);

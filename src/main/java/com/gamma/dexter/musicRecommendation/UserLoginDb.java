@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Debashish Sen on 18-Apr-17.
  */
+
 public class UserLoginDb {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -48,6 +49,7 @@ public class UserLoginDb {
             return false;
         }
     }
+
     public boolean insertUser(UserSignupModel userSignupModel){
         try {
             Class.forName(JDBC_DRIVER);
