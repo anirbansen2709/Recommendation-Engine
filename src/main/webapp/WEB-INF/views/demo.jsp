@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href="/resources/css/demo.css" rel='stylesheet' type='text/css'/>
   <script src="./resources/vendor/jquery/dist/jquery.js"></script>
-  <script src="/resources/app/js/demo.js"></script>
+  <script src="/resources/app/js/demo.login.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 </head>

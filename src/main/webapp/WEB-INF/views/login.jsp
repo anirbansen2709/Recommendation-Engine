@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="/resources/css/demo.css" rel='stylesheet' type='text/css'/>
     <script src="./resources/vendor/jquery/dist/jquery.js"></script>
-    <script src="/resources/app/js/demo.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 </head>
@@ -36,7 +36,7 @@
                         <li><a href="#login"  role="tab" data-toggle="tab">Log in</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade active in" id="signup">
+                        <div class="tab-pane fade active in" id="signupTab">
                             <h2 class="text-uppercase text-center"> Sign Up for Free</h2>
                             <form id="signup">
                                 <div class="row">
@@ -105,7 +105,7 @@
 
     <script src="js/index.js"></script>
 
-    <script src="/resources/app/js/demo.js"></script>
+    <script src="/resources/app/js/login.js"></script>
 
 </center>
 </body>

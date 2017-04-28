@@ -83,6 +83,7 @@ public class UserLoginDb {
     }
 
     public int getUserIdByEmail(UserLoginModel userLoginModel) {
+
         return getUserIdByEmail(userLoginModel.getEmailId());
     }
 

@@ -26,6 +26,7 @@
 				/resources/** = anon
 				/login = anon
 				/userLogin = anon
+				/userSignup = anon
 				<!--/documentation = auth-->
 				<!--/aboutCaseTracker = anon-->
                 <!--/forgotPassword = anon-->

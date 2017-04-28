@@ -19,6 +19,7 @@ public class UserContext {
     }
 
     public int getUserId() {
+
         return UserLoginServices.instanceUserLoginServices().getUserIdByEmail(getUsername());
     }
 
