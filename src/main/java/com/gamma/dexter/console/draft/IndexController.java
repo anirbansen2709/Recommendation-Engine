@@ -87,8 +87,8 @@ public class
         return "rateMovies";
     }
 
-    @RequestMapping(value = "dashboard", method = RequestMethod.GET)
-    private String dashboard(){return "dashboard";}
+    @RequestMapping(value = "home", method = RequestMethod.GET)
+    private String home(){return "home";}
 
     @RequestMapping(value = "topRatedMovies", method = RequestMethod.GET)
     private String topRatedMovies(){

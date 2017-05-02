@@ -31,9 +31,9 @@
         <!-- START User avatar toggle-->
         <li>
           <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-          <a href="admin">
-            <em class="icon-user"></em>
-          </a>
+          <%--<a href="admin">--%>
+            <%--<em class="icon-user"></em>--%>
+          <%--</a>--%>
         </li>
         <!-- END User avatar toggle-->
         <%--<!-- START User logout-->--%>

@@ -19,7 +19,7 @@
 			</util:map>
 		</property>
 
-	    <property name="successUrl" value="/dashboard"/>
+	    <property name="successUrl" value="/home"/>
 
 		<property name="filterChainDefinitions">
             <value>
@@ -27,6 +27,7 @@
 				/login = anon
 				/userLogin = anon
 				/userSignup = anon
+				/home = anon
 				<!--/documentation = auth-->
 				<!--/aboutCaseTracker = anon-->
                 <!--/forgotPassword = anon-->

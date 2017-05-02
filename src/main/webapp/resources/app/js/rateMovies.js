@@ -171,7 +171,7 @@ $("#saveRatings").click(function (e) {
 });
 
 $('#redirect-btn').click(function(){
-    window.location.replace("dashboard");
+    window.location.replace("home");
 });
 
 $('#success-close').click(function(){

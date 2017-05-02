@@ -249,5 +249,5 @@
 <%--JS file for inserting user--%>
 <script type="text/javascript" src="resources/slick/slick.js"></script>
 <script src="/resources/app/js/test.js"></script>
-<script src="/resources/app/js/dashboard.js"></script>
+<script src="/resources/app/js/home.js"></script>
 </html>

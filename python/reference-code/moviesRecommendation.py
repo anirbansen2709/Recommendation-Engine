@@ -26,14 +26,10 @@ class MovieRecommendation:
                                                                                         IntegerType(), True),
                                           StructField('rating',
                                                       DoubleType(), True)])
-        self.movies_df = self.sqlContext.read.format('csv').options(header='true'
-                                                               , inferSchema='true',
-                                                               schema=moviesCustomSchema).load(
-            'C://movies.csv').withColumnRenamed("movieId", "ID")
+        self.movies_df = self.sqlContext.read.format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/music").option("driver", "com.mysql.jdbc.Driver").option("dbtable", "movies").option("user", "root").option("password", "root").load()
+        self.movies_df = self.movies_df.withColumnRenamed("movieId","ID")
         self.movies_df = self.movies_df.cache()
-        self.ratings_df = self.sqlContext.read.format('csv').options(header='true'
-                                                                , inferSchema='true',
-                                                                schema=ratingsCustomSchema).load('C://ratings.csv')
+        self.ratings_df = self.sqlContext.read.format("jdbc").option("url", "jdbc:mysql://127.0.0.1:3306/music").option("driver", "com.mysql.jdbc.Driver").option("dbtable", "ratings").option("user", "root").option("password", "root").load()
         self.ratings_df = self.ratings_df.drop('timestamp')
         self.ratings_df = self.ratings_df.cache()
 
@@ -135,13 +131,11 @@ class MovieRecommendation:
 
 
     def get_top_ratings(self,user_id,movies_count):
-        print user_id;
+
         ratings_df_for_user = self.ratings_df.filter('userId='+str(user_id)+'')
         ratings_df_for_user.show(5);
         list_of_movies_row = ratings_df_for_user.select('movieId').collect()
         my_rated_movie_ids = [i.movieId for i in list_of_movies_row]
-        print "my_rated_movies:"
-        print my_rated_movie_ids
         not_rated_df = self.movies_df.filter(~self.movies_df['ID'
         ].isin(my_rated_movie_ids))
 
@@ -200,26 +194,5 @@ class MovieRecommendation:
 	self.splitDataset()
  	self.alternatingLeastSquare()
 	test_RMSE = self.testModel()
-        # self.my_user_id = 0
-        # my_rated_movies = [
-        #     (self.my_user_id, 318, 5.5),
-        #     (self.my_user_id, 858, 4.1),
-        #     (self.my_user_id, 58559, 5.0),
-        #     (self.my_user_id, 3475, 1.50),
-        #     (self.my_user_id, 589, 4.0),
-        #     (self.my_user_id, 44191, 4.0),
-        #     (self.my_user_id, 89745, 5.0),
-        #     (self.my_user_id, 63082, 4.0),
-        #     (self.my_user_id, 88125, 2.0),
-        #     (self.my_user_id, 1293, 0.5),
-        #     (self.my_user_id, 116797, 5.0)
-        # ]
-        # my_ratings_df = self.createDfFromUserRatings(my_rated_movies)
-        # my_ratings_model = self.addAndTrainModel(training_df, my_ratings_df)
 
-        # predicted_highest_rated_movies_df = self.predictRatings(my_rated_movies, movies_df, my_ratings_model,
-        #                                                         movie_names_with_avg_ratings_df, moviesRatingsJoined_df)
-        # list_of_predictions = map(lambda row: row.asDict(), predicted_highest_rated_movies_df.collect())
-        # print list_of_predictions
-        # dict_of_predictions = {person['movieId']: person for person in list_of_predictions}
 

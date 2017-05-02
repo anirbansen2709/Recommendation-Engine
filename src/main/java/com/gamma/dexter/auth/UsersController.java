@@ -21,8 +21,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * The Class UsersController.
@@ -42,20 +40,20 @@ public class UsersController {
 	 * @param response the response
 	 * @return the model and view
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public ModelAndView init(HttpServletRequest request, HttpServletResponse response) {
-		ApplicationModel applicationModel = new ApplicationModel();
-		try{
-			loginModel = (LoginModel) request.getSession().getAttribute("user");
-			applicationModel.setLoginModel(loginModel);
-			Map<String, String> appVar = new HashMap<String, String>();
-			appVar.put("username", loginModel.getPasswd());
-			return new ModelAndView("home", appVar);
-		}catch(Exception e){
-			return new ModelAndView("login");
-		}
-	}
-	
+//	@RequestMapping(value = "/home", method = RequestMethod.GET)
+//	public ModelAndView init(HttpServletRequest request, HttpServletResponse response) {
+//		ApplicationModel applicationModel = new ApplicationModel();
+//		try{
+//			loginModel = (LoginModel) request.getSession().getAttribute("user");
+//			applicationModel.setLoginModel(loginModel);
+//			Map<String, String> appVar = new HashMap<String, String>();
+//			appVar.put("username", loginModel.getPasswd());
+//			return new ModelAndView("home", appVar);
+//		}catch(Exception e){
+//			return new ModelAndView("login");
+//		}
+//	}
+//
 	@RequestMapping(value = "/userPasswordReset", method = RequestMethod.POST)
 	public ModelAndView resetPassword(@RequestParam String password_reset) {
 		ModelAndView mav = null;

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="resources/foundation/foundation-icons/foundation-icons/foundation-icons.css">
 <aside class="aside">
   <!-- START Sidebar (left)-->
   <div class="aside-inner">
@@ -28,20 +29,21 @@
         <!-- END user info-->
         <!-- Iterates over all sidebar items-->
         <li class=" ">
+          <a href="home" title="Home">
+            <em class="fa fa-home"></em>
+            <span data-localize="">Home</span>
+          </a>
+        </li>
+        <li class=" ">
+
           <a href="rateMovies" title="Rate Movies">
-            <em class="icon-chemistry"></em>
+            <em class="fa fa-star-half-o"></em>
             <span data-localize="">Rate Movies</span>
           </a>
         </li>
         <li class=" ">
-          <a href="dashboard" title="Dashboard">
-            <em class="icon-speedometer"></em>
-            <span data-localize="">Dashboard</span>
-          </a>
-        </li>
-        <li class=" ">
           <a href="topRatedMovies" title="topRatedMovies">
-            <em class="icon-note"></em>
+            <i class="fi fi-crown"></i>
             <span>topRatedMovies</span>
           </a>
         </li>

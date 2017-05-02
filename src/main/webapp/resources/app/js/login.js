@@ -61,7 +61,7 @@ $('.tab a').on('click', function (e) {
     $(target).fadeIn(800);
 });
 function Redirect() {
-    window.location="/dashboard";
+    window.location="/home";
 }
 
 

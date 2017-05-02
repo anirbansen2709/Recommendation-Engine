@@ -36,9 +36,9 @@
                         <li><a href="#login"  role="tab" data-toggle="tab">Log in</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane fade active in" id="signupTab">
+                        <div class="tab-pane fade active in" id="signup">
                             <h2 class="text-uppercase text-center"> Sign Up for Free</h2>
-                            <form id="signup">
+                            <form id="signup2">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="form-group">

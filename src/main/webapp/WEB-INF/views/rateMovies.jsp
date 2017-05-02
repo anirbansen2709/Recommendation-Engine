@@ -186,7 +186,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="error-close" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="success-close">Close. Rate Again</button>
-                <button type="button" class="btn btn-primary" id="redirect-btn">Ok. Go to Dashboard</button>
+                <button type="button" class="btn btn-primary" id="redirect-btn">Ok. Go to Home</button>
             </div>
         </div>
 
