@@ -50,6 +50,9 @@
       <!-- START Right Navbar-->
       <ul class="nav navbar-nav navbar-right">
         <!-- START User logout-->
+        <li title="Current User">
+          <div id="userName" style="font-size: x-large; margin-top: 5%;color: white;"></div>
+        </li>
         <li title="Logout">
           <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
           <a href="userLogout">
@@ -59,48 +62,6 @@
         </li>
         <!-- END User logout-->
 
-
-        <%--<!--Notifcation Settings-->--%>
-        <%--<li title="Notification Settings">--%>
-          <%--<a href="settings">--%>
-            <%--<em class="fa fa-gear fa-lg"></em>--%>
-          <%--</a>--%>
-        <%--</li>--%>
-        <%--<!-- Fullscreen (only desktops)-->--%>
-        <%--<li class="visible-lg" title="full Screen">--%>
-          <%--<a href="#" data-toggle-fullscreen="">--%>
-            <%--<em class="fa fa-expand"></em>--%>
-          <%--</a>--%>
-        <%--</li>--%>
-        <%--<!-- START Alert menu-->--%>
-        <%--<li class="dropdown dropdown-list">--%>
-          <%--<a href="#" data-toggle="dropdown">--%>
-            <%--<em class="icon-clock"></em>--%>
-          <%--</a>--%>
-
-          <%--<!-- list item-->--%>
-          <%--<div class="panel widget dropdown-menu animated flipInX">--%>
-            <%--<div class="col-xs-4 text-center bg-green pv-lg">--%>
-              <%--<!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->--%>
-              <%--<div data-now="" data-format="MMMM" class="text-sm"></div>--%>
-              <%--<br>--%>
-
-              <%--<div data-now="" data-format="D" class="h2 mt0"></div>--%>
-            <%--</div>--%>
-            <%--<!-- last list item -->--%>
-            <%--<div class="col-xs-8 pv-lg">--%>
-              <%--<div data-now="" data-format="dddd" class="text-uppercase"></div>--%>
-              <%--<br>--%>
-
-              <%--<div data-now="" data-format="h:mm" class="h2 mt0"></div>--%>
-              <%--<div data-now="" data-format="a" class="text-muted text-sm"></div>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-          <%--<!-- END Dropdown menu-->--%>
-        <%--</li>--%>
-        <%--<!-- END Alert menu-->--%>
-        <%--<!-- START Contacts button-->--%>
-        <%--<!-- END Contacts menu-->--%>
       </ul>
       <!-- END Right Navbar-->
     </div>

@@ -129,7 +129,7 @@
     <section style="margin-bottom: 10px !important;">
         <div class="content-wrapper">
             <div class="row">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="margin-top: 20px">
                     <div class="panel-heading" style="background-color: #003153 !important; color: white !important;">
                         <b>Top Rated Movies</b>
                         <button class="btn btn-primary viewmorebtn1"  style="background-color: #003153;float: right;padding-bottom: 3px;padding-top: 3px;padding-left: 7px;padding-right: 6px;margin-top: -4px;">
