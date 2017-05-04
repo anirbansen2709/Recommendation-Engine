@@ -37,6 +37,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
+  <link rel="icon" href="./resources/logo-image/title-icon.ico" type="image/x-icon">
 
   <%--<%@ include file="./uiFrame.jsp" %>--%>
 
@@ -114,6 +115,8 @@
       transition: all 0.4s ease-in-out;
       margin-top: 10%;
     }
+
+
   </style>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">

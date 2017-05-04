@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <head lang="en">
 
     <meta charset="utf-8">
@@ -37,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="icon" href="./resources/logo-image/title-icon.ico" type="image/x-icon">
     <!-- Main section-->
 
     <style>
@@ -112,13 +114,12 @@
     <jsp:include page="layout/header.jsp"/>
     <jsp:include page="layout/menu.jsp"/>
 
-
     <section style="margin-bottom: 10px !important;">
 
         <!-- Page content-->
         <div class="content-wrapper">
 
-            <div class="row mb-lg">
+            <div class="row mb-lg" style="height: 100px">
                 <!-- START panel-->
                 <div id="panel-1" class="panel panel-default panel-demo col-xs-4 col-md-4 col-ls-4 col-lg-4"
                      style="padding: 0 !important;">

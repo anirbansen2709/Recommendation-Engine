@@ -38,7 +38,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
-
+    <link rel="icon" href="./resources/logo-image/title-icon.ico" type="image/x-icon">
 
     <style>
         .content-wrapper > h3, /* .content-wrapper > .content-heading*/
@@ -176,6 +176,7 @@
     </section>
     <jsp:include page="layout/footer.jsp"/>
 </div>
+
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

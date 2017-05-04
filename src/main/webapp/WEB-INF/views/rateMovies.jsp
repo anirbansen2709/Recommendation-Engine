@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="resources/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="icon" href="./resources/logo-image/title-icon.ico" type="image/x-icon">
     <style>
         .content-wrapper > h3, /* .content-wrapper > .content-heading*/
         {
@@ -79,6 +80,7 @@
 
         .user-rating span {
             margin-left: -15px;
+            margin-top: -8px;
         }
 
         .user-rating span.star:before {
@@ -109,14 +111,19 @@
             -o-transition: all 0.4s ease-in-out;
             transition: all 0.4s ease-in-out;
         }
+        img{
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            height: 100%;
+        }
     </style>
 </head>
 
 <div class="wrapper">
     <jsp:include page="layout/header.jsp"/>
     <jsp:include page="layout/menu.jsp"/>
-    <section style="margin-bottom: 10px !important;">
 
+    <section style="margin-bottom: 10px !important;">
         <div class="content-wrapper">
             <%--<h3>Device management--%>
             <%--<small>Add new SNMP devices</small>--%>
@@ -159,7 +166,6 @@
 
     </section>
     <jsp:include page="layout/footer.jsp"/>
-
 </div>
 
 <div class="modal fade" id="myModal" role="dialog"  aria-labelledby="myModalLabel"

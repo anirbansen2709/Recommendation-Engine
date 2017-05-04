@@ -4,11 +4,11 @@
     <!-- START navbar header-->
     <div class="navbar-header">
       <a href="#/" class="navbar-brand">
-        <div class="brand-logo">
-          <b><h3>Listen Me</h3></b>
+        <div class="brand-logo" style="margin-top: -5%;">
+          <img src="/resources/logo-image/logo1.png" alt="dexter" style="height: 100%;">
         </div>
-        <div class="brand-logo-collapsed">
-          <img src="./resources/images/snmp.jpg" alt="SNMP" class="img-responsive">
+        <div class="brand-logo-collapsed" style="margin-top: -10%;margin-left:-1%;">
+          <img src="/resources/logo-image/icon-logo.png" alt="SNMP" style="height: 100%;">
         </div>
       </a>
     </div>
@@ -28,23 +28,6 @@
             <em class="fa fa-navicon"></em>
           </a>
         </li>
-        <!-- START User avatar toggle-->
-        <li>
-          <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-          <%--<a href="admin">--%>
-            <%--<em class="icon-user"></em>--%>
-          <%--</a>--%>
-        </li>
-        <!-- END User avatar toggle-->
-        <%--<!-- START User logout-->--%>
-        <%--<li title="Logout">--%>
-          <%--<!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->--%>
-          <%--<a href="userLogout">--%>
-          <%--&lt;%&ndash;<a href="logout">&ndash;%&gt;--%>
-            <%--<em class="fa fa-sign-out fa-lg"></em>--%>
-          <%--</a>--%>
-        <%--</li>--%>
-        <%--<!-- END User logout-->--%>
       </ul>
       <!-- END Left navbar-->
       <!-- START Right Navbar-->

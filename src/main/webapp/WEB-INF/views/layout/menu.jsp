@@ -42,14 +42,14 @@
           </a>
         </li>
         <li class=" ">
-          <a href="topRatedMovies" title="topRatedMovies">
-            <i class="fi fi-crown"></i>
-            <span>topRatedMovies</span>
+          <a href="topRatedMovies" title="Top Rated Movies">
+            <i class=" fa fa-arrow-up"></i>
+            <span>Top Rated Movies</span>
           </a>
         </li>
         <li class=" ">
           <a href="recommendedMovies" title="Recommended">
-            <em class="fa fa-music"></em>
+            <em class="fa fa-film"></em>
             <span>Recommended Movies</span>
           </a>
         </li>
