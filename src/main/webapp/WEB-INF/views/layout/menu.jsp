@@ -67,8 +67,8 @@
         </li>
         </li>
         <li class=" ">
-          <a href="getRecommendation" style="width:106%" title="Get Recommendation">
-            <em class="fa fa-bold"></em>
+          <a href="callServer" style="width:106%" title="Get recommendation">
+            <em class="fa fa-server"></em>
             <span>Get Recommendation</span>
           </a>
         </li>

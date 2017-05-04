@@ -31,7 +31,7 @@ function recommendedMovies() {
 function loadData(data) {
     var stmt = '';
    jQuery.each(data['Payload'], function (index, value) {
-        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 30%;border-radius: 8px;">' +
+        stmt += '<div class="col-md-3 col-sm-3" style=" background-color: #003153; color: white ; margin-left:5px; width: 25%;border-radius: 8px;">' +
             '<div class="col-md-6 col-sm-6" style=" padding-left: -1px; margin-left: -30px;">' +
             '<object data="resources/AlbumArt/'+value["movieId"]+'.jpg" width="304" height="236" style="max-width: 115%" type="image/jpg">'+
             '<img src="resources/AlbumArt/p1.jpg" class="img-responsive" alt="" width="304" height="236" style="max-width: 115%"  >' +

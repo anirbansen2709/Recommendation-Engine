@@ -108,8 +108,8 @@ public class
     private String recommendedMovies(){return "recommendedMovies";
     }
 
-    @RequestMapping(value = "button", method = RequestMethod.GET)
-    private String button(){return "button";
+    @RequestMapping(value = "callServer", method = RequestMethod.GET)
+    private String button(){return "getRecommendationFromServer";
     }
 }
 
