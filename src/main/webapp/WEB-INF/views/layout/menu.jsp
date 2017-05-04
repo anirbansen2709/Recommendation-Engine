@@ -44,11 +44,11 @@
         <li class=" ">
           <a href="topRatedMovies" title="Top Rated Movies">
             <i class=" fa fa-arrow-up"></i>
-            <span>Top Rated Movies</span>
+            <span style="margin-left: 6%">Top Rated Movies</span>
           </a>
         </li>
         <li class=" ">
-          <a href="recommendedMovies" title="Recommended">
+          <a href="recommendedMovies" style="width:106%" title="Recommended">
             <em class="fa fa-film"></em>
             <span>Recommended Movies</span>
           </a>
@@ -67,9 +67,9 @@
         </li>
         </li>
         <li class=" ">
-          <a href="button" title="Button">
+          <a href="getRecommendation" style="width:106%" title="Get Recommendation">
             <em class="fa fa-bold"></em>
-            <span>Button</span>
+            <span>Get Recommendation</span>
           </a>
         </li>
 
