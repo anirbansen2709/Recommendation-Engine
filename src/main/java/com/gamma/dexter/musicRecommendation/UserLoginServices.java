@@ -56,4 +56,7 @@ public class UserLoginServices {
     public int getUserIdByEmail(String email){
         return userLoginDb.getUserIdByEmail(email);
     }
+    public String getNameByEmail(String email){
+        return userLoginDb.getNameByEmail(email);
+    }
 }

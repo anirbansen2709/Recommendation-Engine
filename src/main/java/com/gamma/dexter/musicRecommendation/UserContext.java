@@ -22,6 +22,11 @@ public class UserContext {
 
         return UserLoginServices.instanceUserLoginServices().getUserIdByEmail(getUsername());
     }
+    public String getName() {
+
+        return UserLoginServices.instanceUserLoginServices().getNameByEmail(getUsername());
+    }
+
 
     public String getUsername() {
         Subject currentUser = SecurityUtils.getSubject();

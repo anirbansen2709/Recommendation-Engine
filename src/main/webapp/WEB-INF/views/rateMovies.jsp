@@ -272,5 +272,5 @@
 <%--JS file for inserting user--%>
 <%--<script type="text/javascript" src="resources/slick/slick.js"></script>--%>
 <script src="./resources/app/js/rateMovies.js"></script>
-
+<script src="/resources/app/js/header.js"></script>
 </html>

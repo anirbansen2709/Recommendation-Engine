@@ -7,6 +7,23 @@ public class UserLoginModel {
     private  String emailId,password;
 
     int userId;
+    String firstName ,secondName;
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     public int getUserId() {
         return userId;

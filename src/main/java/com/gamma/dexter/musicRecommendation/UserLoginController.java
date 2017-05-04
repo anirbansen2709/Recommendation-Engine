@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Debashish Sen on 18-Apr-17.
@@ -76,6 +78,16 @@ public class UserLoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return wrapper.getResponse();
+    }
+
+    @RequestMapping(value = "currentUser",method = RequestMethod.GET)
+    public @ResponseBody String getCurrentUser() {
+        Map<String, String> user=new HashMap<>();
+        String name = UserContext.instance().getName();
+        user.put("Username",name);
+        ResponseWrapper wrapper = new ResponseWrapper();
+        wrapper.addPayload(user);
         return wrapper.getResponse();
     }
 

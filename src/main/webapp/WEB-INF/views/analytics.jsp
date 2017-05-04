@@ -387,7 +387,7 @@
 <script src="resources/datatable-responsive/datatable-responsive/datatables.responsive.min.js"></script>
 <script src="./resources/app/js/analytics.js"></script>
 <script src="./resources/scrollTop/scrollTop.js"></script>
-
+<script src="/resources/app/js/header.js"></script>
 
 </html>
 

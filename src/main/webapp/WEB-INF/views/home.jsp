@@ -251,4 +251,5 @@
 <script type="text/javascript" src="resources/slick/slick.js"></script>
 <script src="/resources/app/js/test.js"></script>
 <script src="/resources/app/js/home.js"></script>
+<script src="/resources/app/js/header.js"></script>
 </html>

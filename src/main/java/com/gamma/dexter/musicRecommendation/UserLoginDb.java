@@ -116,4 +116,33 @@ public class UserLoginDb {
         }
         return userId;
     }
+    public String getNameByEmail(String email) {
+        String firstName=null,lastName = null;
+        try {
+
+            Class.forName(JDBC_DRIVER);
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = con.createStatement();
+
+            String sql = "select firstName,lastName from users where emailId = " + '"' + email + '"' + "";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()) {
+                firstName = rs.getString("firstName");
+                lastName = rs.getString("lastName");
+            }
+            else
+                throw new Exception("UserId not found");
+            rs.close();
+            stmt.close();
+            con.close();
+        }
+        catch (Exception e)
+        {
+
+            System.out.println("Error at UserLoginDb getUserId" + e);
+        }
+        return firstName+lastName;
+    }
 }
