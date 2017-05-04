@@ -15,6 +15,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="./resources/logo-image/title-icon.ico" type="image/x-icon">
 </head>
 
 <body>
