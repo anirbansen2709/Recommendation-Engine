@@ -5,6 +5,7 @@ $(document).ready(function () {
     showUsername();
 });
 function showUsername(){
+
     $.ajax({
         type: "GET",
         dataType: "json",
