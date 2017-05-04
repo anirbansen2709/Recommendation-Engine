@@ -34,7 +34,7 @@
       <ul class="nav navbar-nav navbar-right">
         <!-- START User logout-->
         <li title="Current User">
-          <div id="userName" style="font-size: x-large; margin-top: 5%;color: white;"></div>
+          <div id="userName" style="font-size: x-large; margin-top: 5%;color: white;">Welcome</div>
         </li>
         <li title="Logout">
           <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->

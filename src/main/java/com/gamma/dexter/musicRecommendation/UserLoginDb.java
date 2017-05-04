@@ -143,6 +143,6 @@ public class UserLoginDb {
 
             System.out.println("Error at UserLoginDb getUserId" + e);
         }
-        return firstName+lastName;
+        return firstName+" "+lastName;
     }
 }

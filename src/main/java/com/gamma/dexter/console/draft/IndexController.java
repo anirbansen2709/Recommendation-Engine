@@ -103,7 +103,6 @@ public class
     private String analytics(){
         return "analytics";
     }
-
     @RequestMapping(value = "recommendedMovies", method = RequestMethod.GET)
     private String recommendedMovies(){return "recommendedMovies";
     }
