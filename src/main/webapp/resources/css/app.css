@@ -1177,6 +1177,11 @@ body {
   outline: none;
   color: #23b7e5;
 }
+.sidebar > .nav > li > .nav-item:checked {
+  text-decoration: none;
+  outline: none;
+  color: #23b7e5;
+}
 .sidebar > .nav > li > a > em,
 .sidebar > .nav > li > .nav-item > em {
   width: 1.8em;
