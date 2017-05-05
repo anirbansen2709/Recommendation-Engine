@@ -1,5 +1,6 @@
 package com.gamma.dexter.musicRecommendation;
 
+import com.gamma.dexter.db.mysql.helper.DatasourcePool;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 public class RatingDb {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/music";
+    static final String DB_URL = "jdbc:mysql://192.168.43.61:3306/music";
     static final String USER = "root";
     static final String PASS = "root";
     private static RatingDb instance = null;
@@ -33,16 +34,17 @@ public class RatingDb {
 
     public static void main(String[] args) throws Exception {
         RatingDb ratingDb = RatingDb.getInstance();
-       // List<RecommendationModel> list = ratingDb.getRecommendation();
-       // System.out.println(list);
+        List<RecommendationModel> list = ratingDb.getRecommendation(1001);
+        System.out.println(list);
         int i = 0;
     }
 
     public void saveRatings(Map<Integer, Integer> mapOfMovies,int userId) {
         try {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+//            Class.forName(JDBC_DRIVER);
+//            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             //check for existing movieID and UserID combination and remove the same
             String query1 = "DELETE from ratings where userId=? and movieId=?";
             PreparedStatement stmt1 = con.prepareStatement(query1);
@@ -56,7 +58,8 @@ public class RatingDb {
             con.close();
 
             //insert values when no previous of movieID and UserID combination exist
-            Connection con1 = DriverManager.getConnection(DB_URL, USER, PASS);
+            //Connection con1 = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con1 = DatasourcePool.instance().getConnection();
             String query = "insert into ratings values (?, ?, ?, ?)";
             PreparedStatement stmt = con1.prepareStatement(query);
             for (Map.Entry<Integer, Integer> entry : mapOfMovies.entrySet()) {
@@ -84,8 +87,9 @@ public class RatingDb {
     public List<MoviesModel> getMoviesWithAverageRatings() {
         List<MoviesModel> listOfMovies = new ArrayList<MoviesModel>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            //Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = " select count(r.userId) as noOfUsers,\n" +
@@ -121,8 +125,9 @@ public class RatingDb {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         List<RatingModel> listOfRatings = new ArrayList<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = " select r.userId, m.movieId, m.title,m.genres, r.rating, r.timestamp from ratings r,movies m where m.movieId= r.movieId and r.userId ="+userId+"";
@@ -157,8 +162,9 @@ public class RatingDb {
 
     public List<RecommendationModel> getRecommendation(int userId) throws Exception {
         List<RecommendationModel> listOfRecommendation = new ArrayList<>();
-        Class.forName(JDBC_DRIVER);
-        Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        //Class.forName(JDBC_DRIVER);
+       // Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+        Connection con = DatasourcePool.instance().getConnection();
         con.setAutoCommit(false);
         Statement stmt = con.createStatement();
         String query = "select * from recommendation where userId="+userId+"";
@@ -183,8 +189,9 @@ public class RatingDb {
         try {
             HttpUtil httpUtil = new HttpUtil();
             JSONObject recommendation = httpUtil.getRecommendation(userId);
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
             con.setAutoCommit(false);
             int result = stmt.executeUpdate("DELETE FROM recommendation WHERE userId = "+userId+"");
@@ -221,8 +228,9 @@ public class RatingDb {
     public static Map<String, Float> getTopMoviesChart() {
         Map<String, Float> topRatedMovies = new HashMap<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+           // Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
             String query = "select m.title as name, avg(r.rating) as averageRatings from ratings r \n" +
                     " inner join movies m where m.title = ' \" ' + title + ' \" ' and m.movieId = r.movieId \n" +
@@ -244,8 +252,9 @@ public class RatingDb {
     public static Map<Float, Integer> getRatingWithCount() {
         Map<Float, Integer> ratingWithCount = new HashMap<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+           // Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
             String query = "\n" +
                     "select CEILING(r.rating) as Rating, count(*) as noOfMovies from ratings r \n" +
@@ -271,8 +280,9 @@ public class RatingDb {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         List<RatingModel> listOfUsers= new ArrayList<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = "select r.userId as UserId, r.rating as Rating, r.timestamp as Time\n" +
@@ -306,8 +316,9 @@ public class RatingDb {
 
         List<MoviesModel> listOfMovies= new ArrayList<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+           // Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = "\n" +
@@ -339,8 +350,9 @@ public class RatingDb {
     public List<MoviesModel> getGenresDetails(String genre) {
         List<MoviesModel> listOfMoviesWithGenre= new ArrayList<>();
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = "select m.movieId, m.title, avg(r.rating) as rating from ratings r, movies m " +

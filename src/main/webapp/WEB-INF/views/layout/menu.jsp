@@ -43,7 +43,7 @@
         </li>
         <li class=" ">
           <a href="topRatedMovies" title="Top Rated Movies">
-            <i class=" fa fa-arrow-up"></i>
+            <i class=" fa fa-rss-square fa-lg"></i>
             <span style="margin-left: 6%">Top Rated Movies</span>
           </a>
         </li>
@@ -67,7 +67,7 @@
         </li>
         </li>
         <li class=" ">
-          <a href="callServer" style="width:106%" title="Get recommendation">
+          <a href="callServer" style="width:106%" title=".Get recommendation">
             <em class="fa fa-server"></em>
             <span>Get Recommendation</span>
           </a>

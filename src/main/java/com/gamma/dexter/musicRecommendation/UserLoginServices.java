@@ -59,4 +59,8 @@ public class UserLoginServices {
     public String getNameByEmail(String email){
         return userLoginDb.getNameByEmail(email);
     }
+
+    public static void main(String[] args) {
+        UserLoginServices.instanceUserLoginServices().getUserIdByEmail("as@gmail.com");
+    }
 }

@@ -1,7 +1,8 @@
 package com.gamma.dexter.musicRecommendation;
 
+import com.gamma.dexter.db.mysql.helper.DatasourcePool;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -13,7 +14,7 @@ import java.text.SimpleDateFormat;
 public class UserLoginDb {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/music";
+    static final String DB_URL = "jdbc:mysql://192.168.43.61:3306/music";
     static final String USER = "root";
     static final String PASS = "root";
     private static UserLoginDb instance = null;
@@ -27,8 +28,9 @@ public class UserLoginDb {
 
     public boolean verifyUserIdPasswordCombination(UserLoginModel userLoginModel){
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            //Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
             String userName = userLoginModel.getEmailId();
             String password = userLoginModel.getPassword();
@@ -52,8 +54,9 @@ public class UserLoginDb {
 
     public boolean insertUser(UserSignupModel userSignupModel){
         try {
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL,USER,PASS);
+            //Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL,USER,PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
             String sql;
             int resultSet;
@@ -93,8 +96,9 @@ public class UserLoginDb {
         int userId=-1;
         try {
 
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            //Class.forName(JDBC_DRIVER);
+            //Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = "select userId from users where emailId = " + '"' + email + '"' + "";
@@ -120,8 +124,9 @@ public class UserLoginDb {
         String firstName=null,lastName = null;
         try {
 
-            Class.forName(JDBC_DRIVER);
-            Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+           // Class.forName(JDBC_DRIVER);
+           // Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection con = DatasourcePool.instance().getConnection();
             Statement stmt = con.createStatement();
 
             String sql = "select firstName,lastName from users where emailId = " + '"' + email + '"' + "";
