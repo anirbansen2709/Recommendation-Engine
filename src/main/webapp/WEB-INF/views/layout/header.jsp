@@ -44,7 +44,6 @@
           </a>
         </li>
         <!-- END User logout-->
-
       </ul>
       <!-- END Right Navbar-->
     </div>
