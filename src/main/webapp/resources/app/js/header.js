@@ -12,7 +12,7 @@ function showUsername(){
         url: "currentUser",
         success: function (data) {
         console.log(data);
-            $("#userName").text(data["Payload"][0]["Username"]);
+            $("#userName").append(data["Payload"][0]["Username"]);
         }, error: function (data, status) {
         }
     });

@@ -71,6 +71,7 @@
                                     <button type="submit" class="btn btn-larger btn-block" id="userSignup"/>
                                     Sign up
                                     </button>
+
                                 </div>
                             </form>
                         </div>
